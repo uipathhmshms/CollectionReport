@@ -23,8 +23,8 @@ This process is automated using UiPath, making it faster and more efficient for 
 ### Folder Structure
 
 ```plaintext
-└── TempReport/             # Temporary folder for generated reports
-    ├── report_project1.xlsx
-    ├── report_project1.pdf
-    └── report_project2.xlsx
-    └── report_project2.pdf
+└── TempReport/             # Temporary folder for generated reports
+    ├── report_project1.xlsx
+    ├── report_project1.pdf
+    └── report_project2.xlsx
+    └── report_project2.pdf
