@@ -1,0 +1,154 @@
+{
+  "name": "CollectionReport",
+  "projectId": "4f99a10b-7d82-438e-a477-a2863d74395a",
+  "description": "תהליך לייצור דוח גבייה עבור מנהל פרויקט.\r\nהתהליך משמש את מחלקת הכפסים ב\r\nhms",
+  "main": "Main.xaml",
+  "dependencies": {
+    "RPA_Template": "2024.11.8",
+    "UiPath.Database.Activities": "[1.9.0]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.10.7.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "10c128da-9118-45dc-a5da-4687f8c7bd3e",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_BusinessAppsDownTime-InDowntime.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "e9ffb4bc-f763-45f3-bf71-2c00d6b2ad20",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_BusinessAppsDownTime-OutDowntime.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b5e06bcd-8427-46dd-aee7-555b1c59ad35",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_MaxConseSysExceptions.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "202e9a33-d6b3-4306-9206-5ccb2dd76216",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_MaxTransactions.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "c3c40c5e-a05c-4d1d-877d-659207149a82",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_ProcessDownTime-InDowntime.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "f4c69789-b168-4c8a-9288-8887d0e2bf95",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_ProcessDownTime-OutDowntime.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6ed6de4c-1ada-47d1-973a-d8f987586ce7",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_StopFromOrch.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7ab2ea0a-be6a-4457-be42-fc909dae28fb",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_TransactionSuccess.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "fcc2aeef-561d-44a3-b0d4-73191aa427b1",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\Main_TC_UrgentJob.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "1fbc4647-16c4-4b7b-9fd8-38ec8f7b5a9f",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\TC_TransactionBizException.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "c68d5203-7b67-4c20-9066-fdde4afb49e5",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\TC_TransactionSuccess.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "468f67c1-b7b4-4099-b423-127218e5e781",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TemplateTests\\TC_TransactionSysException.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "c8c68dc0-89ee-435e-9feb-0298c9e0335c",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "BusinessProcessTests\\ExecuteTransaction_TC_PlaceHolder.xaml"
+      }
+    ],
+    "modernBehavior": true,
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "d4390d52-0a1d-46bd-8f9d-a4685d7d8dc6",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {
+    "iconUrl": ".package/hms.png"
+  },
+  "targetFramework": "Windows"
+}

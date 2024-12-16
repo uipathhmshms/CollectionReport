@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ClipboardData Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:h="clr-namespace:HmsTeam_Framework_Activities;assembly=HmsTeam.Framework.Activities" xmlns:hm="clr-namespace:HMS.Modeling;assembly=HmsTeam.UiPath.Shared" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upaf="clr-namespace:UiPath.Persistence.Activities.FormTask;assembly=UiPath.Persistence.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ClipboardData.Data>
+		<scg:List x:TypeArguments="x:Object" Capacity="1">
+			<p:If x:Name="__ReferenceID0" Condition="[boo_TransactionSendToActionCenter]" DisplayName="If TransactionSendToActionCenter" VirtualizedContainerService.HintSize="483.2,272">
+				<WorkflowViewStateService.ViewState>
+					<scg:Dictionary x:TypeArguments="x:String, x:Object">
+						<x:Boolean x:Key="IsExpanded">True</x:Boolean>
+						<x:Boolean x:Key="IsPinned">False</x:Boolean>
+					</scg:Dictionary>
+				</WorkflowViewStateService.ViewState>
+				<p:If.Then>
+					<p:Sequence DisplayName="TransactionSendToActionCenter" VirtualizedContainerService.HintSize="400,83.2">
+						<p:Sequence.Variables>
+							<p:Variable x:TypeArguments="x:String" Name="TaskAction"/>
+							<p:Variable x:TypeArguments="upaf:FormTaskData" Name="TaskObjectAfter"/>
+							<p:Variable x:TypeArguments="x:String" Name="str_ProcessSetupAsString"/>
+							<p:Variable x:TypeArguments="upaf:FormTaskData" Name="TaskObjectBefore"/>
+						</p:Sequence.Variables>
+						<WorkflowViewStateService.ViewState>
+							<scg:Dictionary x:TypeArguments="x:String, x:Object">
+								<x:Boolean x:Key="IsExpanded">False</x:Boolean>
+								<x:Boolean x:Key="IsPinned">False</x:Boolean>
+							</scg:Dictionary>
+						</WorkflowViewStateService.ViewState>
+						<upaf:CreateFormTask BucketName="{x:Null}" BulkFormLayout="{x:Null}" Labels="{x:Null}" TimeoutMs="{x:Null}" sap2010:Annotation.AnnotationText="TaskTitle - You may use contant hardcoded/argument value or value that came from previous actions and placed in DicAllData for example&#xA;&#xA;TaskReference - You may use value that came from previous actions and placed in DicAllData for example&#xA;&#xA;TaskCatalog - You may use contant hardcoded/argument value&#xA;&#xA;Storage Bucket Name- You may use contant hardcoded/argument value" BucketFolderPath="Root/MyDepartment/MyProcess" BulkFormLayoutGuid="ab962022-806b-4770-b91e-2b5e3e66859d" DisplayName="Create Form Task" EnableBulkEdit="False" ExternalTag="TaskReference" FolderPath="Root/MyDepartment/MyProcess" FormLayout="%[{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormLayoutGuid="bd295576-8a04-4d73-930a-a5b0cb019b71" GenerateInputFields="False" VirtualizedContainerService.HintSize="378.4,352.8" TaskCatalog="[&quot;MyCatalog&quot;]" TaskOutput="[TaskObjectBefore]" TaskPriority="[UiPath.Persistence.Activities.Model.Task.TaskPriority.Medium]" TaskTitle="Title Test">
+							<upaf:CreateFormTask.FormData>
+								<scg:Dictionary x:TypeArguments="x:String, p:Argument"/>
+							</upaf:CreateFormTask.FormData>
+							<WorkflowViewStateService.ViewState>
+								<scg:Dictionary x:TypeArguments="x:String, x:Object">
+									<x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+									<x:Boolean x:Key="IsExpanded">False</x:Boolean>
+									<x:Boolean x:Key="IsPinned">False</x:Boolean>
+								</scg:Dictionary>
+							</WorkflowViewStateService.ViewState>
+						</upaf:CreateFormTask>
+						<ui:LogMessage DisplayName="Log Message" VirtualizedContainerService.HintSize="378.4,92.8" Level="Info" Message="[&quot;Transaction suspended while waiting for task completion.&quot;+Environment.NewLine+&quot;Task URL: &quot;+TaskObjectBefore.ActionUrl]">
+							<WorkflowViewStateService.ViewState>
+								<scg:Dictionary x:TypeArguments="x:String, x:Object">
+									<x:Boolean x:Key="IsExpanded">True</x:Boolean>
+								</scg:Dictionary>
+							</WorkflowViewStateService.ViewState>
+						</ui:LogMessage>
+						<p:Assign VirtualizedContainerService.HintSize="378.4,60">
+							<p:Assign.To>
+								<p:OutArgument x:TypeArguments="x:String">[str_ProcessSetupAsString]</p:OutArgument>
+							</p:Assign.To>
+							<p:Assign.Value>
+								<p:InArgument x:TypeArguments="x:String">[Newtonsoft.Json.JsonConvert.SerializeObject(in_ProcessSetup)]</p:InArgument>
+							</p:Assign.Value>
+						</p:Assign>
+						<p:Assign VirtualizedContainerService.HintSize="378.4,60">
+							<p:Assign.To>
+								<p:OutArgument x:TypeArguments="hm:ProcessSetup">[in_ProcessSetup]</p:OutArgument>
+							</p:Assign.To>
+							<p:Assign.Value>
+								<p:InArgument x:TypeArguments="hm:ProcessSetup">[Nothing]</p:InArgument>
+							</p:Assign.Value>
+						</p:Assign>
+						<upaf:WaitForFormTaskAndResume StatusMessage="{x:Null}" TimeoutMs="{x:Null}" WaitItemDataObject="{x:Null}" DisplayName="Wait for Form Task and Resume" VirtualizedContainerService.HintSize="378.4,222.4" TaskAction="[TaskAction]" TaskInput="[TaskObjectBefore]" TaskOutput="[TaskObjectAfter]"/>
+						<p:Assign VirtualizedContainerService.HintSize="378.4,60">
+							<p:Assign.To>
+								<p:OutArgument x:TypeArguments="hm:ProcessSetup">[in_ProcessSetup]</p:OutArgument>
+							</p:Assign.To>
+							<p:Assign.Value>
+								<p:InArgument x:TypeArguments="hm:ProcessSetup">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of ProcessSetup)(str_ProcessSetupAsString)]</p:InArgument>
+							</p:Assign.Value>
+						</p:Assign>
+						<ui:MultipleAssign DisplayName="Multiple Assign" VirtualizedContainerService.HintSize="436,101">
+							<ui:MultipleAssign.AssignOperations>
+								<scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+									<ui:AssignOperation>
+										<ui:AssignOperation.To>
+											<p:OutArgument x:TypeArguments="x:Object">[in_ProcessSetup.Job.CustomData("TransactionIDs")]</p:OutArgument>
+										</ui:AssignOperation.To>
+										<ui:AssignOperation.Value>
+											<p:InArgument x:TypeArguments="x:Object">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Int64))(newtonsoft.Json.JsonConvert.SerializeObject(in_ProcessSetup.Job.CustomData("TransactionIDs")))]</p:InArgument>
+										</ui:AssignOperation.Value>
+									</ui:AssignOperation>
+								</scg:List>
+							</ui:MultipleAssign.AssignOperations>
+						</ui:MultipleAssign>
+						<h:Beginning_Actions___New DisplayName="Beginning Actions - New" VirtualizedContainerService.HintSize="378.4,241.6" in_OrcehstartorMainFolderName="[in_str_OrchestrartorMainFolderName]" in_arr_arr_str_ProjectDownTimes_Friday="[in_arr_arr_str_ProjectDownTimes_Friday]" in_arr_arr_str_ProjectDownTimes_Saturday="[in_arr_arr_str_ProjectDownTimes_Saturday]" in_arr_arr_str_ProjectDownTimes_Specific="[in_arr_arr_str_ProjectDownTimes_Specific]" in_arr_arr_str_ProjectDownTimes_Weekday="[in_arr_arr_str_ProjectDownTimes_Weekday]" in_arr_str_InvolvedApps="[in_arr_str_InvolvedApps]" in_str_BusinessDepartmentName="[in_str_BusinessDepartmentName]" in_str_BusinessProcessName="[in_str_BusinessProcessName]" in_str_CustomMainRPA_FolderPath="[in_str_CustomMainRPA_FolderPath]" in_str_GeneralFolderName="[in_str_GeneralFolderName]" io_ProcessSetup="[in_ProcessSetup]"/>
+						<ui:LogMessage DisplayName="Log Message" VirtualizedContainerService.HintSize="378.4,92.8" Level="Info" Message="[&quot;Transaction resumed after task completion.&quot;]">
+							<WorkflowViewStateService.ViewState>
+								<scg:Dictionary x:TypeArguments="x:String, x:Object">
+									<x:Boolean x:Key="IsExpanded">True</x:Boolean>
+								</scg:Dictionary>
+							</WorkflowViewStateService.ViewState>
+						</ui:LogMessage>
+						<ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExecuteTransationAfterActionCenter workflow" VirtualizedContainerService.HintSize="378.4,113.6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\71_ExecuteTransactionAfterActionCenter.xaml">
+							<ui:InvokeWorkflowFile.Arguments>
+								<p:InOutArgument x:TypeArguments="ui:QueueItem" x:Key="io_currentTranItem">[tran_currentTranItem]</p:InOutArgument>
+								<p:InOutArgument x:TypeArguments="scg:List(s:Exception)" x:Key="io_list_transactionSystemExceptions">[list_transactionSystemExceptions]</p:InOutArgument>
+								<p:InOutArgument x:TypeArguments="scg:List(ui:BusinessRuleException)" x:Key="io_list_transactionBusinessExceptions">[list_transactionBusinessExceptions]</p:InOutArgument>
+								<p:InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_dic_AllTransactionData">[dic_str_obj_AllTransactionData]</p:InOutArgument>
+								<p:InArgument x:TypeArguments="x:Int32" x:Key="in_int_HandledTransactionsCount">[int_handledTransactionsCounter]</p:InArgument>
+								<p:InOutArgument x:TypeArguments="x:Boolean" x:Key="io_boo_TransactionPostponed">[boo_TransactionPostponed]</p:InOutArgument>
+								<p:InOutArgument x:TypeArguments="hm:ProcessSetup" x:Key="io_ProcessSetup">[in_ProcessSetup]</p:InOutArgument>
+								<p:InArgument x:TypeArguments="upaf:FormTaskData" x:Key="in_TaskObjectAfter">[TaskObjectAfter]</p:InArgument>
+								<p:InArgument x:TypeArguments="x:String" x:Key="in_str_TaskAction">[TaskAction]</p:InArgument>
+							</ui:InvokeWorkflowFile.Arguments>
+						</ui:InvokeWorkflowFile>
+					</p:Sequence>
+				</p:If.Then>
+				<p:If.Else>
+					<p:Sequence>
+						<WorkflowViewStateService.ViewState>
+							<scg:Dictionary x:TypeArguments="x:String, x:Object">
+								<x:Boolean x:Key="IsExpanded">True</x:Boolean>
+							</scg:Dictionary>
+						</WorkflowViewStateService.ViewState>
+					</p:Sequence>
+				</p:If.Else>
+			</p:If>
+		</scg:List>
+	</ClipboardData.Data>
+	<ClipboardData.Metadata>
+		<scg:List x:TypeArguments="x:Object" Capacity="4">
+			<scg:List x:TypeArguments="x:Object" Capacity="4">
+				<x:Reference>__ReferenceID0</x:Reference>
+			</scg:List>
+		</scg:List>
+	</ClipboardData.Metadata>
+</ClipboardData>
