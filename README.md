@@ -1,6 +1,6 @@
-# Collection Report Generator - UiPath Automation
+# <span style="color:#4CAF50;">Collection Report Generator - UiPath Automation</span>
 
-## Overview
+## <span style="color:#2196F3;">Overview</span>
 
 This UiPath automation project is designed to generate **Collection Reports** for each **Project Manager** in the company. The process includes the following key steps:
 
@@ -14,7 +14,7 @@ This UiPath automation project is designed to generate **Collection Reports** fo
 
 This process is automated using UiPath, making it faster and more efficient for the finance team.
 
-## Project Structure
+## <span style="color:#2196F3;">Project Structure</span>
 
 - **Input**: Data is fetched from the company's database.
 - **Output**: An Excel report and a corresponding PDF report are sent via email.
