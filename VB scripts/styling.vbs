@@ -18,8 +18,11 @@ Sub Main(tableWidth As String)
     
     ' Change the font color of the first row to white
     ChangeFirstRowFontColor firstRowRange
+	
+	' Center the text in the first row
+    CenterTextInFirstRow firstRowRange
     
-    ' Get the last used row in the table (change this based on your table's range if needed)
+    ' Get the last used row in the table 
     lastRow = Cells(Rows.Count, 1).End(xlUp).Row
     
     ' Apply background color (light blue) to the first, second, and third columns (excluding the first row)
@@ -79,4 +82,9 @@ Sub LimitColumnWidth(intTableWidth As Integer, maxWidth As Integer)
             Columns(col).ColumnWidth = maxWidth
         End If
     Next col
+End Sub
+
+Sub CenterTextInFirstRow(firstRowRange As Range)
+    ' Center the text in the first row
+    firstRowRange.HorizontalAlignment = xlCenter
 End Sub

@@ -132,7 +132,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                 </ActivityAction.Argument>
-                <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="668,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
                   <Flowchart.Variables>
                     <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dic">
                       <Variable.Default>
@@ -147,13 +147,12 @@
                       <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
                       <av:Size x:Key="ShapeSize">60,75</av:Size>
                       <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
-                      <x:Double x:Key="Width">634</x:Double>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Flowchart.StartNode>
-                    <x:Reference>__ReferenceID3</x:Reference>
+                    <x:Reference>__ReferenceID2</x:Reference>
                   </Flowchart.StartNode>
-                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
@@ -183,52 +182,27 @@
                           </ui:InvokePowerShell.PowerShellVariables>
                         </ui:InvokePowerShell>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID2">
+                          <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">83,241.5</av:Point>
-                                <av:Size x:Key="ShapeSize">434,52</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">300,293.5 300,323.5</av:PointCollection>
+                                <av:Point x:Key="ShapeLocation">200,241.5</av:Point>
+                                <av:Size x:Key="ShapeSize">200,52</av:Size>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-                              <ui:MultipleAssign.AssignOperations>
-                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                                    <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[dic("tableWidth")]</OutArgument>
-                                    </ui:AssignOperation.To>
-                                    <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">5</InArgument>
-                                    </ui:AssignOperation.Value>
-                                  </ui:AssignOperation>
-                                </scg:List>
-                              </ui:MultipleAssign.AssignOperations>
-                            </ui:MultipleAssign>
-                            <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">200,323.5</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ueab:InvokeVBAX Result="{x:Null}" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\styling.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="434,380" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
-                                  <ueab:InvokeVBAX.Body>
-                                    <ActivityAction>
-                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ueab:InvokeVBAArgumentX ArgumentValue="[in_dt_fileData.ColumnCount.ToString]" DisplayName="VBA Argument" sap:VirtualizedContainerService.HintSize="390,85" sap2010:WorkflowViewState.IdRef="InvokeVBAArgumentX_1" />
-                                      </Sequence>
-                                    </ActivityAction>
-                                  </ueab:InvokeVBAX.Body>
-                                </ueab:InvokeVBAX>
-                              </FlowStep>
-                            </FlowStep.Next>
+                            <ueab:InvokeVBAX Result="{x:Null}" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\styling.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
+                              <ueab:InvokeVBAX.Body>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ueab:InvokeVBAArgumentX ArgumentValue="[in_dt_fileData.ColumnCount.ToString]" DisplayName="VBA Argument" sap:VirtualizedContainerService.HintSize="390,85" sap2010:WorkflowViewState.IdRef="InvokeVBAArgumentX_1" />
+                                  </Sequence>
+                                </ActivityAction>
+                              </ueab:InvokeVBAX.Body>
+                            </ueab:InvokeVBAX>
                           </FlowStep>
                         </FlowStep.Next>
                       </FlowStep>
@@ -236,7 +210,6 @@
                   </FlowStep>
                   <x:Reference>__ReferenceID0</x:Reference>
                   <x:Reference>__ReferenceID1</x:Reference>
-                  <x:Reference>__ReferenceID2</x:Reference>
                 </Flowchart>
               </ActivityAction>
             </ueab:ExcelApplicationCard.Body>
