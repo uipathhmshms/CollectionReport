@@ -18,24 +18,33 @@ Sub Main(tableWidth As String)
     
     ' Change the font color of the first row to white
     ChangeFirstRowFontColor firstRowRange
-	
-	' Center the text in the first row
+    
+    ' Center the text in the first row
     CenterTextInFirstRow firstRowRange
     
     ' Get the last used row in the table 
     lastRow = Cells(Rows.Count, 1).End(xlUp).Row
+	
+	' Change the background color of the first column (A)
+    ChangeFirstColumnBackgroundColor lastRow
     
-    ' Apply background color (light blue) to the first, second, and third columns (excluding the first row)
-    ApplyLightBlueToColumns lastRow
+    ' Apply light blue background color to even index columns (B, D, F, etc.)
+    ApplyLightBlueToEvenColumns lastRow, intTableWidth
     
     ' Add a filter to the first row
     AddFilterToFirstRow firstRowRange
     
+    ' Freeze the first row
+    FreezeFirstRow
+    
     ' Automatically adjust the width of each column to fit the content of the first row
     AutoFitColumns firstRowRange, intTableWidth
     
-    ' Ensure no column exceeds a width of 20
-    LimitColumnWidth intTableWidth, 20
+    ' Ensure no column exceeds a width of 50
+    LimitColumnWidth intTableWidth, 50
+	
+	' Center align all the text in the entire worksheet
+    CenterAlignAllText
 End Sub
 
 Sub ApplyFirstRowBackgroundColor(firstRowRange As Range)
@@ -48,24 +57,34 @@ Sub ChangeFirstRowFontColor(firstRowRange As Range)
     firstRowRange.Font.Color = RGB(255, 255, 255) ' RGB color for white
 End Sub
 
-Sub ApplyLightBlueToColumns(lastRow As Long)
+Sub ChangeFirstColumnBackgroundColor(lastRow As Long)
+    ' Change the background color of the first column (A) to RGB(68, 179, 225)
     Dim firstColRange As Range
-    Dim secondColRange As Range
-    Dim thirdColRange As Range
+    Set firstColRange = Range("A2:A" & lastRow) ' First column (A2 to last row in column A)
     
-    ' Apply background color (light blue) to the first, second, and third columns
-    Set firstColRange = Range("A2:A" & lastRow) ' First column (A2 to the last row in column A)
-    Set secondColRange = Range("B2:B" & lastRow) ' Second column (B2 to the last row in column B)
-    Set thirdColRange = Range("C2:C" & lastRow) ' Third column (C2 to the last row in column C)
+    firstColRange.Interior.Color = RGB(68, 179, 225) ' Light blue color (RGB(68, 179, 225))
+End Sub
+
+Sub ApplyLightBlueToEvenColumns(lastRow As Long, intTableWidth As Integer)
+    Dim col As Integer
+    Dim colRange As Range
     
-    firstColRange.Interior.Color = RGB(173, 216, 230) ' Light blue for the first column
-    secondColRange.Interior.Color = RGB(173, 216, 230) ' Light blue for the second column
-    thirdColRange.Interior.Color = RGB(173, 216, 230) ' Light blue for the third column
+    ' Loop through all columns and apply light blue to even indexed columns (B, D, F, etc.)
+    For col = 2 To intTableWidth Step 2
+        Set colRange = Range(Cells(2, col), Cells(lastRow, col)) ' Range from row 2 to last row in even columns
+        colRange.Interior.Color = RGB(192, 230, 245) ' Light blue color
+    Next col
 End Sub
 
 Sub AddFilterToFirstRow(firstRowRange As Range)
     ' Add a filter to the first row (autofilter)
     firstRowRange.AutoFilter
+End Sub
+
+Sub FreezeFirstRow()
+    ' Freeze the first row
+    ActiveWindow.SplitRow = 1
+    ActiveWindow.FreezePanes = True
 End Sub
 
 Sub AutoFitColumns(firstRowRange As Range, intTableWidth As Integer)
@@ -87,4 +106,13 @@ End Sub
 Sub CenterTextInFirstRow(firstRowRange As Range)
     ' Center the text in the first row
     firstRowRange.HorizontalAlignment = xlCenter
+End Sub
+
+Sub CenterAlignAllText()
+    ' Get the used range in the active sheet
+    Dim usedRange As Range
+    Set usedRange = ActiveSheet.UsedRange
+    
+    ' Center align the text in the entire used range
+    usedRange.HorizontalAlignment = xlCenter
 End Sub
