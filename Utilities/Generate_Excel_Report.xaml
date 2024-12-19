@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1113,1391</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1113,1586</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Excel_Report_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -118,20 +118,20 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Workflow actions:&#xA;   Creates an excel file -&gt;&#xA;   Puts the given datatable data in the ffile -&gt;&#xA;   Designs the excel cell format as required&#xA;&#xA;Required excel design:&#xA;   - header rows will mark with blue background.&#xA;   - status cells will mark with yellow,green,pink background color depends on the date column cell value.&#xA;&#xA;Workflow Arguments:&#xA;   - in_dt_fileData - the actual report data that needs to be written to the generated excel&#xA;   - in_str_filePath -  the desired path of the generated excel file &#xA;                                   Example: Path.Combine(Directory.GetCurrentDirectory(),  &quot;TempReport\temp.xlsx&quot;)&#xA;   - in_str_sheetName - the desired sheet name inwhich the data will be written." DisplayName="Generate_Excel_Report" sap:VirtualizedContainerService.HintSize="764,1326" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Workflow actions:&#xA;   Creates an excel file -&gt;&#xA;   Puts the given datatable data in the ffile -&gt;&#xA;   Designs the excel cell format as required&#xA;&#xA;Required excel design:&#xA;   - header rows will mark with blue background.&#xA;   - status cells will mark with yellow,green,pink background color depends on the date column cell value.&#xA;&#xA;Workflow Arguments:&#xA;   - in_dt_fileData - the actual report data that needs to be written to the generated excel&#xA;   - in_str_filePath -  the desired path of the generated excel file &#xA;                                   Example: Path.Combine(Directory.GetCurrentDirectory(),  &quot;TempReport\temp.xlsx&quot;)&#xA;   - in_str_sheetName - the desired sheet name inwhich the data will be written." DisplayName="Generate_Excel_Report" sap:VirtualizedContainerService.HintSize="764,1521" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="702,993" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="702,1188" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
       <ueab:ExcelProcessScopeX.Body>
         <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="668,906" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="[in_str_filePath]">
+          <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="668,1101" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="[in_str_filePath]">
             <ueab:ExcelApplicationCard.Body>
               <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                 <ActivityAction.Argument>
@@ -158,11 +158,11 @@
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
-                        <av:Size x:Key="ShapeSize">200,52</av:Size>
+                        <av:Size x:Key="ShapeSize">217,52</av:Size>
                         <av:PointCollection x:Key="ConnectorLocation">300,149.5 300,169.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:WriteRangeX Destination="[Excel.Sheet(in_str_sheetName).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[in_dt_fileData]">
+                    <ueab:WriteRangeX Destination="[Excel.Sheet(in_str_sheetName).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="217,52" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[in_dt_fileData]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -241,7 +241,7 @@
                                         <av:Size x:Key="ShapeSize">200,94</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating2.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
+                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating5.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
                                       <ueab:InvokeVBAX.Body>
                                         <ActivityAction>
                                           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
