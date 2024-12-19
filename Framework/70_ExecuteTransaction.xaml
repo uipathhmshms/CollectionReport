@@ -283,7 +283,7 @@
           <av:PointCollection x:Key="ConnectorLocation">210,106.9 210,133</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Flowchart sap2010:Annotation.AnnotationText="Extracts data from db and filters it" DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="634,791" sap2010:WorkflowViewState.IdRef="Flowchart_7">
+      <Flowchart sap2010:Annotation.AnnotationText="Extracts data from db and filters it" DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="206,94" sap2010:WorkflowViewState.IdRef="Flowchart_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -381,7 +381,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">310,573 310,601</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MultipleAssign sap2010:Annotation.AnnotationText="change the column named &quot;סעיף תקציבי&quot; to &quot;קוד סעיף תקציבי&quot;&#xD;&#xA;in customers table&#xD;&#xA;+&#xD;&#xA;changing the column named &quot;תעריך ערך&quot; to &quot;תאריך לתשלום&quot;" DisplayName="Columns name adjusments" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_15">
+              <ui:MultipleAssign sap2010:Annotation.AnnotationText="change the column named &quot;סעיף תקציבי&quot; to &quot;קוד סעיף תקציבי&quot;&#xA;in customers table&#xA;+&#xA;changing the column named &quot;תעריך ערך&quot; to &quot;תאריך לתשלום&quot;" DisplayName="Columns name adjusments" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_15">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_47">
@@ -444,7 +444,7 @@
               <av:PointCollection x:Key="ConnectorLocation">310,270 310,290</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_10" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xD;&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xD;&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers_RPA]; &quot; &amp; _&#xD;&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_10" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers_RPA]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
@@ -546,13 +546,13 @@
               <av:Size x:Key="ShapeSize">200,94</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Generate And Design Excel File" DisplayName="Generate Excel" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\Generate_Excel_Report.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Generate And Design Excel File" DisplayName="Generate Excel" sap:VirtualizedContainerService.HintSize="334,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\Generate_Excel_Report.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_fileData">
                 <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_joinedFilteredData" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_str_filePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp1.xlsx&quot;)" />
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp3.xlsx&quot;)" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_str_sheetName">
                 <Literal x:TypeArguments="x:String">דוח גבייה</Literal>

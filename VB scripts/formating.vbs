@@ -8,7 +8,7 @@ Sub GroupAndSumData()
     Dim sumBalance As Double
     
     ' Set the worksheet to the active sheet
-    Set ws = ThisWorkbook.Sheets("Sheet1") ' Replace "Sheet1" with your sheet's name
+    Set ws = ThisWorkbook.Sheets("דוח גבייה") ' Replace "Sheet1" with your sheet's name
     
     ' Find the last row with data in column A (שם מנהל פרויקט)
     lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row

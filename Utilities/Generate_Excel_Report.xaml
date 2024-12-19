@@ -111,6 +111,11 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Workflow actions:&#xA;   Creates an excel file -&gt;&#xA;   Puts the given datatable data in the ffile -&gt;&#xA;   Designs the excel cell format as required&#xA;&#xA;Required excel design:&#xA;   - header rows will mark with blue background.&#xA;   - status cells will mark with yellow,green,pink background color depends on the date column cell value.&#xA;&#xA;Workflow Arguments:&#xA;   - in_dt_fileData - the actual report data that needs to be written to the generated excel&#xA;   - in_str_filePath -  the desired path of the generated excel file &#xA;                                   Example: Path.Combine(Directory.GetCurrentDirectory(),  &quot;TempReport\temp.xlsx&quot;)&#xA;   - in_str_sheetName - the desired sheet name inwhich the data will be written." DisplayName="Generate_Excel_Report" sap:VirtualizedContainerService.HintSize="764,1326" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -132,13 +137,9 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                 </ActivityAction.Argument>
-                <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="634,832" sap2010:WorkflowViewState.IdRef="Flowchart_2">
                   <Flowchart.Variables>
-                    <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dic">
-                      <Variable.Default>
-                        <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="New Dictionary(of string,string)" />
-                      </Variable.Default>
-                    </Variable>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dt_groupedData" />
                   </Flowchart.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -147,12 +148,13 @@
                       <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
                       <av:Size x:Key="ShapeSize">60,75</av:Size>
                       <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
+                      <x:Double x:Key="Height">795</x:Double>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Flowchart.StartNode>
-                    <x:Reference>__ReferenceID2</x:Reference>
+                    <x:Reference>__ReferenceID4</x:Reference>
                   </Flowchart.StartNode>
-                  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                  <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
@@ -187,9 +189,10 @@
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">200,241.5</av:Point>
                                 <av:Size x:Key="ShapeSize">200,94</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">300,335.5 300,385.5</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\styling.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
+                            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\styling.vbs&quot;)]" DisplayName="Style Sheet" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
                               <ueab:InvokeVBAX.Body>
                                 <ActivityAction>
                                   <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
@@ -208,6 +211,58 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ueab:InvokeVBAX>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">200,385.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">300,437.5 300,487.5</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Create the transformed DataTable&#xD;&#xA;Dim formattedTable As New DataTable&#xD;&#xA;With formattedTable.Columns&#xD;&#xA;&#x9;.Add(&quot;שם מנהל פרויקט&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;קוד חשבון&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;שם חשבון&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;סעיף תקציבי&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;סעיף תקציבי נוסף&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;אסמכתא&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;תאריך אסמכתא&quot;, GetType(Date))&#xD;&#xA;&#x9;.Add(&quot;תאריך לתשלום&quot;, GetType(Date))&#xD;&#xA;&#x9;.Add(&quot;תאריך פעילות&quot;, GetType(Date))&#xD;&#xA;&#x9;.Add(&quot;Status&quot;, GetType(String))&#xD;&#xA;&#x9;.Add(&quot;Sum of יתרה&quot;, GetType(Decimal))&#xD;&#xA;End With&#xD;&#xA;&#xD;&#xA;' Group data by &quot;שם מנהל פרויקט&quot; and &quot;קוד חשבון&quot;&#xD;&#xA;Dim groupedData = From row In inputTable.AsEnumerable()&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  Group row By ProjectManager = row.Field(Of String)(&quot;שם מנהל פרויקט&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   AccountCode = row.Field(Of String)(&quot;קוד חשבון&quot;) Into Group&#xD;&#xA;&#xD;&#xA;' Process each group&#xD;&#xA;Dim grandTotal As Decimal = 0&#xD;&#xA;&#xD;&#xA;For Each Group In groupedData&#xD;&#xA;&#x9;Dim projectManager = Group.ProjectManager&#xD;&#xA;&#x9;Dim accountCode = Group.AccountCode&#xD;&#xA;&#x9;Dim groupTotal As Decimal = 0&#xD;&#xA;&#xD;&#xA;&#x9;Dim subGroups = From row In Group.Group&#xD;&#xA;                    Group row By AccountName = row.Field(Of String)(&quot;שם חשבון&quot;),&#xD;&#xA;                             BudgetSection = row.Field(Of String)(&quot;סעיף תקציבי&quot;) Into SubGroup&#xD;&#xA;&#xD;&#xA;&#x9;For Each subGroup In subGroups&#xD;&#xA;&#x9;&#x9;For Each row In subGroup.SubGroup&#xD;&#xA;&#x9;&#x9;&#x9;Dim today As Date = Date.Today&#xD;&#xA;&#x9;&#x9;&#x9;Dim paymentDate As Date = row.Field(Of Date)(&quot;תאריך לתשלום&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;Dim status As String = &quot;&quot;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;If paymentDate &lt; today Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;status = &quot;Delayed&quot;&#xD;&#xA;&#x9;&#x9;&#x9;ElseIf paymentDate &gt; today Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;status = &quot;On time&quot;&#xD;&#xA;&#x9;&#x9;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;status = &quot;Due today&quot;&#xD;&#xA;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;formattedTable.Rows.Add(&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;projectManager,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;accountCode,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of String)(&quot;שם חשבון&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;subGroup.BudgetSection,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of String)(&quot;סעיף תקציבי&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of String)(&quot;אסמכתא&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of Date)(&quot;תאריך אסמכתא&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of Date)(&quot;תאריך לתשלום&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of Date)(&quot;תאריך פעילות&quot;),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;status,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;row.Field(Of Decimal)(&quot;יתרה&quot;)&#xD;&#xA;&#x9;&#x9;&#x9;)&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;groupTotal += row.Field(Of Decimal)(&quot;יתרה&quot;)&#xD;&#xA;&#x9;&#x9;Next&#xD;&#xA;&#x9;Next&#xD;&#xA;&#xD;&#xA;&#x9;' Add group total row&#xD;&#xA;&#x9;formattedTable.Rows.Add(projectManager, accountCode, $&quot;{accountCode} Total&quot;, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, groupTotal)&#xD;&#xA;&#x9;grandTotal += groupTotal&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;' Add grand total row&#xD;&#xA;formattedTable.Rows.Add(&quot;Grand Total&quot;, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, grandTotal)&#xD;&#xA;&#xD;&#xA;' Display the formatted table (for testing purposes)&#xD;&#xA;For Each row As DataRow In formattedTable.Rows&#xD;&#xA;&#x9;Console.WriteLine(String.Join(&quot; | &quot;, row.ItemArray))&#xD;&#xA;Next&#xD;&#xA;" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                                        <ui:InvokeCode.Arguments>
+                                          <InArgument x:TypeArguments="sd:DataTable" x:Key="inputTable">
+                                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_fileData" />
+                                          </InArgument>
+                                        </ui:InvokeCode.Arguments>
+                                      </ui:InvokeCode>
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                </ui:CommentOut>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID2">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">200,487.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,94</av:Size>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating2.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
+                                      <ueab:InvokeVBAX.Body>
+                                        <ActivityAction>
+                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </ueab:InvokeVBAX.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ueab:InvokeVBAX>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
                           </FlowStep>
                         </FlowStep.Next>
                       </FlowStep>
@@ -215,6 +270,8 @@
                   </FlowStep>
                   <x:Reference>__ReferenceID0</x:Reference>
                   <x:Reference>__ReferenceID1</x:Reference>
+                  <x:Reference>__ReferenceID2</x:Reference>
+                  <x:Reference>__ReferenceID3</x:Reference>
                 </Flowchart>
               </ActivityAction>
             </ueab:ExcelApplicationCard.Body>
