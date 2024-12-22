@@ -239,7 +239,7 @@
                                         <av:Size x:Key="ShapeSize">200,97</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating7.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="433.99999999999994,336" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
+                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating8.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="433.99999999999994,336" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
                                       <ueab:InvokeVBAX.Body>
                                         <ActivityAction>
                                           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
