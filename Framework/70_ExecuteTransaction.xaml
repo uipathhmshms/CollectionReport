@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1113,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1052,852</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -279,11 +279,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">110,12.899999999999999</av:Point>
-          <av:Size x:Key="ShapeSize">206,94</av:Size>
+          <av:Size x:Key="ShapeSize">200,94</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">210,106.9 210,133</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Flowchart sap2010:Annotation.AnnotationText="Extracts data from db and filters it" DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="206,94" sap2010:WorkflowViewState.IdRef="Flowchart_7">
+      <Flowchart sap2010:Annotation.AnnotationText="Extracts data from db and filters it" DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="Flowchart_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -552,7 +552,7 @@
                 <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_joinedFilteredData" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_str_filePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp3.xlsx&quot;)" />
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp5.xlsx&quot;)" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_str_sheetName">
                 <Literal x:TypeArguments="x:String">דוח גבייה</Literal>

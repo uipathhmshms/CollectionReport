@@ -5,7 +5,8 @@
   "main": "Main.xaml",
   "dependencies": {
     "RPA_Template": "2024.11.8",
-    "UiPath.Database.Activities": "[1.9.0]"
+    "UiPath.Database.Activities": "[1.9.0]",
+    "UiPath.Mail.Activities": "[1.24.11]"
   },
   "webServices": [],
   "entitiesStores": [],
