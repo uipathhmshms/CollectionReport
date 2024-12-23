@@ -152,17 +152,17 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Flowchart.StartNode>
-                    <x:Reference>__ReferenceID4</x:Reference>
+                    <x:Reference>__ReferenceID5</x:Reference>
                   </Flowchart.StartNode>
-                  <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                  <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
-                        <av:Size x:Key="ShapeSize">215,53</av:Size>
+                        <av:Size x:Key="ShapeSize">200,53</av:Size>
                         <av:PointCollection x:Key="ConnectorLocation">300,150.5 300,169.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:WriteRangeX Destination="[Excel.Sheet(in_str_sheetName).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="215,53" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[in_dt_fileData]">
+                    <ueab:WriteRangeX Destination="[Excel.Sheet(in_str_sheetName).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[in_dt_fileData]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,27 +236,62 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">200,487.5</av:Point>
-                                        <av:Size x:Key="ShapeSize">200,97</av:Size>
+                                        <av:Size x:Key="ShapeSize">200,53</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">300,540.5 300,634.5</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating8.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="433.99999999999994,336" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
-                                      <ueab:InvokeVBAX.Body>
-                                        <ActivityAction>
-                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                    <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                          <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="add style to sheet using vb script " CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\formating8_works.vbs&quot;)]" DisplayName="Format cells " EntryMethodName="TransformData" sap:VirtualizedContainerService.HintSize="200,97" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
+                                            <ueab:InvokeVBAX.Body>
+                                              <ActivityAction>
+                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ueab:InvokeVBAX.Body>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                          </Sequence>
-                                        </ActivityAction>
-                                      </ueab:InvokeVBAX.Body>
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </ueab:InvokeVBAX>
+                                          </ueab:InvokeVBAX>
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                    </ui:CommentOut>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID4">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">200,634.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,84</av:Size>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="TESSTT" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB scripts\SplitDataByManagerWithTotals.vbs&quot;)]" DisplayName="TESSTT" EntryMethodName="SplitDataByManagerWithTotals" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="InvokeVBAX_4" Workbook="[Excel]">
+                                          <ueab:InvokeVBAX.Body>
+                                            <ActivityAction>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,198" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </ueab:InvokeVBAX.Body>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ueab:InvokeVBAX>
+                                      </FlowStep>
+                                    </FlowStep.Next>
                                   </FlowStep>
                                 </FlowStep.Next>
                               </FlowStep>
@@ -270,6 +305,7 @@
                   <x:Reference>__ReferenceID1</x:Reference>
                   <x:Reference>__ReferenceID2</x:Reference>
                   <x:Reference>__ReferenceID3</x:Reference>
+                  <x:Reference>__ReferenceID4</x:Reference>
                 </Flowchart>
               </ActivityAction>
             </ueab:ExcelApplicationCard.Body>

@@ -8,6 +8,7 @@ Sub TransformData()
     
     Dim inputSheet As Worksheet
     Dim outputSheet As Worksheet
+    Dim summarySheet As Worksheet ' New summary sheet for grand totals
     Dim inputLastRow As Long
     Dim outputRow As Long
     Dim groupedData As Object
@@ -41,29 +42,19 @@ Sub TransformData()
         Exit Sub
     End If
     
-    ' Create new sheet with unique name
+    ' Create new sheet for each manager
     Dim sheetName As String
     sheetName = "Transformed_Data_"
-    Set outputSheet = ThisWorkbook.Sheets.Add
-    outputSheet.Name = sheetName
     
-    ' Copy headers from input sheet
-    inputSheet.Rows(1).Copy
-    outputSheet.Rows(1).PasteSpecial xlPasteValues
-    outputSheet.Rows(1).PasteSpecial xlPasteFormats
-
-    ' Add the Status column header
-    Dim lastColumn As Long
-    lastColumn = outputSheet.Cells(1, outputSheet.Columns.Count).End(xlToLeft).Column
-    outputSheet.Cells(1, lastColumn + 1).Value = "Status"
-
-    ' Format the header row
-    With outputSheet.Rows(1)
-        .Font.Bold = True
-        .Interior.Color = RGB(220, 220, 220)
-    End With
-
-    Application.CutCopyMode = False  ' Clear the clipboard
+    ' Create a summary sheet to store grand totals of each manager
+    Set summarySheet = ThisWorkbook.Sheets.Add
+    summarySheet.Name = "Manager_Summary"
+    summarySheet.Cells(1, 1).Value = "Manager"
+    summarySheet.Cells(1, 2).Value = "Grand Total"
+    
+    ' Initialize the row for summary sheet
+    Dim summaryRow As Long
+    summaryRow = 2
     
     ' Get the last row in the input sheet
     inputLastRow = inputSheet.Cells(inputSheet.Rows.Count, 1).End(xlUp).Row
@@ -148,6 +139,18 @@ Sub TransformData()
         projectManager = splitGroup(0)
         accountCode = splitGroup(1)
         
+        ' Create a new sheet for each manager if not already created
+        If Not WorksheetExists(projectManager) Then
+            Set outputSheet = ThisWorkbook.Sheets.Add
+            outputSheet.Name = projectManager
+            outputSheet.Rows(1).Value = inputSheet.Rows(1).Value
+            outputSheet.Cells(1, outputSheet.Columns.Count).End(xlToLeft).Offset(0, 1).Value = "Status"
+        Else
+            Set outputSheet = ThisWorkbook.Sheets(projectManager)
+        End If
+        
+        outputRow = outputSheet.Cells(outputSheet.Rows.Count, 1).End(xlUp).Row + 1
+        
         For Each subGroupKey In groupedData(groupKey).Keys
             For Each rowKey In groupedData(groupKey)(subGroupKey).Keys
                 Set rowData = groupedData(groupKey)(subGroupKey)(rowKey)
@@ -167,20 +170,11 @@ Sub TransformData()
                     status = "Invalid date"
                 End If
                 
-                ' Write row to the output sheet
+                ' Write row to the output sheet for each manager
                 With outputSheet
-                    ' Only write project manager, account code, and account name if it's a new group
-                    If CStr(groupKey) <> lastGroupKey Then
-                        .Cells(outputRow, 1).Value = projectManager
-                        .Cells(outputRow, 2).Value = accountCode
-                        .Cells(outputRow, 3).Value = rowData("AccountName")
-                        lastGroupKey = CStr(groupKey)
-                    Else
-                        .Cells(outputRow, 1).Value = ""
-                        .Cells(outputRow, 2).Value = ""
-                        .Cells(outputRow, 3).Value = ""
-                    End If
-                    
+                    .Cells(outputRow, 1).Value = projectManager
+                    .Cells(outputRow, 2).Value = accountCode
+                    .Cells(outputRow, 3).Value = rowData("AccountName")
                     .Cells(outputRow, 4).Value = Split(subGroupKey, "|")(1)
                     .Cells(outputRow, 5).Value = rowData("BudgetSectionExtra")
                     .Cells(outputRow, 6).Value = rowData("Reference")
@@ -189,8 +183,6 @@ Sub TransformData()
                     .Cells(outputRow, 9).Value = rowData("ActivityDate")
                     .Cells(outputRow, 10).Value = status
                     .Cells(outputRow, 11).Value = rowData("Balance")
-                    
-                    ' Add number formatting for the balance
                     .Cells(outputRow, 11).NumberFormat = "#,##0"
                 End With
                 
@@ -199,7 +191,7 @@ Sub TransformData()
             Next rowKey
         Next subGroupKey
         
-        ' Add group total row with formatting
+        ' Add group total row to manager's sheet
         With outputSheet
             .Cells(outputRow, 3).Value = "Total"
             .Cells(outputRow, 11).Value = groupTotal
@@ -208,33 +200,41 @@ Sub TransformData()
             .Cells(outputRow, 11).NumberFormat = "#,##0"
         End With
         
-        outputRow = outputRow + 1
         grandTotal = grandTotal + groupTotal
-        lastGroupKey = "" ' Reset for next group
+        
+        ' Add manager's grand total to summary sheet
+        summarySheet.Cells(summaryRow, 1).Value = projectManager
+        summarySheet.Cells(summaryRow, 2).Value = groupTotal
+        summaryRow = summaryRow + 1
     Next groupKey
     
-    ' Add grand total row with formatting
-    With outputSheet
-        .Cells(outputRow, 1).Value = "Grand Total"
-        .Cells(outputRow, 11).Value = grandTotal
-        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Interior.Color = RGB(200, 200, 200)
-        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Font.Bold = True
-        .Cells(outputRow, 11).NumberFormat = "#,##0"
+    ' Add final grand total row in the summary sheet
+    With summarySheet
+        .Cells(summaryRow, 1).Value = "Overall Grand Total"
+        .Cells(summaryRow, 2).Value = grandTotal
+        .Range(.Cells(summaryRow, 1), .Cells(summaryRow, 2)).Font.Bold = True
     End With
     
-    ' Auto-fit columns and add borders
-    With outputSheet
-        .UsedRange.Columns.AutoFit
-        .UsedRange.Borders.LineStyle = xlContinuous
-    End With
-    
+    ' Auto-fit columns and add borders for all sheets
+    For Each outputSheet In ThisWorkbook.Sheets
+        If outputSheet.Name <> "Manager_Summary" Then
+            outputSheet.UsedRange.Columns.AutoFit
+            outputSheet.UsedRange.Borders.LineStyle = xlContinuous
+        End If
+    Next outputSheet
+
 CleanExit:
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
-    'MsgBox "Transformation complete. Data has been written to sheet '" & sheetName & "'.", vbInformation
     Exit Sub
 
 ErrorHandler:
     MsgBox "An error occurred: " & Err.Description, vbCritical
     Resume CleanExit
 End Sub
+
+Function WorksheetExists(sheetName As String) As Boolean
+    On Error Resume Next
+    WorksheetExists = Not ThisWorkbook.Sheets(sheetName) Is Nothing
+    On Error GoTo 0
+End Function
