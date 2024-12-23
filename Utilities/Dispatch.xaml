@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1052,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,1596</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatch_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -45,6 +45,7 @@
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -107,6 +108,11 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Dispatch" sap:VirtualizedContainerService.HintSize="764,1531" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -132,6 +138,7 @@
                     <Variable x:TypeArguments="x:String" Name="str_currentManagerId" />
                     <Variable x:TypeArguments="x:Int32" Name="int_loopIndex" />
                     <Variable x:TypeArguments="x:Int32" Name="int_startPosition" />
+                    <Variable x:TypeArguments="x:String" Name="str_currentManagerName" />
                   </Flowchart.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -144,17 +151,17 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Flowchart.StartNode>
-                    <x:Reference>__ReferenceID10</x:Reference>
+                    <x:Reference>__ReferenceID13</x:Reference>
                   </Flowchart.StartNode>
-                  <FlowStep x:Name="__ReferenceID10">
+                  <FlowStep x:Name="__ReferenceID13">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
-                        <av:Size x:Key="ShapeSize">217,83</av:Size>
+                        <av:Size x:Key="ShapeSize">200,83</av:Size>
                         <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,200.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:WriteRangeX sap2010:Annotation.AnnotationText="Writes the original data as is" Destination="[Excel.Sheet(&quot;OriginalData&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="217,83" sap2010:WorkflowViewState.IdRef="WriteRangeX_3" IgnoreEmptySource="False" Source="[in_dt_data]">
+                    <ueab:WriteRangeX sap2010:Annotation.AnnotationText="Writes the original data as is" Destination="[Excel.Sheet(&quot;OriginalData&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="WriteRangeX_5" IgnoreEmptySource="False" Source="[in_dt_data]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -163,7 +170,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ueab:WriteRangeX>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID9">
+                      <FlowStep x:Name="__ReferenceID12">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">83,200.5</av:Point>
@@ -180,6 +187,14 @@
                                 </ui:AssignOperation.To>
                                 <ui:AssignOperation.Value>
                                   <InArgument x:TypeArguments="x:String">[in_dt_data(0)("מזהה מנהל פרויקט").tostring]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_currentManagerName]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:String">[in_dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
                                 </ui:AssignOperation.Value>
                               </ui:AssignOperation>
                               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -199,7 +214,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:MultipleAssign>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID8">
+                          <FlowStep x:Name="__ReferenceID11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">200,344.5</av:Point>
@@ -219,6 +234,10 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <Flowchart sap:VirtualizedContainerService.HintSize="1104,637" sap2010:WorkflowViewState.IdRef="Flowchart_4">
+                                      <Flowchart.Variables>
+                                        <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" Name="dic_currentManagerReportDic" />
+                                        <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerReportDt" />
+                                      </Flowchart.Variables>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -230,14 +249,14 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <Flowchart.StartNode>
-                                        <x:Reference>__ReferenceID3</x:Reference>
+                                        <x:Reference>__ReferenceID6</x:Reference>
                                       </Flowchart.StartNode>
-                                      <FlowDecision x:Name="__ReferenceID3" Condition="[not CurrentRow(&quot;מזהה מנהל פרויקט&quot;).tostring.equals(str_currentManagerId)]" DisplayName="Reached to a new manager?" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                                      <FlowDecision x:Name="__ReferenceID6" Condition="[not CurrentRow(&quot;מזהה מנהל פרויקט&quot;).tostring.equals(str_currentManagerId)]" DisplayName="Reached to a new manager?" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <av:Point x:Key="ShapeLocation">583,107.5</av:Point>
                                             <av:Size x:Key="ShapeSize">154,87</av:Size>
-                                            <av:PointCollection x:Key="TrueConnector">583,151 360,151</av:PointCollection>
+                                            <av:PointCollection x:Key="TrueConnector">583,151 553,151 553,122.5 360,122.5</av:PointCollection>
                                             <av:PointCollection x:Key="FalseConnector">737,151 787,151</av:PointCollection>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
@@ -246,54 +265,137 @@
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <av:Point x:Key="ShapeLocation">160,96.5</av:Point>
-                                                <av:Size x:Key="ShapeSize">200,109</av:Size>
-                                                <av:PointCollection x:Key="ConnectorLocation">260,205.5 260,255.5</av:PointCollection>
+                                                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">260,148.5 260,168.5</av:PointCollection>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ueab:WriteRangeX sap2010:Annotation.AnnotationText="Creates a new sheet for previous manager and writes all of previous rows to it " Destination="[Excel.Sheet(str_currentManagerId).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,201" sap2010:WorkflowViewState.IdRef="WriteRangeX_4" IgnoreEmptySource="False" Source="[in_dt_data.AsEnumerable().Skip(int_startPosition).Take(int_loopIndex-int_startPosition).CopyToDataTable]">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                            </ueab:WriteRangeX>
+                                            <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                                              <ui:CommentOut.Body>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,312" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ueab:WriteRangeX sap2010:Annotation.AnnotationText="Creates a new sheet for previous manager and writes all of previous rows to it " Destination="[Excel.Sheet(str_currentManagerId).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,201" sap2010:WorkflowViewState.IdRef="WriteRangeX_4" IgnoreEmptySource="False" Source="[in_dt_data.AsEnumerable().Skip(int_startPosition).Take(int_loopIndex-int_startPosition).CopyToDataTable]">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ueab:WriteRangeX>
+                                                </Sequence>
+                                              </ui:CommentOut.Body>
+                                            </ui:CommentOut>
                                             <FlowStep.Next>
-                                              <FlowStep x:Name="__ReferenceID1">
+                                              <FlowStep x:Name="__ReferenceID4">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <av:Point x:Key="ShapeLocation">43,255.5</av:Point>
-                                                    <av:Size x:Key="ShapeSize">434,109</av:Size>
-                                                    <av:PointCollection x:Key="ConnectorLocation">300,324.5 300,344.5</av:PointCollection>
+                                                    <av:Point x:Key="ShapeLocation">43,168.5</av:Point>
+                                                    <av:Size x:Key="ShapeSize">434,52</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">260,220.5 260,240.5</av:PointCollection>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ui:MultipleAssign sap2010:Annotation.AnnotationText="Sets current manager identifier to be current one &#xA;+&#xA;adjust the start position " DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                                   <ui:MultipleAssign.AssignOperations>
                                                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
                                                         <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[str_currentManagerId]</OutArgument>
+                                                          <OutArgument x:TypeArguments="sd:DataTable">[dt_currentManagerReportDt]</OutArgument>
                                                         </ui:AssignOperation.To>
                                                         <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[CurrentRow("מזהה מנהל פרויקט").tostring]</InArgument>
+                                                          <InArgument x:TypeArguments="sd:DataTable">[in_dt_data.AsEnumerable().Skip(int_startPosition).Take(int_loopIndex-int_startPosition).CopyToDataTable]</InArgument>
                                                         </ui:AssignOperation.Value>
                                                       </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
                                                         <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:Int32">[int_startPosition]</OutArgument>
+                                                          <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))">[dic_currentManagerReportDic]</OutArgument>
                                                         </ui:AssignOperation.To>
                                                         <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:Int32">[int_loopIndex]</InArgument>
+                                                          <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" xml:space="preserve">[(From row In dt_currentManagerReportDt.AsEnumerable()
+              Select dt_currentManagerReportDt.Columns.Cast(Of DataColumn)().ToDictionary(Function(c) c.ColumnName, Function(c) row(c))).ToList()]</InArgument>
                                                         </ui:AssignOperation.Value>
                                                       </ui:AssignOperation>
                                                     </scg:List>
                                                   </ui:MultipleAssign.AssignOperations>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
                                                 </ui:MultipleAssign>
+                                                <FlowStep.Next>
+                                                  <FlowStep x:Name="__ReferenceID5">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">160,240.5</av:Point>
+                                                        <av:Size x:Key="ShapeSize">200,75</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">260,315.5 260,370.5</av:PointCollection>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:Comment sap:VirtualizedContainerService.HintSize="200,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// TODO add manager email" />
+                                                    <FlowStep.Next>
+                                                      <FlowStep x:Name="__ReferenceID3">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <av:Point x:Key="ShapeLocation">160,370.5</av:Point>
+                                                            <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                            <av:PointCollection x:Key="ConnectorLocation">260,422.5 260,460.5</av:PointCollection>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="Root/Finance/CollectionReport" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Low" QueueType="Test" Reference="[str_currentManagerName+&quot;_&quot;+str_currentManagerId+&quot;_&quot;+Now.ToString(&quot;dd/MM/yyyy&quot;)]">
+                                                          <ui:AddQueueItem.ItemInformation>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="ReportData">[Newtonsoft.Json.JsonConvert.SerializeObject(dic_currentManagerReportDic)]</InArgument>
+                                                            <InArgument x:TypeArguments="x:Int32" x:Key="ReportRowsNo">[dt_currentManagerReportDt.RowCount]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="EmailAddress">Lidorm@hms.co.il</InArgument>
+                                                          </ui:AddQueueItem.ItemInformation>
+                                                        </ui:AddQueueItem>
+                                                        <FlowStep.Next>
+                                                          <FlowStep x:Name="__ReferenceID1">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <av:Point x:Key="ShapeLocation">43,460.5</av:Point>
+                                                                <av:Size x:Key="ShapeSize">434,109</av:Size>
+                                                                <av:PointCollection x:Key="ConnectorLocation">300,324.5 300,344.5</av:PointCollection>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Sets current manager identifier to be current one &#xA;+&#xA;adjust the start position " DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                                              <ui:MultipleAssign.AssignOperations>
+                                                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                                                    <ui:AssignOperation.To>
+                                                                      <OutArgument x:TypeArguments="x:String">[str_currentManagerId]</OutArgument>
+                                                                    </ui:AssignOperation.To>
+                                                                    <ui:AssignOperation.Value>
+                                                                      <InArgument x:TypeArguments="x:String">[CurrentRow("מזהה מנהל פרויקט").tostring]</InArgument>
+                                                                    </ui:AssignOperation.Value>
+                                                                  </ui:AssignOperation>
+                                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                                                                    <ui:AssignOperation.To>
+                                                                      <OutArgument x:TypeArguments="x:String">[str_currentManagerName]</OutArgument>
+                                                                    </ui:AssignOperation.To>
+                                                                    <ui:AssignOperation.Value>
+                                                                      <InArgument x:TypeArguments="x:String">[CurrentRow("שם מנהל פרויקט").tostring]</InArgument>
+                                                                    </ui:AssignOperation.Value>
+                                                                  </ui:AssignOperation>
+                                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                                                    <ui:AssignOperation.To>
+                                                                      <OutArgument x:TypeArguments="x:Int32">[int_startPosition]</OutArgument>
+                                                                    </ui:AssignOperation.To>
+                                                                    <ui:AssignOperation.Value>
+                                                                      <InArgument x:TypeArguments="x:Int32">[int_loopIndex]</InArgument>
+                                                                    </ui:AssignOperation.Value>
+                                                                  </ui:AssignOperation>
+                                                                </scg:List>
+                                                              </ui:MultipleAssign.AssignOperations>
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </ui:MultipleAssign>
+                                                          </FlowStep>
+                                                        </FlowStep.Next>
+                                                      </FlowStep>
+                                                    </FlowStep.Next>
+                                                  </FlowStep>
+                                                </FlowStep.Next>
                                               </FlowStep>
                                             </FlowStep.Next>
                                           </FlowStep>
@@ -313,6 +415,9 @@
                                       <x:Reference>__ReferenceID0</x:Reference>
                                       <x:Reference>__ReferenceID1</x:Reference>
                                       <x:Reference>__ReferenceID2</x:Reference>
+                                      <x:Reference>__ReferenceID3</x:Reference>
+                                      <x:Reference>__ReferenceID4</x:Reference>
+                                      <x:Reference>__ReferenceID5</x:Reference>
                                     </Flowchart>
                                   </Sequence>
                                 </ActivityAction>
@@ -323,7 +428,7 @@
                       </FlowStep>
                     </FlowStep.Next>
                   </FlowStep>
-                  <FlowStep x:Name="__ReferenceID4">
+                  <FlowStep x:Name="__ReferenceID7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">0,521.5</av:Point>
@@ -351,7 +456,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ueab:InvokeVBAX>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID6">
+                      <FlowStep x:Name="__ReferenceID9">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">0,665.5</av:Point>
@@ -371,7 +476,7 @@
                           </ui:CommentOut.Body>
                         </ui:CommentOut>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID5">
+                          <FlowStep x:Name="__ReferenceID8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">0,767.5</av:Point>
@@ -404,7 +509,7 @@
                               </ui:CommentOut.Body>
                             </ui:CommentOut>
                             <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID7">
+                              <FlowStep x:Name="__ReferenceID10">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">0,844.5</av:Point>
@@ -450,14 +555,14 @@
                       </ui:InvokePowerShell.PowerShellVariables>
                     </ui:InvokePowerShell>
                     <FlowStep.Next>
-                      <x:Reference>__ReferenceID4</x:Reference>
+                      <x:Reference>__ReferenceID7</x:Reference>
                     </FlowStep.Next>
                   </FlowStep>
-                  <x:Reference>__ReferenceID5</x:Reference>
-                  <x:Reference>__ReferenceID6</x:Reference>
-                  <x:Reference>__ReferenceID7</x:Reference>
                   <x:Reference>__ReferenceID8</x:Reference>
                   <x:Reference>__ReferenceID9</x:Reference>
+                  <x:Reference>__ReferenceID10</x:Reference>
+                  <x:Reference>__ReferenceID11</x:Reference>
+                  <x:Reference>__ReferenceID12</x:Reference>
                 </Flowchart>
               </ActivityAction>
             </ueab:ExcelApplicationCard.Body>
