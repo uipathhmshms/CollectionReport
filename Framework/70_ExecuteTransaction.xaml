@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1228,813</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -151,400 +151,390 @@
       <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="696,748" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Flowchart DisplayName="Flowchart_Execute (&quot;Green Path&quot;)" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_6">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
+      <Variable x:TypeArguments="x:String" Name="str_connectionString" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_customersData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_budgetData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_test" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[new DataTable]" Name="dt_data" />
+    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">0,22.4</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">60,59.9 110,59.9</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart DisplayName="Flowchart_Execute (&quot;Green Path&quot;)" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
-      <Flowchart.Variables>
-        <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
-        <Variable x:TypeArguments="x:String" Name="str_connectionString" />
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_customersData" />
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_budgetData" />
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_test" />
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_data">
-          <Variable.Default>
-            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="new DataTable" />
-          </Variable.Default>
-        </Variable>
-      </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID8</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          <av:Point x:Key="ShapeLocation">0,22.4</av:Point>
-          <av:Size x:Key="ShapeSize">60,75</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">60,59.9 110,59.9</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">83,389.5</av:Point>
+          <av:Size x:Key="ShapeSize">434,81</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Flowchart.StartNode>
-        <x:Reference>__ReferenceID8</x:Reference>
-      </Flowchart.StartNode>
-      <FlowStep>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">83,389.5</av:Point>
-            <av:Size x:Key="ShapeSize">434,81</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp.xlsx&quot;)]">
-          <ueab:ExcelApplicationCard.Body>
-            <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="673,1955" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="ue:IReadRangeRef" Name="readRange_range" />
-                  <Variable x:TypeArguments="ue:IReadWriteRangeRef" Name="writeRange_range" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="611,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_4" IgnoreEmptySource="False" Source="[dt_budgetData]" />
-                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="611,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
-                  <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="ue:IReadWriteRangeRef">[writeRange_range]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="ue:IReadWriteRangeRef">[Excel.Sheet("Sheet1").Range("A1:" &amp; Chr(65 + dt_budgetData.Columns.Count - 1) &amp; dt_budgetData.Rows.Count)]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="ue:IReadRangeRef">[readRange_range]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="ue:IReadRangeRef">[Excel.Sheet("Sheet1").Range("A1:" &amp; Chr(65 + dt_budgetData.Columns.Count - 1) &amp; dt_budgetData.Rows.Count)]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                    </scg:List>
-                  </ui:MultipleAssign.AssignOperations>
-                </ui:MultipleAssign>
-                <ueab:CreateTableX OutTableName="{x:Null}" TableName="{x:Null}" sap2010:Annotation.AnnotationText="Format the content range as table&#xA;&#xA;ABOUT THE SPECIFICIED DESTINATION:&#xA;The Chr(65 + dt.Columns.Count - 1) function converts the column count into Excel column letters. Chr(65) corresponds to &quot;A&quot;, Chr(66) to &quot;B&quot;, and so on. This method works for column counts up to 26 (which corresponds to columns A to Z)" DisplayName="Format excel rows as table" HasHeaders="True" sap:VirtualizedContainerService.HintSize="611,329" sap2010:WorkflowViewState.IdRef="CreateTableX_3" Range="[writeRange_range]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ueab:CreateTableX>
-                <ueab:ExcelForEachRowX DisplayName="For Each Excel Row - format if needed " EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="611,890" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_1" Range="[readRange_range]" SaveAfterEachRow="False">
-                  <ueab:ExcelForEachRowX.Body>
-                    <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
-                      <ActivityAction.Argument1>
-                        <DelegateInArgument x:TypeArguments="ue:CurrentRowQuickHandle" Name="CurrentRow" />
-                      </ActivityAction.Argument1>
-                      <ActivityAction.Argument2>
-                        <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
-                      </ActivityAction.Argument2>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="577,700" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <If Condition="[not CurrentRow(&quot;תאריך התחלה&quot;) is Nothing]" sap:VirtualizedContainerService.HintSize="515,589" sap2010:WorkflowViewState.IdRef="If_1">
-                          <If.Then>
-                            <Sequence sap:VirtualizedContainerService.HintSize="481,407" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ueab:FormatRangeX DisplayName="Format Cells" sap:VirtualizedContainerService.HintSize="439,138" sap2010:WorkflowViewState.IdRef="FormatRangeX_2" Range="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;B&quot;+(cint(CurrentIndex)+1).ToString)]">
-                                <ueab:FormatRangeX.Alignment>
-                                  <ui:AlignmentOptions HorizontalAlignment="xlHAlignGeneral" VerticalAlignment="xlVAlignBottom" WrapText="False" />
-                                </ueab:FormatRangeX.Alignment>
-                                <ueab:FormatRangeX.Font>
-                                  <ui:FontOptions Color="Black" FillColor="Chartreuse" FontFamilyName="Calibri" Size="11" Style="Regular" UnderlineStyle="None" />
-                                </ueab:FormatRangeX.Font>
-                                <ueab:FormatRangeX.Format>
-                                  <ueab:CustomFormat FormatAsString="General" />
-                                </ueab:FormatRangeX.Format>
-                              </ueab:FormatRangeX>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="439,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;שורה מספר &quot;+(cint(CurrentIndex)+1).ToString+&quot;נצבעה בכחול&quot;]" />
-                            </Sequence>
-                          </If.Then>
-                          <If.Else>
-                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_29" />
-                          </If.Else>
-                        </If>
-                      </Sequence>
-                    </ActivityAction>
-                  </ueab:ExcelForEachRowX.Body>
-                </ueab:ExcelForEachRowX>
-                <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp.pdf&quot;)]" DisplayName="Save Excel File As PDF" sap:VirtualizedContainerService.HintSize="611,159" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_3" SaveQuality="StandardQuality" Workbook="[Excel]" />
-              </Sequence>
-            </ActivityAction>
-          </ueab:ExcelApplicationCard.Body>
-        </ueab:ExcelApplicationCard>
-      </FlowStep>
-      <FlowStep>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,284</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <Flowchart DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Flowchart_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <av:Point x:Key="ShapeLocation">10,2.5</av:Point>
-              <av:Size x:Key="ShapeSize">60,75</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">70,40 100,40 100,40.5 120,40.5</av:PointCollection>
-              <x:Double x:Key="Height">645</x:Double>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Flowchart.StartNode>
-            <x:Reference>__ReferenceID6</x:Reference>
-          </Flowchart.StartNode>
-          <FlowStep x:Name="__ReferenceID0">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,449</av:Point>
-                <av:Size x:Key="ShapeSize">200,94</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,543 220,593</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut sap2010:Annotation.AnnotationText="wait for shlomi reply&#xA;(clean customents table)" DisplayName="Merge the tables" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="CommentOut_15">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:JoinDataTables Arguments="{x:Null}" DataTable1="[dt_budgetData]" DataTable2="[dt_customersData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Inner" OutputDataTable="[dt_test]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:JoinDataTables>
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID5">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">120,593</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52</av:Size>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:FilterDataTable DataTable="[dt_budgetData]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_budgetData]" SelectColumnsMode="Remove">
-                  <ui:FilterDataTable.Filters>
-                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                      <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
-                        <ui:FilterOperationArgument.Column>
-                          <InArgument x:TypeArguments="x:String">["איפיון רמה 01"]</InArgument>
-                        </ui:FilterOperationArgument.Column>
-                      </ui:FilterOperationArgument>
-                    </scg:List>
-                  </ui:FilterDataTable.Filters>
-                  <ui:FilterDataTable.SelectColumns>
-                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                      <x:Null />
-                    </scg:List>
-                  </ui:FilterDataTable.SelectColumns>
-                </ui:FilterDataTable>
-              </FlowStep>
-            </FlowStep.Next>
-          </FlowStep>
-          <FlowStep x:Name="__ReferenceID1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,404</av:Point>
-                <av:Size x:Key="ShapeSize">200,25</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,429 220,449</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_5" />
-            <FlowStep.Next>
-              <x:Reference>__ReferenceID0</x:Reference>
-            </FlowStep.Next>
-          </FlowStep>
-          <FlowStep x:Name="__ReferenceID2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,290</av:Point>
-                <av:Size x:Key="ShapeSize">200,94</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,384 220,404</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract budget data from stored procedure" ConnectionString="[str_connectionString]" DataTable="[dt_budgetData]" DisplayName="Extract Budget Data" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_9" ProviderName="Microsoft.Data.SqlClient" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_ProjectBudgetTopic]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
-              <ui:ExecuteQuery.Parameters>
-                <scg:Dictionary x:TypeArguments="x:String, Argument" />
-              </ui:ExecuteQuery.Parameters>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ExecuteQuery>
-            <FlowStep.Next>
-              <x:Reference>__ReferenceID1</x:Reference>
-            </FlowStep.Next>
-          </FlowStep>
-          <FlowStep x:Name="__ReferenceID3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,176</av:Point>
-                <av:Size x:Key="ShapeSize">200,94</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,270 220,290</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_8" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
-              <ui:ExecuteQuery.Parameters>
-                <scg:Dictionary x:TypeArguments="x:String, Argument" />
-              </ui:ExecuteQuery.Parameters>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ExecuteQuery>
-            <FlowStep.Next>
-              <x:Reference>__ReferenceID2</x:Reference>
-            </FlowStep.Next>
-          </FlowStep>
-          <FlowStep x:Name="__ReferenceID4">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,101</av:Point>
-                <av:Size x:Key="ShapeSize">200,52</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,153 220,176</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_5" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-            <FlowStep.Next>
-              <x:Reference>__ReferenceID3</x:Reference>
-            </FlowStep.Next>
-          </FlowStep>
-          <FlowStep x:Name="__ReferenceID6">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">120,0</av:Point>
-                <av:Size x:Key="ShapeSize">200,81</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,81 220,101</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_30">
+      <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" ResizeWindow="None" WorkbookPath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp.xlsx&quot;)]">
+        <ueab:ExcelApplicationCard.Body>
+          <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="673,1955" sap2010:WorkflowViewState.IdRef="Sequence_32">
               <Sequence.Variables>
-                <Variable x:TypeArguments="x:String" Name="str_dbName" />
-                <Variable x:TypeArguments="x:String" Name="str_serverName" />
-                <Variable x:TypeArguments="x:String" Name="str_dbUserName" />
-                <Variable x:TypeArguments="ss:SecureString" Name="str_dbUserPass" />
+                <Variable x:TypeArguments="ue:IReadRangeRef" Name="readRange_range" />
+                <Variable x:TypeArguments="ue:IReadWriteRangeRef" Name="writeRange_range" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
-                <ui:GetRobotAsset.Value>
-                  <OutArgument x:TypeArguments="x:String">[str_dbName]</OutArgument>
-                </ui:GetRobotAsset.Value>
+              <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="611,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_5" IgnoreEmptySource="False" Source="[dt_budgetData]" />
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="611,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_45">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="ue:IReadWriteRangeRef">[writeRange_range]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="ue:IReadWriteRangeRef">[Excel.Sheet("Sheet1").Range("A1:" &amp; Chr(65 + dt_budgetData.Columns.Count - 1) &amp; dt_budgetData.Rows.Count)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_46">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="ue:IReadRangeRef">[readRange_range]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="ue:IReadRangeRef">[Excel.Sheet("Sheet1").Range("A1:" &amp; Chr(65 + dt_budgetData.Columns.Count - 1) &amp; dt_budgetData.Rows.Count)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+              <ueab:CreateTableX OutTableName="{x:Null}" TableName="{x:Null}" sap2010:Annotation.AnnotationText="Format the content range as table&#xA;&#xA;ABOUT THE SPECIFICIED DESTINATION:&#xA;The Chr(65 + dt.Columns.Count - 1) function converts the column count into Excel column letters. Chr(65) corresponds to &quot;A&quot;, Chr(66) to &quot;B&quot;, and so on. This method works for column counts up to 26 (which corresponds to columns A to Z)" DisplayName="Format excel rows as table" HasHeaders="True" sap:VirtualizedContainerService.HintSize="611,329" sap2010:WorkflowViewState.IdRef="CreateTableX_4" Range="[writeRange_range]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:GetRobotAsset>
-              <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
-                <ui:GetRobotAsset.Value>
-                  <OutArgument x:TypeArguments="x:String">[str_serverName]</OutArgument>
-                </ui:GetRobotAsset.Value>
+              </ueab:CreateTableX>
+              <ueab:ExcelForEachRowX DisplayName="For Each Excel Row - format if needed " EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="611,890" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_2" Range="[readRange_range]" SaveAfterEachRow="False">
+                <ueab:ExcelForEachRowX.Body>
+                  <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
+                    <ActivityAction.Argument1>
+                      <DelegateInArgument x:TypeArguments="ue:CurrentRowQuickHandle" Name="CurrentRow" />
+                    </ActivityAction.Argument1>
+                    <ActivityAction.Argument2>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                    </ActivityAction.Argument2>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="577,700" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[not CurrentRow(&quot;תאריך התחלה&quot;) is Nothing]" sap:VirtualizedContainerService.HintSize="515,589" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="481,407" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ueab:FormatRangeX DisplayName="Format Cells" sap:VirtualizedContainerService.HintSize="439,138" sap2010:WorkflowViewState.IdRef="FormatRangeX_3" Range="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;B&quot;+(cint(CurrentIndex)+1).ToString)]">
+                              <ueab:FormatRangeX.Alignment>
+                                <ui:AlignmentOptions HorizontalAlignment="xlHAlignGeneral" VerticalAlignment="xlVAlignBottom" WrapText="False" />
+                              </ueab:FormatRangeX.Alignment>
+                              <ueab:FormatRangeX.Font>
+                                <ui:FontOptions Color="Black" FillColor="Chartreuse" FontFamilyName="Calibri" Size="11" Style="Regular" UnderlineStyle="None" />
+                              </ueab:FormatRangeX.Font>
+                              <ueab:FormatRangeX.Format>
+                                <ueab:CustomFormat FormatAsString="General" />
+                              </ueab:FormatRangeX.Format>
+                            </ueab:FormatRangeX>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="439,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;שורה מספר &quot;+(cint(CurrentIndex)+1).ToString+&quot;נצבעה בכחול&quot;]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_35" />
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ueab:ExcelForEachRowX.Body>
+              </ueab:ExcelForEachRowX>
+              <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;TempReport\temp.pdf&quot;)]" DisplayName="Save Excel File As PDF" sap:VirtualizedContainerService.HintSize="611,159" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_4" SaveQuality="StandardQuality" Workbook="[Excel]" />
+            </Sequence>
+          </ActivityAction>
+        </ueab:ExcelApplicationCard.Body>
+      </ueab:ExcelApplicationCard>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,284</av:Point>
+          <av:Size x:Key="ShapeSize">200,52</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Flowchart DisplayName="Extract And Filter Data" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Flowchart_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">10,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">70,40 100,40 100,40.5 120,40.5</av:PointCollection>
+            <x:Double x:Key="Height">645</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Flowchart.StartNode>
+          <x:Reference>__ReferenceID6</x:Reference>
+        </Flowchart.StartNode>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,449</av:Point>
+              <av:Size x:Key="ShapeSize">200,94</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,543 220,593</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CommentOut sap2010:Annotation.AnnotationText="wait for shlomi reply&#xA;(clean customents table)" DisplayName="Merge the tables" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_37">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:GetRobotAsset>
-              <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_4" Password="[str_dbUserPass]" Username="[str_dbUserName]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:GetRobotCredential>
-              <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_8">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[str_connectionString]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["Data Source="&amp; str_serverName &amp;
+                <ui:JoinDataTables Arguments="{x:Null}" DataTable1="[dt_budgetData]" DataTable2="[dt_customersData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_5" JoinType="Inner" OutputDataTable="[dt_test]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:JoinDataTables>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">120,593</av:Point>
+                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:FilterDataTable DataTable="[dt_budgetData]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[dt_budgetData]" SelectColumnsMode="Remove">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["איפיון רמה 01"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+              </ui:FilterDataTable>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,404</av:Point>
+              <av:Size x:Key="ShapeSize">200,25</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,429 220,449</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_6" />
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID0</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
+        <FlowStep x:Name="__ReferenceID2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,290</av:Point>
+              <av:Size x:Key="ShapeSize">200,94</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,384 220,404</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract budget data from stored procedure" ConnectionString="[str_connectionString]" DataTable="[dt_budgetData]" DisplayName="Extract Budget Data" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_11" ProviderName="Microsoft.Data.SqlClient" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_ProjectBudgetTopic]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ExecuteQuery>
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID1</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
+        <FlowStep x:Name="__ReferenceID3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,176</av:Point>
+              <av:Size x:Key="ShapeSize">200,94</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,270 220,290</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_10" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ExecuteQuery>
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID2</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
+        <FlowStep x:Name="__ReferenceID4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,101</av:Point>
+              <av:Size x:Key="ShapeSize">200,52</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,153 220,176</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_6" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID3</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
+        <FlowStep x:Name="__ReferenceID6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">120,0</av:Point>
+              <av:Size x:Key="ShapeSize">200,81</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">220,81 220,101</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str_dbName" />
+              <Variable x:TypeArguments="x:String" Name="str_serverName" />
+              <Variable x:TypeArguments="x:String" Name="str_dbUserName" />
+              <Variable x:TypeArguments="ss:SecureString" Name="str_dbUserPass" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_9">
+              <ui:GetRobotAsset.Value>
+                <OutArgument x:TypeArguments="x:String">[str_dbName]</OutArgument>
+              </ui:GetRobotAsset.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:GetRobotAsset>
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_10">
+              <ui:GetRobotAsset.Value>
+                <OutArgument x:TypeArguments="x:String">[str_serverName]</OutArgument>
+              </ui:GetRobotAsset.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:GetRobotAsset>
+            <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_5" Password="[str_dbUserPass]" Username="[str_dbUserName]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:GetRobotCredential>
+            <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[str_connectionString]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Data Source="&amp; str_serverName &amp;
 ";Initial Catalog=" &amp; str_dbName &amp;
 ";User ID=" &amp; str_dbUserName &amp;
 ";Password="&amp; Marshal.PtrToStringBSTR(Marshal.SecureStringToBSTR(str_dbUserPass)) &amp;
 ";Trusted_Connection=True;TrustServerCertificate=True;"]</InArgument>
-                </Assign.Value>
-              </Assign>
-            </Sequence>
-            <FlowStep.Next>
-              <x:Reference>__ReferenceID4</x:Reference>
-            </FlowStep.Next>
-          </FlowStep>
-          <x:Reference>__ReferenceID5</x:Reference>
-        </Flowchart>
-      </FlowStep>
-      <FlowStep x:Name="__ReferenceID8">
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID4</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
+        <x:Reference>__ReferenceID5</x:Reference>
+      </Flowchart>
+    </FlowStep>
+    <FlowStep x:Name="__ReferenceID8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">110,33.9</av:Point>
+          <av:Size x:Key="ShapeSize">220,52</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">210,85.9 210,105.9</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataExtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="220,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Utilities\DataExtraction.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">[dt_data]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">110,33.9</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">210,85.9 210,105.9</av:PointCollection>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MyWorkflows\DataExtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="MyWorkflows\DataExtraction.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">
-              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-            </InOutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">110,105.9</av:Point>
+              <av:Size x:Key="ShapeSize">221,52</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-        <FlowStep.Next>
-          <FlowStep x:Name="__ReferenceID7">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Dispatch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utilities\Dispatch.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_str_filePath">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Directory.GetCurrentDirectory,&quot;TempReport&quot;,&quot;Dispatch3&quot;)" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
+                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">110,105.9</av:Point>
-                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MyWorkflows\Dispatch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="MyWorkflows\Dispatch.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-                </InOutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InvokeWorkflowFile>
-          </FlowStep>
-        </FlowStep.Next>
-      </FlowStep>
-      <x:Reference>__ReferenceID7</x:Reference>
-    </Flowchart>
-  </Sequence>
+          </ui:InvokeWorkflowFile>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID7</x:Reference>
+  </Flowchart>
 </Activity>

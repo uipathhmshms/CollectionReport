@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,856</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,948</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataExtraction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -41,6 +41,7 @@
       <x:String>System.Security</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -101,7 +102,7 @@
       <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Connects to DB and retrieve the data" DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="634,791" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Connects to DB and retrieve the data" DisplayName="DataExtraction" sap:VirtualizedContainerService.HintSize="634,883" sap2010:WorkflowViewState.IdRef="Flowchart_3">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
       <Variable x:TypeArguments="x:String" Name="str_connectionString" />
@@ -114,13 +115,13 @@
         <av:Point x:Key="ShapeLocation">80,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">140,40 170,40 170,40.5 190,40.5</av:PointCollection>
-        <x:Double x:Key="Height">723</x:Double>
+        <x:Double x:Key="Height">815</x:Double>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID8</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
@@ -130,7 +131,7 @@
           <av:PointCollection x:Key="ConnectorLocation">290,429 290,449</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_2" />
+      <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_3" />
       <FlowStep.Next>
         <FlowStep x:Name="__ReferenceID6">
           <sap:WorkflowViewStateService.ViewState>
@@ -140,10 +141,10 @@
               <av:PointCollection x:Key="ConnectorLocation">290,573 290,591</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign sap2010:Annotation.AnnotationText="change the column named &quot;סעיף תקציבי&quot; to &quot;קוד סעיף תקציבי&quot;&#xA;in customers table&#xA;+&#xA;changing the column named &quot;תעריך ערך&quot; to &quot;תאריך לתשלום&quot;" DisplayName="Columns name adjusments" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="change the column named &quot;סעיף תקציבי&quot; to &quot;קוד סעיף תקציבי&quot;&#xA;in customers table&#xA;+&#xA;changing the column named &quot;תעריך ערך&quot; to &quot;תאריך לתשלום&quot;" DisplayName="Columns name adjusments" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
                   <ui:AssignOperation.To>
                     <OutArgument x:TypeArguments="x:String">[dt_customersData.Columns("סעיף תקציבי").ColumnName]</OutArgument>
                   </ui:AssignOperation.To>
@@ -151,7 +152,7 @@
                     <InArgument x:TypeArguments="x:String">קוד סעיף תקציבי</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
                   <ui:AssignOperation.To>
                     <OutArgument x:TypeArguments="x:String">[dt_customersData.Columns("תאריך ערך").ColumnName]</OutArgument>
                   </ui:AssignOperation.To>
@@ -176,7 +177,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">290,643 290,661</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:JoinDataTables DataTable1="[dt_customersData]" DataTable2="[dt_budgetData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="JoinDataTables_3" JoinType="Inner" OutputDataTable="[io_dt_data]">
+              <ui:JoinDataTables DataTable1="[dt_customersData]" DataTable2="[dt_budgetData]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Inner" OutputDataTable="[io_dt_data]">
                 <ui:JoinDataTables.Arguments>
                   <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                     <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -201,9 +202,10 @@
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">190,661</av:Point>
                       <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">290,713 290,733</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[io_dt_data]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument BooleanOperator="And" Operator="GT">
@@ -214,11 +216,17 @@
                             <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
                           </ui:FilterOperationArgument.Operand>
                         </ui:FilterOperationArgument>
+                        <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="NOTEMPTY">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">["מזהה מנהל פרויקט"]</InArgument>
+                          </ui:FilterOperationArgument.Column>
+                        </ui:FilterOperationArgument>
                       </scg:List>
                     </ui:FilterDataTable.Filters>
                     <ui:FilterDataTable.SelectColumns>
                       <scg:List x:TypeArguments="InArgument" Capacity="16">
                         <InArgument x:TypeArguments="x:String">["שם מנהל פרויקט"]</InArgument>
+                        <InArgument x:TypeArguments="x:String">["מזהה מנהל פרויקט"]</InArgument>
                         <InArgument x:TypeArguments="x:String">["קוד חשבון"]</InArgument>
                         <InArgument x:TypeArguments="x:String">["שם חשבון"]</InArgument>
                         <InArgument x:TypeArguments="x:String">["קוד סעיף תקציבי"]</InArgument>
@@ -231,6 +239,17 @@
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">190,733</av:Point>
+                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="מזהה מנהל פרויקט" DataTable="[io_dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[io_dt_data]" SortOrder="Ascending" />
+                    </FlowStep>
+                  </FlowStep.Next>
                 </FlowStep>
               </FlowStep.Next>
             </FlowStep>
@@ -246,7 +265,7 @@
           <av:PointCollection x:Key="ConnectorLocation">290,384 290,404</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract budget data from stored procedure" ConnectionString="[str_connectionString]" DataTable="[dt_budgetData]" DisplayName="Extract Budget Data" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="Microsoft.Data.SqlClient" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_ProjectBudgetTopic]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract budget data from stored procedure" ConnectionString="[str_connectionString]" DataTable="[dt_budgetData]" DisplayName="Extract Budget Data" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_6" ProviderName="Microsoft.Data.SqlClient" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_ProjectBudgetTopic]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
@@ -268,7 +287,7 @@
           <av:PointCollection x:Key="ConnectorLocation">290,270 290,290</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers]; &quot; &amp; _&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract customers data from stored procedure" DataTable="[dt_customersData]" DisplayName="Extract Customers Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;USE [Halperin]; &quot; &amp; _&#xD;&#xA;&quot;DECLARE @return_value int; &quot; &amp; _&#xD;&#xA;&quot;EXEC @return_value = [dbo].[sp_AccountingReportCustomers_RPA]; &quot; &amp; _&#xD;&#xA;&quot;SELECT 'Return Value' = @return_value;&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
@@ -290,12 +309,12 @@
           <av:PointCollection x:Key="ConnectorLocation">290,153 290,176</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
+      <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
       <FlowStep.Next>
         <x:Reference>__ReferenceID2</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID7">
+    <FlowStep x:Name="__ReferenceID8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">190,0</av:Point>
@@ -303,7 +322,7 @@
           <av:PointCollection x:Key="ConnectorLocation">290,81 290,101</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="str_dbName" />
           <Variable x:TypeArguments="x:String" Name="str_serverName" />
@@ -315,7 +334,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">[str_dbName]</OutArgument>
           </ui:GetRobotAsset.Value>
@@ -325,7 +344,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetRobotAsset>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">[str_serverName]</OutArgument>
           </ui:GetRobotAsset.Value>
@@ -335,14 +354,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetRobotAsset>
-        <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[str_dbUserPass]" Username="[str_dbUserName]">
+        <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[str_dbUserPass]" Username="[str_dbUserName]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetRobotCredential>
-        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_3">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_connectionString]</OutArgument>
           </Assign.To>
@@ -362,5 +381,6 @@
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
   </Flowchart>
 </Activity>
