@@ -1,6 +1,6 @@
 Option Explicit
 
-Sub TransformData()
+Sub FormatTable()
     On Error GoTo ErrorHandler
     
     Application.ScreenUpdating = False
@@ -72,7 +72,7 @@ End Sub
 Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     Dim outputSheet As Worksheet
     Dim sheetName As String
-    sheetName = "Transformed_Data_"
+    sheetName = "Collection Report"
     
     ' Create new sheet with unique name
     Set outputSheet = ThisWorkbook.Sheets.Add

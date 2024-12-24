@@ -1,31 +1,31 @@
 Option Explicit
 
-'Deletes all opned sheets except the last one
-Sub DeletePreviousSheets()
+'Deletes the sheet named "Sheet1" if it exists
+Sub DeleteSheet1()
     On Error GoTo ErrorHandler
     
     Application.ScreenUpdating = False
     Application.Calculation = xlCalculationManual
     
-	Dim i, lastSheetIndex, sheetName, objSheet
-	
+    Dim i, sheetName, objSheet
+    
     ' Check if workbook has at least one sheet
     If ThisWorkbook.Sheets.Count < 1 Then
         MsgBox "Error: Workbook must contain at least one sheet.", vbCritical
         Exit Sub
     End If
     
-	' Get the index of the last sheet in the workbook
-	lastSheetIndex = ThisWorkbook.Sheets.Count
+    ' Loop through each sheet in the workbook
+    For i = ThisWorkbook.Sheets.Count To 1 Step -1
+        Set objSheet = ThisWorkbook.Sheets(i)
+        sheetName = objSheet.Name
 
-	' Loop through each sheet in the workbook (start from the second-to-last sheet to avoid skipping)
-	For i = lastSheetIndex - 1 To 1 Step -1
-		Set objSheet = ThisWorkbook.Sheets(i)
-		sheetName = objSheet.Name
-
-		' Delete the sheet
-		objSheet.Delete
-	Next
+        ' Check if the sheet is named "Sheet1" and delete it
+        If sheetName = "Sheet1" Then
+            objSheet.Delete
+            Exit For ' Exit the loop once the sheet is deleted
+        End If
+    Next
     
 CleanExit:
     Application.ScreenUpdating = True

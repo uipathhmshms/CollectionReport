@@ -1,11 +1,15 @@
-Sub Main(tableWidth As String)
+Sub AddStyleToSheet()
     Dim tableStart As Range
     Dim firstRowRange As Range
     Dim intTableWidth As Integer
     Dim lastRow As Long
+    Dim usedRange As Range
     
-    ' Convert the string argument to an integer
-    intTableWidth = CInt(tableWidth)
+    ' Get the used range in the worksheet
+    Set usedRange = ActiveSheet.UsedRange
+    
+    ' Get the width (number of columns) of the used range
+    intTableWidth = usedRange.Columns.Count
     
     ' Define the starting cell of the table (A1 in this case)
     Set tableStart = Range("A1")
@@ -22,10 +26,10 @@ Sub Main(tableWidth As String)
     ' Center the text in the first row
     CenterTextInFirstRow firstRowRange
     
-    ' Get the last used row in the table 
-    lastRow = Cells(Rows.Count, 1).End(xlUp).Row
-	
-	' Change the background color of the first column (A)
+    ' Get the last used row in the sheet 
+    lastRow = usedRange.Rows.Count
+    
+    ' Change the background color of the first column (A)
     ChangeFirstColumnBackgroundColor lastRow
     
     ' Apply light blue background color to even index columns (B, D, F, etc.)
@@ -42,8 +46,8 @@ Sub Main(tableWidth As String)
     
     ' Ensure no column exceeds a width of 50
     LimitColumnWidth intTableWidth, 50
-	
-	' Center align all the text in the entire worksheet
+    
+    ' Center align all the text in the entire worksheet
     CenterAlignAllText
 End Sub
 
