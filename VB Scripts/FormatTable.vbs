@@ -86,7 +86,8 @@ Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     ' Add the Status column header
     Dim lastColumn As Long
     lastColumn = outputSheet.Cells(1, outputSheet.Columns.Count).End(xlToLeft).Column
-    outputSheet.Cells(1, lastColumn + 1).Value = "Status"
+	outputSheet.Cells(1, lastColumn+1).Value = outputSheet.Cells(1, lastColumn).Value ' Push 'sum of yetra' one column to the right
+    outputSheet.Cells(1, lastColumn).Value = "Status"
     
     ' Format the header row
     With outputSheet.Rows(1)
