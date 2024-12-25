@@ -49,6 +49,43 @@ Sub AddStyleToSheet()
     
     ' Center align all the text in the entire worksheet
     CenterAlignAllText
+	
+	' Change the background color of the "Status" and "יתרה" columns
+    ChangeStatusAndBalanceColors lastRow
+End Sub
+
+Sub ChangeStatusAndBalanceColors(lastRow As Long)
+    Dim statusCol As Integer
+    Dim balanceCol As Integer
+    Dim i As Long
+    Dim statusCell As Range
+    Dim balanceCell As Range
+    
+    ' Set the fixed column numbers for "Status" and "יתרה"
+    statusCol = 10 ' Column number for "Status"
+    balanceCol = 11 ' Column number for "יתרה"
+    
+    ' Loop through each row starting from row 2 to the last row
+    For i = 2 To lastRow
+        ' Get the status and balance cells in the current row
+        Set statusCell = Cells(i, statusCol)
+        Set balanceCell = Cells(i, balanceCol)
+        
+        ' Apply color logic based on the status value
+        Select Case statusCell.Value
+            Case "On time"
+                statusCell.Interior.Color = RGB(0, 255, 0) ' Green
+				balanceCell.Interior.Color = RGB(0, 255, 0) ' Green
+            Case "Delayed"
+                statusCell.Interior.Color = RGB(255, 255, 0) ' Yellow
+				balanceCell.Interior.Color = RGB(255, 255, 0) ' Yellow
+            Case "Debt at risk"
+                statusCell.Interior.Color = RGB(255, 192, 203) ' Pink
+				balanceCell.Interior.Color = RGB(255, 192, 203) ' Pink
+            Case Else
+                statusCell.Interior.ColorIndex = -4142 ' No color (default)
+        End Select
+    Next i
 End Sub
 
 Sub ApplyFirstRowBackgroundColor(firstRowRange As Range)

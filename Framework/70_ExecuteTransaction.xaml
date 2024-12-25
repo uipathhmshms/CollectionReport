@@ -227,10 +227,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ueab:InvokeVBAX>
-            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
+            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Deletes  &quot;Sheet1&quot; which is the default one(created on excel creation)  that contains the data before the formating" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;DeleteSheet1.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="DeleteSheet1" sap:VirtualizedContainerService.HintSize="434,342" sap2010:WorkflowViewState.IdRef="InvokeVBAX_4" Workbook="[Excel]">
               <ueab:InvokeVBAX.Body>
                 <ActivityAction>
-                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_35">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -245,10 +245,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ueab:InvokeVBAX>
-            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Deletes  &quot;Sheet1&quot; which is the default one(created on excel creation)  that contains the data before the formating" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;DeleteSheet1.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="DeleteSheet1" sap:VirtualizedContainerService.HintSize="434,342" sap2010:WorkflowViewState.IdRef="InvokeVBAX_4" Workbook="[Excel]">
+            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
               <ueab:InvokeVBAX.Body>
                 <ActivityAction>
-                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_34">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
