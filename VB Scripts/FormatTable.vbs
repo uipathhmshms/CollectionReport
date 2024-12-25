@@ -251,7 +251,7 @@ Sub WriteGroupTotal(outputSheet As Worksheet, groupTotal As Double, ByRef output
     With outputSheet
         .Cells(outputRow, 3).Value = "Total"
         .Cells(outputRow, 11).Value = groupTotal
-        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Interior.Color = RGB(240, 240, 240)
+        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Interior.Color = RGB(131, 204, 235)
         .Range(.Cells(outputRow, 11), .Cells(outputRow, 11)).Font.Bold = True
         .Cells(outputRow, 11).NumberFormat = "#,##0"
     End With
@@ -263,7 +263,7 @@ Sub WriteGrandTotal(outputSheet As Worksheet, grandTotal As Double, ByRef output
     With outputSheet
         .Cells(outputRow, 1).Value = "Grand Total"
         .Cells(outputRow, 11).Value = grandTotal
-        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Interior.Color = RGB(200, 200, 200)
+        .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Interior.Color = RGB(131, 204, 235)
         .Range(.Cells(outputRow, 1), .Cells(outputRow, 11)).Font.Bold = True
         .Cells(outputRow, 11).NumberFormat = "#,##0"
     End With

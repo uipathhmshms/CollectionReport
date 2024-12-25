@@ -33,7 +33,7 @@ Sub AddStyleToSheet()
     ChangeFirstColumnBackgroundColor lastRow
     
     ' Apply light blue background color to even index columns (B, D, F, etc.)
-    ApplyLightBlueToEvenColumns lastRow, intTableWidth
+	ApplyLightBlueToEvenColumns lastRow, intTableWidth
     
     ' Add a filter to the first row
     AddFilterToFirstRow firstRowRange
@@ -52,6 +52,41 @@ Sub AddStyleToSheet()
 	
 	' Change the background color of the "Status" and "יתרה" columns
     ChangeStatusAndBalanceColors lastRow
+	
+	MergeFirstColumnRowsExceptFirstAndLast
+	
+End Sub
+
+Sub MergeFirstColumnRowsExceptFirstAndLast()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim firstRow As Long
+    Dim mergeRange As Range
+    
+    ' Set the worksheet to the active sheet (modify as needed)
+    Set ws = ActiveSheet
+    
+    ' Define the range of rows to merge
+    firstRow = 2 ' Skip the first row (header)
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row ' Get the last row with data in column A
+    
+    ' Ensure there are at least 3 rows to work with
+    If lastRow <= firstRow Then
+        MsgBox "Not enough rows to merge.", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Define the range to merge
+    Set mergeRange = ws.Range(ws.Cells(firstRow, 1), ws.Cells(lastRow - 1, 1))
+    
+    ' Merge rows in the first column from the second row to the penultimate row
+    mergeRange.Merge
+    
+    ' Align the text in the merged cell
+    With mergeRange
+        .HorizontalAlignment = xlCenter ' Center horizontally
+        .VerticalAlignment = xlTop ' Align text to the top
+    End With
 End Sub
 
 Sub ChangeStatusAndBalanceColors(lastRow As Long)
@@ -74,16 +109,14 @@ Sub ChangeStatusAndBalanceColors(lastRow As Long)
         ' Apply color logic based on the status value
         Select Case statusCell.Value
             Case "On time"
-                statusCell.Interior.Color = RGB(0, 255, 0) ' Green
-				balanceCell.Interior.Color = RGB(0, 255, 0) ' Green
+                statusCell.Interior.Color = RGB(146, 208, 80) ' Green
+                balanceCell.Interior.Color = RGB(146, 208, 80) ' Green
             Case "Delayed"
                 statusCell.Interior.Color = RGB(255, 255, 0) ' Yellow
 				balanceCell.Interior.Color = RGB(255, 255, 0) ' Yellow
             Case "Debt at risk"
-                statusCell.Interior.Color = RGB(255, 192, 203) ' Pink
-				balanceCell.Interior.Color = RGB(255, 192, 203) ' Pink
-            Case Else
-                statusCell.Interior.ColorIndex = -4142 ' No color (default)
+                statusCell.Interior.Color = RGB(247, 199, 172) ' Pink
+                balanceCell.Interior.Color = RGB(247, 199, 172) ' Pink
         End Select
     Next i
 End Sub
@@ -101,19 +134,26 @@ End Sub
 Sub ChangeFirstColumnBackgroundColor(lastRow As Long)
     ' Change the background color of the first column (A) to RGB(68, 179, 225)
     Dim firstColRange As Range
-    Set firstColRange = Range("A2:A" & lastRow) ' First column (A2 to last row in column A)
+    Set firstColRange = Range("A2:A" & (lastRow-1)) ' First column (A2 to last row in column-1 A (the last one is grand total))
     
     firstColRange.Interior.Color = RGB(68, 179, 225) ' Light blue color (RGB(68, 179, 225))
 End Sub
 
 Sub ApplyLightBlueToEvenColumns(lastRow As Long, intTableWidth As Integer)
     Dim col As Integer
+    Dim row As Long
     Dim colRange As Range
-    
-    ' Loop through all columns and apply light blue to even indexed columns (B, D, F, etc.)
+
+    ' Loop through all even-indexed columns (B, D, F, etc.)
     For col = 2 To intTableWidth Step 2
-        Set colRange = Range(Cells(2, col), Cells(lastRow, col)) ' Range from row 2 to last row in even columns
-        colRange.Interior.Color = RGB(192, 230, 245) ' Light blue color
+        ' Loop through each cell in the column
+        For row = 2 To lastRow
+            ' Check if the cell does not already have a background color
+            If Cells(row, col).Interior.ColorIndex = xlNone Then
+                ' Apply light blue color
+                Cells(row, col).Interior.Color = RGB(192, 230, 245)
+            End If
+        Next row
     Next col
 End Sub
 
