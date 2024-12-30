@@ -15,5 +15,4 @@ Sub ExportToHTML()
     ' Export the sheet to HTML
     ws.SaveAs Filename:=htmlFile, FileFormat:=xlHTML
 
-    MsgBox "HTML file created: " & htmlFile
 End Sub
