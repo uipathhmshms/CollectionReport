@@ -166,10 +166,11 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="572,2190" sap2010:WorkflowViewState.IdRef="Sequence_49">
+  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="572,2343" sap2010:WorkflowViewState.IdRef="Sequence_49">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_data" />
       <Variable x:TypeArguments="x:String" Name="str_excelFileName" />
+      <Variable x:TypeArguments="x:String" Name="str_htmlContent" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -216,7 +217,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,2498" sap2010:WorkflowViewState.IdRef="Sequence_47">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,2869" sap2010:WorkflowViewState.IdRef="Sequence_47">
             <Sequence.Variables>
               <Variable x:TypeArguments="ue:IReadRangeRef" Name="readRange_range" />
               <Variable x:TypeArguments="ue:IReadWriteRangeRef" Name="writeRange_range" />
@@ -287,6 +288,24 @@
             <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA Script 'AddStyleToSheet' was executed from the provided file path&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;AddStyleToSheet.vbs&quot;).ToString() + &quot; on the excel file &quot; + Excel.ToString()]" />
             <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,str_excelFileName+&quot;.pdf&quot;)]" DisplayName="Save Excel File As PDF" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_2" SaveQuality="StandardQuality" Workbook="[Excel]" />
             <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Excel file was saved as PDF at path &quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;, str_excelFileName + &quot;.pdf&quot;).ToString()]" />
+            <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;ExportToHTML.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="ExportToHTML" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_8" Workbook="[Excel]">
+              <ueab:InvokeVBAX.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </ActivityAction>
+              </ueab:InvokeVBAX.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ueab:InvokeVBAX>
           </Sequence>
         </ActivityAction>
       </ueab:ExcelApplicationCard.Body>
@@ -297,6 +316,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ueab:ExcelApplicationCard>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Generate_Html_File.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utills\Generate_Html_File.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_ApplicationId&quot;).ToString]" ApplicationSecret="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_MailKey&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,856" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_7" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;Mail365_TenantId&quot;).ToString]" UseConnectionService="False">
       <uma:Office365ApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
@@ -314,7 +343,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="FinHoursRPA@hms.co.il" AuthScopesInvalid="False" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot; בדיקה דוח גבייה&quot;+&quot; &quot;+dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
+            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="FinHoursRPA@hms.co.il" AuthScopesInvalid="False" Body="[str_htmlContent]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot; בדיקה דוח גבייה&quot;+&quot; &quot;+dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
               <umam:SendMail.Attachments>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                   <InArgument x:TypeArguments="x:String">["TempReport\"+str_excelFileName+".xlsx"]</InArgument>
@@ -322,7 +351,7 @@
                 </scg:List>
               </umam:SendMail.Attachments>
             </umam:SendMail>
-            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xD;&#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring+&#xD;&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()]" />
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring+&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>

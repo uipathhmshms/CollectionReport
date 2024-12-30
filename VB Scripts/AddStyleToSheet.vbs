@@ -45,7 +45,7 @@ Sub AddStyleToSheet()
     AutoFitColumns firstRowRange, intTableWidth
     
     ' Ensure no column exceeds a width of 50
-    LimitColumnWidth intTableWidth, 50
+    'LimitColumnWidth intTableWidth, 50
     
     ' Center align all the text in the entire worksheet
     CenterAlignAllText
