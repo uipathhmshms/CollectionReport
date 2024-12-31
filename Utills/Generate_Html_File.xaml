@@ -126,7 +126,7 @@
               <av:PointCollection x:Key="ConnectorLocation">300,305.5 300,325.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads the style sheet that generated for current report" Content="[str_styleSheetContent]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;stylesheet.css&quot;)]" sap:VirtualizedContainerService.HintSize="334,111" sap2010:WorkflowViewState.IdRef="ReadTextFile_3">
+          <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads the style sheet that generated for current report" Content="[str_styleSheetContent]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;stylesheet.css&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -141,7 +141,7 @@
                   <av:Size x:Key="ShapeSize">434,52</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -158,15 +158,58 @@
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
                         <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _
-       "&lt;html&gt;" &amp; vbCrLf &amp; _
-       "&lt;head&gt;" &amp; vbCrLf &amp; _
-           "&lt;style&gt;" &amp; vbCrLf &amp; _
-          	 	str_styleSheetContent &amp; vbCrLf &amp; _
-           "&lt;/style&gt;" &amp; vbCrLf &amp; _
-       "&lt;/head&gt;" &amp; vbCrLf &amp; _
-       "&lt;body&gt;" &amp; vbCrLf &amp; _
-       		str_sheet001BodyContent &amp; vbCrLf &amp; _
-       "&lt;/body&gt;" &amp; vbCrLf &amp; _
+"&lt;html&gt;" &amp; vbCrLf &amp; _
+    "&lt;head&gt;" &amp; vbCrLf &amp; _
+        "&lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _
+        "&lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _
+        "&lt;style&gt;" &amp; vbCrLf &amp; _
+		    str_styleSheetContent &amp; vbCrLf &amp; _
+            "html, body {" &amp; vbCrLf &amp; _
+                "height: 100% !important;" &amp; vbCrLf &amp; _
+                "margin: 0;" &amp; vbCrLf &amp; _
+                "padding: 0;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+            ".header {" &amp; vbCrLf &amp; _
+				"background-color: #104861;" &amp; vbCrLf &amp; _
+                "color: white;" &amp; vbCrLf &amp; _
+                "padding: 20px;" &amp; vbCrLf &amp; _
+                "text-align: center;" &amp; vbCrLf &amp; _
+                "width: 100%;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+            ".footer {" &amp; vbCrLf &amp; _
+				"background-color: #104861;" &amp; vbCrLf &amp; _
+                "color: white;" &amp; vbCrLf &amp; _
+                "padding: 15px;" &amp; vbCrLf &amp; _
+                "text-align: center;" &amp; vbCrLf &amp; _
+                "width: 100%;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+            "th, td {" &amp; vbCrLf &amp; _
+                "border: 1px solid #ddd;" &amp; vbCrLf &amp; _
+                "padding: 10px;" &amp; vbCrLf &amp; _
+                "text-align: center;" &amp; vbCrLf &amp; _
+                "transition: background-color 0.3s, box-shadow 0.3s;" &amp; vbCrLf &amp; _
+                "overflow-wrap: break-word;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+            "tr:hover {" &amp; vbCrLf &amp; _
+                "background-color: #e0f7fa;" &amp; vbCrLf &amp; _
+                "box-shadow: 0 0 5px #00acc1;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+            "tr.clicked {" &amp; vbCrLf &amp; _
+                "background-color: #ffe082 !important;" &amp; vbCrLf &amp; _
+                "box-shadow: 0 0 10px #ffa000 !important;" &amp; vbCrLf &amp; _
+            "}" &amp; vbCrLf &amp; _
+        "&lt;/style&gt;" &amp; vbCrLf &amp; _
+    "&lt;/head&gt;" &amp; vbCrLf &amp; _
+    "&lt;body&gt;" &amp; vbCrLf &amp; _
+        "&lt;div class=""header""&gt;" &amp; vbCrLf &amp; _
+            "&lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _
+            "&lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _
+        "&lt;/div&gt;" &amp; vbCrLf &amp; _
+        str_sheet001BodyContent &amp; vbCrLf &amp; _
+        "&lt;div class=""footer""&gt;" &amp; vbCrLf &amp; _
+            "&lt;p&gt;&amp;copy; 2024 Lidor Test.&lt;/p&gt;" &amp; vbCrLf &amp; _
+        "&lt;/div&gt;" &amp; vbCrLf &amp; _
+    "&lt;/body&gt;" &amp; vbCrLf &amp; _
 "&lt;/html&gt;"]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>

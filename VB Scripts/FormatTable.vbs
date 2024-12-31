@@ -202,15 +202,18 @@ Sub WriteGroupData(outputSheet As Worksheet, groupedData As Object, ByRef output
     Next groupKey
 End Sub
 
-' Function to determine the status based on payment date
+' Function to determine the status based on the payment date
 Function GetStatus(paymentDate As Variant, today As Date) As String
     If IsDate(paymentDate) Then
-        If paymentDate < today Then
-            GetStatus = "Delayed"
-        ElseIf paymentDate > today Then
-            GetStatus = "On time"
+        Dim daysDelayed As Long
+        daysDelayed = DateDiff("d", paymentDate, today)
+        
+        If daysDelayed < 0 Then
+            GetStatus = "On time" ' תאריך הערך / התשלום טרם הגיע.
+        ElseIf daysDelayed <= 45 Then
+            GetStatus = "Delayed" ' תאריך הערך / התשלום בעיכוב של עד 45 יום.
         Else
-            GetStatus = "Due today"
+            GetStatus = "Debt at risk" ' תאריך הערך / התשלום הינו בעיכוב של מעל 45 יום.
         End If
     Else
         GetStatus = "Invalid date"
