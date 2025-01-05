@@ -177,7 +177,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_52">
+    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="496,1455" sap2010:WorkflowViewState.IdRef="Sequence_52">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -190,13 +190,14 @@
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt">[dt_data]</OutArgument>
         </ui:InvokeCode.Arguments>
       </ui:InvokeCode>
+      <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="תאריך פעילות" DataTable="[dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[dt_data]" SortOrder="Descending" />
       <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Converted SpecificContent data from the queue item into datatable object&quot;]" />
       <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_excelFileName]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[dt_data(0)("מזהה מנהל פרויקט").tostring+"_"+"Collection Report"+"_"+Now.ToString("dd-MM-yyyy-HH-mm")]</InArgument>
+          <InArgument x:TypeArguments="x:String">[dt_data(0)("קוד מנהל פרויקט").tostring+"_"+"Collection Report"+"_"+Now.ToString("dd-MM-yyyy-HH-mm")]</InArgument>
         </Assign.Value>
       </Assign>
       <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned to str_excelFileName value:&quot; + str_excelFileName.ToString()]" />
@@ -208,7 +209,7 @@
         </ui:FilterDataTable.Filters>
         <ui:FilterDataTable.SelectColumns>
           <scg:List x:TypeArguments="InArgument" Capacity="4">
-            <InArgument x:TypeArguments="x:String">["מזהה מנהל פרויקט"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
         <sap:WorkflowViewStateService.ViewState>
