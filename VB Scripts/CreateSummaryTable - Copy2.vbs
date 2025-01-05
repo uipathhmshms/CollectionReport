@@ -64,10 +64,9 @@ Sub CreateSummaryTable()
         .Cells(5, 3).Value = "grandTotal"
     End With
 
-    ' Apply formatting for the summary table
     call ApplySummaryTableStyling(objSummarySheet)
-    call AutoFitColumns(objSummarySheet)
-    Call CreatePieChart(objSummarySheet) 
+	call AutoFitColumns(objSummarySheet)
+	Call CreatePieChart(objSummarySheet) 
 End Sub
 
 Sub ApplySummaryTableStyling(objSummarySheet As Object)
@@ -106,19 +105,10 @@ Sub ApplySummaryTableStyling(objSummarySheet As Object)
     objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
 
     ' Apply borders to the summary table (first 3 columns)
-    With objSummarySheet.Range("A1:C" & lastRow) ' Use only up to the last actual data row
+    With objSummarySheet.Range("A1:C" & lastRow + 1) ' Include Grand Total row
         .Borders.LineStyle = 1 ' xlContinuous
         .Borders.Color = RGB(0, 0, 0) ' Black border color
     End With
-
-    ' Center-align text in the summary table
-    With objSummarySheet.Range("A1:C" & lastRow)
-        .HorizontalAlignment = xlCenter
-        .VerticalAlignment = xlCenter
-    End With
-
-    ' Format the Sum column (Column B) to include commas
-    objSummarySheet.Columns("B:B").NumberFormat = "#,##0"
 End Sub
 
 Sub AutoFitColumns(objSummarySheet As Object)
@@ -129,40 +119,21 @@ End Sub
 Sub CreatePieChart(objSummarySheet As Object)
     Dim objChart As Object
     Dim dataRange As Range
-    Dim chartSheet As Worksheet
-
-    ' Create a new sheet called "Chart"
-    On Error Resume Next
-    Set chartSheet = ThisWorkbook.Sheets("Chart")
-    On Error GoTo 0
-
-    ' If the "Chart" sheet already exists, clear it; otherwise, create a new one
-    If chartSheet Is Nothing Then
-        Set chartSheet = ThisWorkbook.Sheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count))
-        chartSheet.Name = "Chart"
-    Else
-        chartSheet.Cells.Clear ' Clear the existing chart if the sheet already exists
-    End If
 
     ' Define the data range for the pie chart (the second and third columns in the summary table)
     Set dataRange = objSummarySheet.Range("B2:B4") ' Sum column (from row 2 to row 4)
-
-    ' Add a chart to the "Chart" sheet (positioned with a specific size)
-    Set objChart = chartSheet.ChartObjects.Add(Left:=100, Top:=50, Width:=375, Height:=225)
+    
+    ' Add a chart to the worksheet
+    Set objChart = objSummarySheet.ChartObjects.Add(Left:=400, Top:=100, Width:=375, Height:=225)
 
     ' Set the chart type to pie chart
-    objChart.Chart.ChartType = xlPie
+    objChart.Chart.ChartType = 5 ' xlPie
 
     ' Set the chart data source (categories and their corresponding values)
     objChart.Chart.SetSourceData Source:=dataRange
 
     ' Set the chart's category labels (the "Status" column)
     objChart.Chart.SeriesCollection(1).XValues = objSummarySheet.Range("C2:C4") ' Status column
-
-    ' Set the pie chart colors (Pink, Green, Yellow)
-    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
-    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(0, 255, 0) ' Green
-    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow
 
     ' Optional: Apply data labels to the pie chart
     objChart.Chart.ApplyDataLabels

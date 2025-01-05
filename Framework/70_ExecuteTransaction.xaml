@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1465,716</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1385,842</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -75,6 +75,7 @@
       <x:String>UiPath.MicrosoftOffice365.Activities.Files.Enums</x:String>
       <x:String>UiPath.MicrosoftOffice365.Activities.Enums</x:String>
       <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>System.Globalization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -177,20 +178,43 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="496,1455" sap2010:WorkflowViewState.IdRef="Sequence_52">
+    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="496,1670" sap2010:WorkflowViewState.IdRef="Sequence_52">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xA;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xA;Dim dt As New DataTable()&#xA;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xA;If deserializedList.Count &gt; 0 Then&#xA;    ' Add columns from the first dictionary in the list&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xA;        dt.Columns.Add(column.Key)&#xA;    Next&#xA;End If&#xA;&#xA;' Step 4: Add rows to the DataTable&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xA;    Dim newRow As DataRow = dt.NewRow()&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xA;    Next&#xA;    dt.Rows.Add(newRow)&#xA;Next&#xA;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xA;out_dt = dt&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,276" sap2010:WorkflowViewState.IdRef="Sequence_54">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xD;&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xD;&#xA;&#xD;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xD;&#xA;Dim dt As New DataTable()&#xD;&#xA;&#xD;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xD;&#xA;If deserializedList.Count &gt; 0 Then&#xD;&#xA;    ' Add columns from the first dictionary in the list&#xD;&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xD;&#xA;        dt.Columns.Add(column.Key)&#xD;&#xA;    Next&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;' Step 4: Add rows to the DataTable&#xD;&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xD;&#xA;    Dim newRow As DataRow = dt.NewRow()&#xD;&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xD;&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xD;&#xA;    Next&#xD;&#xA;    dt.Rows.Add(newRow)&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xD;&#xA;out_dt = dt&#xD;&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+              <ui:InvokeCode.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt">[dt_data]</OutArgument>
+              </ui:InvokeCode.Arguments>
+            </ui:InvokeCode>
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xD;&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xD;&#xA;&#xD;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xD;&#xA;Dim dt As New DataTable()&#xD;&#xA;&#xD;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xD;&#xA;If deserializedList.Count &gt; 0 Then&#xD;&#xA;    ' Add columns from the first dictionary in the list&#xD;&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xD;&#xA;        ' Add the column&#xD;&#xA;        dt.Columns.Add(column.Key)&#xD;&#xA;        &#xD;&#xA;        ' Check if the column name contains &quot;תאריך&quot; and set its DataType as Date&#xD;&#xA;        If column.Key.Contains(&quot;תאריך&quot;) Then&#xD;&#xA;            dt.Columns(column.Key).DataType = GetType(Date)&#xD;&#xA;        End If&#xD;&#xA;    Next&#xD;&#xA;End If&#xD;&#xA;&#xD;&#xA;' Step 4: Add rows to the DataTable&#xD;&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xD;&#xA;    Dim newRow As DataRow = dt.NewRow()&#xD;&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xD;&#xA;        ' Set the value in the row&#xD;&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xD;&#xA;    Next&#xD;&#xA;    dt.Rows.Add(newRow)&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xD;&#xA;out_dt = dt&#xD;&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
         <ui:InvokeCode.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt">[dt_data]</OutArgument>
         </ui:InvokeCode.Arguments>
       </ui:InvokeCode>
-      <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="תאריך פעילות" DataTable="[dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[dt_data]" SortOrder="Descending" />
+      <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="תאריך פעילות" DataTable="[dt_data]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Decending" OutputDataTable="[dt_data]" SortOrder="Descending" />
       <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Converted SpecificContent data from the queue item into datatable object&quot;]" />
       <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
@@ -226,15 +250,23 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CreateDirectory>
+      <Assign DisplayName="Sort by שם מנהל פרויקט -&gt;קוד חשבון -&gt;תאריך פעילות" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[dt_data]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In dt_data.AsEnumerable()
+Order By row.Field(Of String)("שם מנהל פרויקט"), 
+        row.Field(Of String)("קוד חשבון"),
+        row.Field(Of DateTime)("תאריך פעילות") Descending
+Select row).CopyToDataTable()]</InArgument>
+        </Assign.Value>
+      </Assign>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xD;&#xA;+ executes a script that convert the excel sheet to html" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xA;+ executes a script that convert the excel sheet to html" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -255,15 +287,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="sends mail to current manager with the pdf, excel and html attached " DisplayName="Utills\Send_Report_Via_Mail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Utills\Send_Report_Via_Mail.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_htmlContent">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_projectManagerName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_htmlContent">[str_htmlContent]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_projectManagerName">[dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

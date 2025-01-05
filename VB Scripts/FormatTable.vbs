@@ -56,8 +56,7 @@ Sub FormatTable()
     WriteGrandTotal outputSheet, grandTotal, outputRow
     
     ' Format the output sheet
-    FormatSheet outputSheet
-    
+    FormatSheet outputSheet    
 CleanExit:
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic

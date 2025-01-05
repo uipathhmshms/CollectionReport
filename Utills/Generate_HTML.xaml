@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>980,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1385,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -102,7 +102,7 @@
     <Flowchart.StartNode>
       <x:Reference>__ReferenceID2</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
@@ -110,7 +110,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,191.5 300,211.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads sheet001.html file that generated for current report" Content="[str_sheet001]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;sheet001.html&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
+      <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads sheet002.html file that generated for current report" Content="[str_sheet001]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;sheet002.html&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -118,7 +118,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ReadTextFile>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,211.5</av:Point>
@@ -134,7 +134,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadTextFile>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID0">
+            <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">83,325.5</av:Point>
@@ -205,6 +205,7 @@
             "&lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _
             "&lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _
         "&lt;/div&gt;" &amp; vbCrLf &amp; _
+"&lt;img src='image001.png' alt='Pie Chart' /&gt;" &amp; _
         str_sheet001BodyContent &amp; vbCrLf &amp; _
         "&lt;div class=""footer""&gt;" &amp; vbCrLf &amp; _
             "&lt;p&gt;&amp;copy; 2024 Lidor Test.&lt;/p&gt;" &amp; vbCrLf &amp; _
