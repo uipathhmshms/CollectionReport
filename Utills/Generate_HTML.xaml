@@ -126,7 +126,7 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,211.5</av:Point>
               <av:Size x:Key="ShapeSize">200,94</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,305.5 300,335.5 417,335.5 417,355.5</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">300,305.5 300,355.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads the style sheet that generated for current report" Content="[str_styleSheetContent]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;stylesheet.css&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_3">
@@ -140,7 +140,7 @@
             <FlowStep x:Name="__ReferenceID1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">200,355.5</av:Point>
+                  <av:Point x:Key="ShapeLocation">83,355.5</av:Point>
                   <av:Size x:Key="ShapeSize">434,52</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -179,7 +179,99 @@
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                min-height:130px;" &amp; vbCrLf &amp; _ 
+"                min-height:150px;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
+"                background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .footer {" &amp; vbCrLf &amp; _ 
+"                background-color: #333;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                min-height:70px;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin-top:10px;"  &amp; vbCrLf &amp; _
+"            }" &amp; vbCrLf &amp; _ 
+"            table{"  &amp; vbCrLf &amp; _ 
+"                 width:70%; !important" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;body&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""header""&gt;" &amp; vbCrLf &amp; _ 
+"            &lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"            &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""content""&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;div width=""400"" style=""max-width:100%""&gt;" &amp; vbCrLf &amp; _ 
+                    str_sheet001BodyContent &amp; vbCrLf &amp; _ 
+"                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"                 &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" style=""max-width:100%""&gt;" &amp; vbCrLf &amp; _
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
+"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
+"&lt;/html&gt;"]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">3,554</av:Point>
+          <av:Size x:Key="ShapeSize">434,52</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
+"&lt;html&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;head&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;style&gt;" &amp; vbCrLf &amp; _ 
+			 str_styleSheetContent &amp; vbCrLf &amp; _ 
+"            html, body {" &amp; vbCrLf &amp; _ 
+"                padding: 20px;" &amp; vbCrLf &amp; _ 
+"                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
+"                direction: rtl;" &amp; vbCrLf &amp; _ 
+"                background-color: white;" &amp; vbCrLf &amp; _ 
+"                line-height: 1.6;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .header {" &amp; vbCrLf &amp; _ 
+"                background-color: #6a11cb;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                min-height:150px;" &amp; vbCrLf &amp; _ 
 "                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
 "                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
 "                background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _ 
@@ -214,14 +306,10 @@
 "                justify-content: space-between;" &amp; vbCrLf &amp; _ 
 "                gap: 20px;" &amp; vbCrLf &amp; _ 
 "                flex-wrap: wrap;" &amp; vbCrLf &amp; _ 
-"                width:60%;" &amp; vbCrLf &amp; _ 
+"                width:80%;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .content &gt; div {" &amp; vbCrLf &amp; _ 
-"                flex: 1 1 45%;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            .content img {" &amp; vbCrLf &amp; _ 
-"                max-width: 100px !important;" &amp; vbCrLf &amp; _ 
-"                max-height: 100px !important;" &amp; vbCrLf &amp; _ 
+"                flex: 1 1 35%;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            @media (max-width: 1000px) {" &amp; vbCrLf &amp; _ 
 "                .content {" &amp; vbCrLf &amp; _ 
@@ -245,408 +333,30 @@
 "                &lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
                     str_sheet001BodyContent &amp; vbCrLf &amp; _ 
-"                 &lt;img src=""image001.png"" alt=""Pie Chart"" style=""width:50px;height:50px;""&gt;" &amp; vbCrLf &amp; _
+"                 &lt;img src=""image001.png"" alt=""Pie Chart"" style=""width:30%;height:30%;""&gt;" &amp; vbCrLf &amp; _
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
 "            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>
-                      </ui:AssignOperation.Value>
-                    </ui:AssignOperation>
-                  </scg:List>
-                </ui:MultipleAssign.AssignOperations>
-              </ui:MultipleAssign>
-            </FlowStep>
-          </FlowStep.Next>
-        </FlowStep>
-      </FlowStep.Next>
-    </FlowStep>
-    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_3">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">3,434</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="541,258" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-              <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _
-"&lt;html lang=""he""&gt;" &amp; vbCrLf &amp; _
-"&lt;head&gt;" &amp; vbCrLf &amp; _ 
-    "&lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _
-    "&lt;meta name=""viewport"" content=""width=device-width, initial-scale=1.0""&gt;" &amp; vbCrLf &amp; _
-    "&lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _
-    "&lt;style&gt;" &amp; vbCrLf &amp; _
-        "* {" &amp; vbCrLf &amp; _
-            "margin: 0;" &amp; vbCrLf &amp; _
-            "padding: 0;" &amp; vbCrLf &amp; _
-            "box-sizing: border-box;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "body {" &amp; vbCrLf &amp; _
-            "font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _
-            "direction: rtl;" &amp; vbCrLf &amp; _
-            "background-color: #f5f7fa;" &amp; vbCrLf &amp; _
-            "color: #333;" &amp; vbCrLf &amp; _
-            "line-height: 1.6;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "header {" &amp; vbCrLf &amp; _
-            "text-align: center;" &amp; vbCrLf &amp; _
-            "padding: 40px 20px;" &amp; vbCrLf &amp; _
-            "font-size: 2.5rem;" &amp; vbCrLf &amp; _
-            "font-weight: bold;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _
-            "border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "header img {" &amp; vbCrLf &amp; _
-            "max-width: 100%;" &amp; vbCrLf &amp; _
-            "height: auto;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        ".content {" &amp; vbCrLf &amp; _
-            "padding: 40px 20px;" &amp; vbCrLf &amp; _
-            "max-width: 1200px;" &amp; vbCrLf &amp; _
-            "margin: 0 auto;" &amp; vbCrLf &amp; _
-            "background-color: white;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);" &amp; vbCrLf &amp; _
-            "border-radius: 20px;" &amp; vbCrLf &amp; _  
-            "margin-top: -20px;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        ".content p {" &amp; vbCrLf &amp; _
-            "font-size: 1.2rem;" &amp; vbCrLf &amp; _
-            "color: #555;" &amp; vbCrLf &amp; _
-            "margin-bottom: 20px;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer {" &amp; vbCrLf &amp; _
-            "background-color: #333 !important;" &amp; vbCrLf &amp; _
-            "color: white;" &amp; vbCrLf &amp; _
-            "text-align: center;" &amp; vbCrLf &amp; _
-            "padding: 20px;" &amp; vbCrLf &amp; _
-            "font-size: 0.9rem;" &amp; vbCrLf &amp; _
-            "position: relative;" &amp; vbCrLf &amp; _
-            "bottom: 0;" &amp; vbCrLf &amp; _
-            "width: 100%;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _
-            "text-align: center;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer a {" &amp; vbCrLf &amp; _
-            "color: #ff4081;" &amp; vbCrLf &amp; _
-            "text-decoration: none;" &amp; vbCrLf &amp; _
-            "font-weight: bold;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer a:hover {" &amp; vbCrLf &amp; _
-            "text-decoration: underline;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "@media (max-width: 768px) {" &amp; vbCrLf &amp; _
-            "header {" &amp; vbCrLf &amp; _
-                "font-size: 2rem;" &amp; vbCrLf &amp; _
-                "padding: 30px 15px;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            ".content {" &amp; vbCrLf &amp; _
-                "padding: 30px 15px;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        str_styleSheetContent &amp; vbCrLf &amp; _
-        ".side-by-side {" &amp; vbCrLf &amp; _
-            "display: flex;" &amp; vbCrLf &amp; _
-            "justify-content: space-between;" &amp; vbCrLf &amp; _
-            "align-items: flex-start;" &amp; vbCrLf &amp; _
-            "flex-wrap: wrap;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        ".side-by-side img {" &amp; vbCrLf &amp; _
-            "max-width: 48%;" &amp; vbCrLf &amp; _
-            "margin-bottom: 20px;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-    "&lt;/style&gt;" &amp; vbCrLf &amp; _
-"&lt;/head&gt;" &amp; vbCrLf &amp; _
-"&lt;body&gt;" &amp; vbCrLf &amp; _
-    "&lt;header&gt;" &amp; vbCrLf &amp; _
-        "&lt;img src='header.png' alt='Header IMG' /&gt;" &amp; vbCrLf &amp; _
-    "&lt;/header&gt;" &amp; vbCrLf &amp; _
-    "&lt;div class=""content""&gt;" &amp; vbCrLf &amp; _
-        "&lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;{name}&lt;/span&gt;&lt;/h1&gt;" &amp; vbCrLf &amp; _
-        "&lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _
-        "&lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _
-        "&lt;div class=""side-by-side""&gt;" &amp; vbCrLf &amp; _
-            "&lt;img src='image001.png' alt='Pie Chart' /&gt;" &amp; vbCrLf &amp; _
-            str_sheet001BodyContent &amp; vbCrLf &amp; _
-        "&lt;/div&gt;" &amp; vbCrLf &amp; _
-    "&lt;/div&gt;" &amp; vbCrLf &amp; _
-    "&lt;footer&gt;" &amp; vbCrLf &amp; _
-        "| Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _
-    "&lt;/footer&gt;" &amp; vbCrLf &amp; _
-"&lt;/body&gt;" &amp; vbCrLf &amp; _
-"&lt;/html&gt;"]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                </scg:List>
-              </ui:MultipleAssign.AssignOperations>
-            </ui:MultipleAssign>
-          </Sequence>
-        </ui:CommentOut.Body>
-      </ui:CommentOut>
-    </FlowStep>
-    <x:Reference>__ReferenceID0</x:Reference>
-    <FlowStep>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">43,574</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="541,258" sap2010:WorkflowViewState.IdRef="Sequence_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-              <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _
-"&lt;html&gt;" &amp; vbCrLf &amp; _
-    "&lt;head&gt;" &amp; vbCrLf &amp; _
-        "&lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _
-        "&lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _
-        "&lt;style&gt;" &amp; vbCrLf &amp; _
-		    str_styleSheetContent &amp; vbCrLf &amp; _
-            "html, body {" &amp; vbCrLf &amp; _
-                "height: 100% !important;" &amp; vbCrLf &amp; _
-                "margin: 0;" &amp; vbCrLf &amp; _
-                "padding: 0;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            ".header {" &amp; vbCrLf &amp; _
-				"background-color: #104861;" &amp; vbCrLf &amp; _
-                "color: white;" &amp; vbCrLf &amp; _
-                "padding: 20px;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "width: 100%;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            ".footer {" &amp; vbCrLf &amp; _
-				"background-color: #104861;" &amp; vbCrLf &amp; _
-                "color: white;" &amp; vbCrLf &amp; _
-                "padding: 15px;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "width: 100%;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "th, td {" &amp; vbCrLf &amp; _
-                "border: 1px solid #ddd;" &amp; vbCrLf &amp; _
-                "padding: 10px;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "transition: background-color 0.3s, box-shadow 0.3s;" &amp; vbCrLf &amp; _
-                "overflow-wrap: break-word;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "tr:hover {" &amp; vbCrLf &amp; _
-                "background-color: #e0f7fa;" &amp; vbCrLf &amp; _
-                "box-shadow: 0 0 5px #00acc1;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "tr.clicked {" &amp; vbCrLf &amp; _
-                "background-color: #ffe082 !important;" &amp; vbCrLf &amp; _
-                "box-shadow: 0 0 10px #ffa000 !important;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-        "&lt;/style&gt;" &amp; vbCrLf &amp; _
-    "&lt;/head&gt;" &amp; vbCrLf &amp; _
-    "&lt;body&gt;" &amp; vbCrLf &amp; _
-        "&lt;div class=""header""&gt;" &amp; vbCrLf &amp; _
-            "&lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _
-            "&lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _
-        "&lt;/div&gt;" &amp; vbCrLf &amp; _
-"&lt;img src='image001.png' alt='Pie Chart' /&gt;" &amp; _
-        str_sheet001BodyContent &amp; vbCrLf &amp; _
-        "&lt;div class=""footer""&gt;" &amp; vbCrLf &amp; _
-            "&lt;p&gt;&amp;copy; 2024 Lidor Test.&lt;/p&gt;" &amp; vbCrLf &amp; _
-        "&lt;/div&gt;" &amp; vbCrLf &amp; _
-    "&lt;/body&gt;" &amp; vbCrLf &amp; _
-"&lt;/html&gt;"]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                </scg:List>
-              </ui:MultipleAssign.AssignOperations>
-            </ui:MultipleAssign>
-          </Sequence>
-        </ui:CommentOut.Body>
-      </ui:CommentOut>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
     </FlowStep>
     <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">33,514</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="541,258" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-              <ui:MultipleAssign.AssignOperations>
-                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
-                    <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
-                    </ui:AssignOperation.To>
-                    <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _
-"&lt;html lang=""he""&gt;" &amp; vbCrLf &amp; _
-"&lt;head&gt;" &amp; vbCrLf &amp; _
-    "&lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _
-    "&lt;meta name=""viewport"" content=""width=device-width, initial-scale=1.0""&gt;" &amp; vbCrLf &amp; _
-    "&lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _
-    "&lt;style&gt;" &amp; vbCrLf &amp; _
-        "* {" &amp; vbCrLf &amp; _
-            "margin: 0;" &amp; vbCrLf &amp; _
-            "padding: 0;" &amp; vbCrLf &amp; _
-            "box-sizing: border-box;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "body {" &amp; vbCrLf &amp; _
-            "font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _
-            "direction: rtl;" &amp; vbCrLf &amp; _
-            "background-color: #f5f7fa;" &amp; vbCrLf &amp; _
-            "color: #333;" &amp; vbCrLf &amp; _
-            "line-height: 1.6;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "header {" &amp; vbCrLf &amp; _
-            "text-align: center;" &amp; vbCrLf &amp; _
-            "padding: 40px 20px;" &amp; vbCrLf &amp; _
-            "font-size: 2.5rem;" &amp; vbCrLf &amp; _
-            "font-weight: bold;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _
-            "border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "header img {" &amp; vbCrLf &amp; _
-            "max-width: 100%;" &amp; vbCrLf &amp; _
-            "height: auto;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        ".content {" &amp; vbCrLf &amp; _
-            "padding: 40px 20px;" &amp; vbCrLf &amp; _
-            "max-width: 1200px;" &amp; vbCrLf &amp; _
-            "margin: 0 auto;" &amp; vbCrLf &amp; _
-            "background-color: white;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);" &amp; vbCrLf &amp; _
-            "border-radius: 10px;" &amp; vbCrLf &amp; _
-            "margin-top: -20px;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        ".content p {" &amp; vbCrLf &amp; _
-            "font-size: 1.2rem;" &amp; vbCrLf &amp; _
-            "color: #555;" &amp; vbCrLf &amp; _
-            "margin-bottom: 20px;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer {" &amp; vbCrLf &amp; _
-            "background-color: #333;" &amp; vbCrLf &amp; _
-            "color: white;" &amp; vbCrLf &amp; _
-            "text-align: center;" &amp; vbCrLf &amp; _
-            "padding: 20px;" &amp; vbCrLf &amp; _
-            "font-size: 0.9rem;" &amp; vbCrLf &amp; _
-            "position: relative;" &amp; vbCrLf &amp; _
-            "bottom: 0;" &amp; vbCrLf &amp; _
-            "width: 100%;" &amp; vbCrLf &amp; _
-            "box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer a {" &amp; vbCrLf &amp; _
-            "color: #ff4081;" &amp; vbCrLf &amp; _
-            "text-decoration: none;" &amp; vbCrLf &amp; _
-            "font-weight: bold;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "footer a:hover {" &amp; vbCrLf &amp; _
-            "text-decoration: underline;" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-        "@media (max-width: 768px) {" &amp; vbCrLf &amp; _
-            "header {" &amp; vbCrLf &amp; _
-                "font-size: 2rem;" &amp; vbCrLf &amp; _
-                "padding: 30px 15px;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            ".content {" &amp; vbCrLf &amp; _
-                "padding: 30px 15px;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-        "}" &amp; vbCrLf &amp; _
-			str_styleSheetContent &amp; vbCrLf &amp; _
-    "&lt;/style&gt;" &amp; vbCrLf &amp; _
-"&lt;/head&gt;" &amp; vbCrLf &amp; _
-"&lt;body&gt;" &amp; vbCrLf &amp; _
-    "&lt;header&gt;" &amp; vbCrLf &amp; _
-        "&lt;img src='header.png' alt='Header IMG' /&gt;" &amp; _
-    "&lt;/header&gt;" &amp; vbCrLf &amp; _
-    "&lt;div class=""content""&gt;" &amp; vbCrLf &amp; _
-        "&lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;{name}&lt;/span&gt;&lt;/h1&gt;" &amp; vbCrLf &amp; _
-        "&lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _
-        "&lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _
-		"&lt;img src='image001.png' alt='Pie Chart' /&gt;" &amp; _
-		str_sheet001BodyContent &amp; vbCrLf &amp; _
-    "&lt;/div&gt;" &amp; vbCrLf &amp; _
-    "&lt;footer&gt;" &amp; vbCrLf &amp; _
-        "| Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _
-    "&lt;/footer&gt;" &amp; vbCrLf &amp; _
-"&lt;/body&gt;" &amp; vbCrLf &amp; _
-"&lt;/html&gt;"]</InArgument>
-                    </ui:AssignOperation.Value>
-                  </ui:AssignOperation>
-                </scg:List>
-              </ui:MultipleAssign.AssignOperations>
-            </ui:MultipleAssign>
-          </Sequence>
-        </ui:CommentOut.Body>
-      </ui:CommentOut>
-    </FlowStep>
-    <x:Reference>__ReferenceID1</x:Reference>
-    <FlowStep>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">53,24</av:Point>
+          <av:Point x:Key="ShapeLocation">3,474</av:Point>
           <av:Size x:Key="ShapeSize">434,52</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
               </ui:AssignOperation.To>
@@ -654,75 +364,109 @@
                 <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _
-"&lt;html&gt;" &amp; vbCrLf &amp; _
-    "&lt;head&gt;" &amp; vbCrLf &amp; _
-        "&lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _
-        "&lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _
-        "&lt;style&gt;" &amp; vbCrLf &amp; _
-			"html, body {" &amp; vbCrLf &amp; _
-	            "padding: 20px;" &amp; vbCrLf &amp; _  
-	            "font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _
-	            "direction: rtl;" &amp; vbCrLf &amp; _
-	            "background-color: white;" &amp; vbCrLf &amp; _
-	            "line-height: 1.6;" &amp; vbCrLf &amp; _
-	        "}" &amp; vbCrLf &amp; _
-            ".header {" &amp; vbCrLf &amp; _
-				"background-color: #6a11cb;" &amp; vbCrLf &amp; _
-                "color: white;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "width: 100%;" &amp; vbCrLf &amp; _
-				"border-bottom: 4px solid #ff4081;"  &amp; vbCrLf &amp; _
-				"box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _
-				 "background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            ".footer {" &amp; vbCrLf &amp; _
-				"background-color: #6a11cb;" &amp; vbCrLf &amp; _
-                "color: white;" &amp; vbCrLf &amp; _
-                "padding: 15px;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "width: 100%;" &amp; vbCrLf &amp; _
-				"border-top: 4px solid #ff4081;"  &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "th, td {" &amp; vbCrLf &amp; _
-                "border: 1px solid #ddd;" &amp; vbCrLf &amp; _
-                "padding: 10px;" &amp; vbCrLf &amp; _
-                "text-align: center;" &amp; vbCrLf &amp; _
-                "transition: background-color 0.3s, box-shadow 0.3s;" &amp; vbCrLf &amp; _
-                "overflow-wrap: break-word;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "tr:hover {" &amp; vbCrLf &amp; _
-                "background-color: #e0f7fa;" &amp; vbCrLf &amp; _
-                "box-shadow: 0 0 5px #00acc1;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-            "tr.clicked {" &amp; vbCrLf &amp; _
-                "background-color: #ffe082 !important;" &amp; vbCrLf &amp; _
-                "box-shadow: 0 0 10px #ffa000 !important;" &amp; vbCrLf &amp; _
-            "}" &amp; vbCrLf &amp; _
-			str_styleSheetContent &amp; vbCrLf &amp; _
-        "&lt;/style&gt;" &amp; vbCrLf &amp; _
-    "&lt;/head&gt;" &amp; vbCrLf &amp; _
-    "&lt;body&gt;" &amp; vbCrLf &amp; _
-        "&lt;div class=""header""&gt;" &amp; vbCrLf &amp; _
-            "&lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _
-            "&lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _
-        "&lt;/div&gt;" &amp; vbCrLf &amp; _
-		"&lt;div class=""content""&gt;" &amp; vbCrLf &amp; _
-	        "&lt;h1&gt; שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;{name}&lt;/span&gt; &lt;/h1&gt;" &amp; vbCrLf &amp; _
-	        "&lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _
-	        "&lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _
-	        str_sheet001BodyContent &amp; vbCrLf &amp; _
-	        "&lt;img src='image001.png' alt='Pie Chart' /&gt;" &amp; vbCrLf &amp; _
-    	"&lt;/div&gt;" &amp; vbCrLf &amp; _
-        "&lt;div class=""footer"" dir=""rtl""&gt;" &amp; vbCrLf &amp; _
-        	"| Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _
-    	"&lt;/div&gt;" &amp; vbCrLf &amp; _
-    "&lt;/body&gt;" &amp; vbCrLf &amp; _
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
+"&lt;html&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;head&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;style&gt;" &amp; vbCrLf &amp; _ 
+			 str_styleSheetContent &amp; vbCrLf &amp; _ 
+"            html, body {" &amp; vbCrLf &amp; _ 
+"                padding: 20px;" &amp; vbCrLf &amp; _ 
+"                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
+"                direction: rtl;" &amp; vbCrLf &amp; _ 
+"                background-color: white;" &amp; vbCrLf &amp; _ 
+"                line-height: 1.6;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .header {" &amp; vbCrLf &amp; _ 
+"                background-color: #6a11cb;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                min-height:150px;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
+"                background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .footer {" &amp; vbCrLf &amp; _ 
+"                background-color: #333;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                min-height:70px;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin:10px;"  &amp; vbCrLf &amp; _
+"            }" &amp; vbCrLf &amp; _ 
+"            th, td {" &amp; vbCrLf &amp; _ 
+"                border: 1px solid #ddd;" &amp; vbCrLf &amp; _ 
+"                padding: 10px;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                transition: background-color 0.3s, box-shadow 0.3s;" &amp; vbCrLf &amp; _ 
+"                overflow-wrap: break-word;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr:hover {" &amp; vbCrLf &amp; _ 
+"                background-color: #e0f7fa;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 0 5px #00acc1;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr.clicked {" &amp; vbCrLf &amp; _ 
+"                background-color: #ffe082 !important;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 0 10px #ffa000 !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .content {" &amp; vbCrLf &amp; _ 
+"                display: flex;" &amp; vbCrLf &amp; _ 
+"                flex-direction: row;" &amp; vbCrLf &amp; _ 
+"                justify-content: space-between;" &amp; vbCrLf &amp; _ 
+"                gap: 20px;" &amp; vbCrLf &amp; _ 
+"                flex-wrap: wrap;" &amp; vbCrLf &amp; _ 
+"                width:80%;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .content &gt; div {" &amp; vbCrLf &amp; _ 
+"                flex: 1 1 35%;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            @media (max-width: 1000px) {" &amp; vbCrLf &amp; _ 
+"                .content {" &amp; vbCrLf &amp; _ 
+"                    flex-direction: column;" &amp; vbCrLf &amp; _ 
+"                    align-items: center;" &amp; vbCrLf &amp; _ 
+"                    width:100%;" &amp; vbCrLf &amp; _ 
+"display:none;"  &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"                .content &gt; div {" &amp; vbCrLf &amp; _ 
+"                    flex: 1 1 100%;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"           }" &amp; vbCrLf &amp; _ 
+"        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;body&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""header""&gt;" &amp; vbCrLf &amp; _ 
+"            &lt;h1&gt;דוח גבייה&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"            &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"&lt;table width=""100%"" cellpadding=""0"" cellspacing=""0"" border=""0"" style=""@media(max-width:800px){display:none;}""&gt;" &amp; vbCrLf &amp; _
+"    &lt;tr&gt;" &amp; vbCrLf &amp; _
+"        &lt;td style=""display:table-cell;width:50%;@media(max-width:600px){display:block;width:100%}"" valign=""top""&gt;" &amp; vbCrLf &amp; _
+           str_sheet001BodyContent &amp; vbCrLf &amp; _
+"        &lt;/td&gt;" &amp; vbCrLf &amp; _
+"        &lt;td style=""display:table-cell;width:50%;@media(max-width:600px){display:block;width:100%}"" valign=""top"" align=""center""&gt;" &amp; vbCrLf &amp; _
+"            &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" style=""max-width:100%"" /&gt;" &amp; vbCrLf &amp; _
+"        &lt;/td&gt;" &amp; vbCrLf &amp; _
+"    &lt;/tr&gt;" &amp; vbCrLf &amp; _
+"&lt;/table&gt;"&amp; vbCrLf &amp; _ 
+"        &lt;div class=""content"" style=""width:100%;display:flex;gap:20px;""&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+                    str_sheet001BodyContent &amp; vbCrLf &amp; _ 
+"                 &lt;img src=""image001.png"" alt=""Pie Chart"" style=""width:30%;height:30%;""&gt;" &amp; vbCrLf &amp; _
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
+"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
