@@ -44,39 +44,37 @@ Sub CreateSummaryTable()
         End Select
     Next i
 
-
-
-
     ' Calculate percentages correctly
     percentDelayed = (totalDelayed / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
     percentOnTime = (totalOnTime / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
     percentDebtAtRisk = (totalDebtAtRisk / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
 
-    ' Fill in the data in the summary sheet
+    ' Fill in the data in the summary sheet - Reordered as requested (On time, Delayed, Debt at risk)
     With objSummarySheet
         .Cells(1, 1).Value = "Relative Percentage"
         .Cells(1, 2).Value = "Sum"
         .Cells(1, 3).Value = "Status"
 
-        .Cells(2, 1).Value = Round(percentDelayed, 2) & "%"
-        .Cells(2, 2).Value = totalDelayed
-        .Cells(2, 3).Value = "Delayed"
+        ' First row - On time (Green)
+        .Cells(2, 1).Value = Round(percentOnTime, 2) & "%"
+        .Cells(2, 2).Value = totalOnTime
+        .Cells(2, 3).Value = "On time"
 
-        .Cells(3, 1).Value = Round(percentOnTime, 2) & "%"
-        .Cells(3, 2).Value = totalOnTime
-        .Cells(3, 3).Value = "On time"
+        ' Second row - Delayed (Yellow)
+        .Cells(3, 1).Value = Round(percentDelayed, 2) & "%"
+        .Cells(3, 2).Value = totalDelayed
+        .Cells(3, 3).Value = "Delayed"
 
+        ' Third row - Debt at risk (Red/Pink)
         .Cells(4, 1).Value = Round(percentDebtAtRisk, 2) & "%"
         .Cells(4, 2).Value = totalDebtAtRisk
         .Cells(4, 3).Value = "Debt at risk"
 
+        ' Grand Total row
         .Cells(5, 1).Value = "100%"
         .Cells(5, 2).Value = totalDelayed + totalOnTime + totalDebtAtRisk
         .Cells(5, 3).Value = "grandTotal"
     End With
-
-
-
 
     ' Apply styling and auto fit
     Call ApplySummaryTableStyling(objSummarySheet)
@@ -155,32 +153,36 @@ Sub CreatePieChart(objSummarySheet As Object)
         Set chartSheet = ThisWorkbook.Sheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count))
         chartSheet.Name = "Chart"
     Else
-        chartSheet.Cells.Clear ' Clear the existing chart if the sheet already exists
+        chartSheet.Cells.Clear
     End If
 
     ' Define the data range for the pie chart (the second and third columns in the summary table)
     Set dataRange = objSummarySheet.Range("B2:B4") ' Sum column (from row 2 to row 4)
 
-    ' Add a chart to the "Chart" sheet (positioned with a specific size)
+    ' Add a chart to the "Chart" sheet
     Set objChart = chartSheet.ChartObjects.Add(Left:=100, Top:=50, Width:=375, Height:=225)
 
     ' Set the chart type to pie chart
     objChart.Chart.ChartType = xlPie
 
-    ' Set the chart data source (categories and their corresponding values)
+    ' Set the chart data source
     objChart.Chart.SetSourceData Source:=dataRange
 
-    ' Set the chart's category labels (the "Status" column)
-    objChart.Chart.SeriesCollection(1).XValues = objSummarySheet.Range("C2:C4") ' Status column
+    ' Remove the legend
+    objChart.Chart.HasLegend = False
 
-    ' Set the pie chart colors (Pink, Green, Yellow)
-    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow    
-    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(0, 255, 0) ' Green
+    ' Set the pie chart colors to match the table (Green, Yellow, Pink)
+    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(0, 255, 0) ' Green
+    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow
     objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
 
-    ' Remove all data labels
+    ' Remove data labels
     On Error Resume Next
     objChart.Chart.SeriesCollection(1).DataLabels.Delete
     On Error GoTo 0
 End Sub
+
+
+
+
 

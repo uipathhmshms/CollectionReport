@@ -24,6 +24,12 @@ Sub CreateSummaryTable()
     lastRow = objSheet.Cells(objSheet.Rows.Count, 1).End(xlUp).Row
     grandTotal = objSheet.Cells(lastRow, 11).Value
 
+    ' Initialize totals for different categories
+    totalDelayed = 0
+    totalOnTime = 0
+    totalDebtAtRisk = 0
+
+    ' Loop through the rows to calculate sums based on status
     For i = 2 To lastRow
         rowStatus = objSheet.Cells(i, 10).Value
         rowSum = objSheet.Cells(i, 11).Value
@@ -38,36 +44,44 @@ Sub CreateSummaryTable()
         End Select
     Next i
 
-    percentDelayed = (totalDelayed / grandTotal) * 100
-    percentOnTime = (totalOnTime / grandTotal) * 100
-    percentDebtAtRisk = (totalDebtAtRisk / grandTotal) * 100
 
+
+
+    ' Calculate percentages correctly
+    percentDelayed = (totalDelayed / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
+    percentOnTime = (totalOnTime / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
+    percentDebtAtRisk = (totalDebtAtRisk / (totalDelayed + totalOnTime + totalDebtAtRisk)) * 100
+
+    ' Fill in the data in the summary sheet
     With objSummarySheet
         .Cells(1, 1).Value = "Relative Percentage"
         .Cells(1, 2).Value = "Sum"
         .Cells(1, 3).Value = "Status"
 
-        .Cells(2, 1).Value = Format(percentDelayed, "0.00%")
+        .Cells(2, 1).Value = Round(percentDelayed, 2) & "%"
         .Cells(2, 2).Value = totalDelayed
         .Cells(2, 3).Value = "Delayed"
 
-        .Cells(3, 1).Value = Format(percentOnTime, "0.00%")
+        .Cells(3, 1).Value = Round(percentOnTime, 2) & "%"
         .Cells(3, 2).Value = totalOnTime
         .Cells(3, 3).Value = "On time"
 
-        .Cells(4, 1).Value = Format(percentDebtAtRisk, "0.00%")
+        .Cells(4, 1).Value = Round(percentDebtAtRisk, 2) & "%"
         .Cells(4, 2).Value = totalDebtAtRisk
         .Cells(4, 3).Value = "Debt at risk"
 
         .Cells(5, 1).Value = "100%"
-        .Cells(5, 2).Value = grandTotal
+        .Cells(5, 2).Value = totalDelayed + totalOnTime + totalDebtAtRisk
         .Cells(5, 3).Value = "grandTotal"
     End With
 
-    ' Apply formatting for the summary table
-    call ApplySummaryTableStyling(objSummarySheet)
-    call AutoFitColumns(objSummarySheet)
-    Call CreatePieChart(objSummarySheet) 
+
+
+
+    ' Apply styling and auto fit
+    Call ApplySummaryTableStyling(objSummarySheet)
+    Call AutoFitColumns(objSummarySheet)
+    Call CreatePieChart(objSummarySheet)
 End Sub
 
 Sub ApplySummaryTableStyling(objSummarySheet As Object)
@@ -160,10 +174,13 @@ Sub CreatePieChart(objSummarySheet As Object)
     objChart.Chart.SeriesCollection(1).XValues = objSummarySheet.Range("C2:C4") ' Status column
 
     ' Set the pie chart colors (Pink, Green, Yellow)
-    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
+    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow    
     objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(0, 255, 0) ' Green
-    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow
+    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
 
-    ' Optional: Apply data labels to the pie chart
-    objChart.Chart.ApplyDataLabels
+    ' Remove all data labels
+    On Error Resume Next
+    objChart.Chart.SeriesCollection(1).DataLabels.Delete
+    On Error GoTo 0
 End Sub
+
