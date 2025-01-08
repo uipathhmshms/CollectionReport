@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>890,1295</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,1215</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Report_Via_Mail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -125,7 +125,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Collection_Report_Mail_CC" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/CollectionReport" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Mail_CC_Thursday_Test" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/CollectionReport" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
               <ui:GetRobotAsset.Value>
                 <OutArgument x:TypeArguments="x:String">[str_mailCC]</OutArgument>
               </ui:GetRobotAsset.Value>
@@ -133,15 +133,9 @@
             <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[{str_mailCC}]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot; בדיקה דוח גבייה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
               <umam:SendMail.Attachments>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                  <InArgument x:TypeArguments="x:String">
-                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;TempReport\&quot;+in_str_excelFileName+&quot;.xlsx&quot;" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String">
-                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;TempReport\&quot;+in_str_excelFileName+&quot;.pdf&quot;" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String">
-                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;TempReport\&quot;+in_str_excelFileName+&quot;_files&quot;+&quot;\image001.png&quot;" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+".xlsx"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+".pdf"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+"_files"+"\image001.png"]</InArgument>
                 </scg:List>
               </umam:SendMail.Attachments>
             </umam:SendMail>
