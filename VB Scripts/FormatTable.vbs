@@ -31,8 +31,8 @@ Sub FormatTable()
     End If
     
     ' Create output sheet
-    Set outputSheet = CreateOutputSheet(inputSheet)
-    
+    Set outputSheet = inputSheet  ' Instead of creating new sheet, use input sheet
+ 
     ' Get the last row in the input sheet
     inputLastRow = inputSheet.Cells(inputSheet.Rows.Count, 1).End(xlUp).Row
     If inputLastRow < 2 Then
