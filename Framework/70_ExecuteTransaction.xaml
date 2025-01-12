@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>890,995</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,1301</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -167,7 +167,7 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="512,930" sap2010:WorkflowViewState.IdRef="Sequence_49">
+  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="512,1236" sap2010:WorkflowViewState.IdRef="Sequence_49">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_data" />
       <Variable x:TypeArguments="x:String" Name="str_excelFileName" />
@@ -276,15 +276,9 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring" />
-        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -293,6 +287,21 @@ Select row).CopyToDataTable()]</InArgument>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Delete_Temporary_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Utills\Delete_Temporary_Sheets.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Add_Limited_Version_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utills\Add_Limited_Version_Report.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Delete_Temporary_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utills\Delete_Temporary_Sheets.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
