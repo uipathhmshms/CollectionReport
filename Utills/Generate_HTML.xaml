@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>890,738</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,738</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -166,35 +166,64 @@
 "        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;style&gt;" &amp; vbCrLf &amp; _ 
-			 str_styleSheetContent &amp; vbCrLf &amp; _ 
+str_styleSheetContent &amp; vbCrLf &amp; _ 
 "            html, body {" &amp; vbCrLf &amp; _ 
 "                padding: 20px;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
 "                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
 "                direction: rtl;" &amp; vbCrLf &amp; _ 
-"                background-color: white;" &amp; vbCrLf &amp; _ 
-"                line-height: 1.6;" &amp; vbCrLf &amp; _ 
+"                background-color: #121212;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .header {" &amp; vbCrLf &amp; _ 
-"                background-color: #6a11cb;" &amp; vbCrLf &amp; _ 
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                min-height:150px;" &amp; vbCrLf &amp; _ 
 "                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
 "                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
 "                background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
+"                padding-bottom: 10px;"  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .footer {" &amp; vbCrLf &amp; _ 
-"                background-color: #333;" &amp; vbCrLf &amp; _ 
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                min-height:70px;" &amp; vbCrLf &amp; _ 
 "                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
-"                margin-top:10px;"  &amp; vbCrLf &amp; _
+"                padding-top: 10px;"  &amp; vbCrLf &amp; _ 
+"                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                display: block;" &amp; vbCrLf &amp; _ 
+"                clear: both;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
-"            table{"  &amp; vbCrLf &amp; _ 
-"                 width:70%; !important" &amp; vbCrLf &amp; _ 
+"            td {" &amp; vbCrLf &amp; _ 
+"                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
+"                white-space: normal;" &amp; vbCrLf &amp; _ 
+"                padding: 8px !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            table, th {" &amp; vbCrLf &amp; _ 
+"                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                border: 2px solid #ffffff;" &amp; vbCrLf &amp; _ 
+"                border-radius: 10px;" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 8px !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            table, th, td {" &amp; vbCrLf &amp; _ 
+"                color: white !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr:nth-child(1) {" &amp; vbCrLf &amp; _ 
+"                background-color: #00C853 !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr:nth-child(2) {" &amp; vbCrLf &amp; _ 
+"                background-color: #FFEB3B !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr:nth-child(3) {" &amp; vbCrLf &amp; _ 
+"                background-color: blue !important;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            @media (max-width: 768px) {" &amp; vbCrLf &amp; _ 
+"                table {" &amp; vbCrLf &amp; _ 
+"                    width: 100% !important;" &amp; vbCrLf &amp; _ 
+"                    max-width: 100%;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
@@ -207,13 +236,13 @@
 "                &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;div width=""400"" style=""max-width:100%""&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;div style=""text-align:center;""&gt;" &amp; vbCrLf &amp; _ 
                     str_sheet001BodyContent &amp; vbCrLf &amp; _ 
+"                 &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" &gt;" &amp; vbCrLf &amp; _ 
 "                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
-"                 &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" style=""max-width:100%""&gt;" &amp; vbCrLf &amp; _
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
-"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt;RPA team&lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>

@@ -1,5 +1,6 @@
 Sub ExportToHTML()
     Dim ws As Worksheet
+	Dim wsChart As Worksheet
     Dim htmlFile As String
     Dim fileNameWithoutExt As String
     Dim objChart As Object
@@ -14,10 +15,19 @@ Sub ExportToHTML()
     htmlFile = ThisWorkbook.Path & "\" & fileNameWithoutExt & ".html"
 
     ' Find and hide the chart (assuming the chart is the first chart object)
+	Set wsChart= ThisWorkbook.Sheets("Chart")
     On Error Resume Next
-    Set objChart = ws.ChartObjects(1) ' Adjust the index if there are multiple charts
+    Set objChart = wsChart.ChartObjects(1) ' Adjust the index if there are multiple charts
     If Not objChart Is Nothing Then
-        objChart.Visible = False
+        ' Remove borders from the Chart Area
+        objChart.Chart.ChartArea.Format.Line.Visible = msoFalse
+
+        ' Remove borders from the Plot Area
+        objChart.Chart.PlotArea.Format.Line.Visible = msoFalse
+        
+        ' Set the PlotArea and ChartArea background color to black (RGB(0, 0, 0))
+        objChart.Chart.PlotArea.Format.Fill.ForeColor.RGB = RGB(18, 18, 18) ' Black  
+        objChart.Chart.ChartArea.Format.Fill.ForeColor.RGB = RGB(18, 18, 18) ' Black
     End If
     On Error GoTo 0
 

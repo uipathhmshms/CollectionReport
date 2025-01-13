@@ -51,7 +51,7 @@ Sub CreateSummaryTable()
 
     ' Fill in the data in the summary sheet - Reordered as requested (On time, Delayed, Debt at risk)
     With objSummarySheet
-        .Cells(1, 1).Value = "Relative Percentage"
+        .Cells(1, 1).Value = "Percentage"
         .Cells(1, 2).Value = "Sum"
         .Cells(1, 3).Value = "Status"
 
@@ -97,25 +97,25 @@ Sub ApplySummaryTableStyling(objSummarySheet As Object)
         If objSummarySheet.Cells(i, 3).Value <> "" Then ' Only if there is a value in the "Status" column
             Select Case objSummarySheet.Cells(i, 3).Value ' Column 3 is "Status"
                 Case "Delayed"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 255, 0) ' Yellow for Delayed
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 255, 0) ' Yellow for Delayed
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 255, 0) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
                 Case "On time"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(0, 255, 0) ' Green for On time
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(0, 255, 0) ' Green for On time
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(0, 255, 0) ' Green for On time
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(102, 187, 106) ' Green for On time
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(102, 187, 106) ' Green for On time
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(102, 187, 106) ' Green for On time
                 Case "Debt at risk"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
             End Select
         End If
     Next i
 
     ' Apply background color to the Grand Total row (last row)
-    objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
-    objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
-    objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
+    ' objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
+    ' objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
+    ' objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
 
     ' Apply borders to the summary table (first 3 columns)
     With objSummarySheet.Range("A1:C" & lastRow) ' Use only up to the last actual data row
@@ -136,6 +136,8 @@ End Sub
 Sub AutoFitColumns(objSummarySheet As Object)
     ' AutoFit all columns in the Summary sheet
     objSummarySheet.Columns("A:C").AutoFit
+	' Add a bit of margin (adjusting the width by a small value)
+    objSummarySheet.Columns("A:C").ColumnWidth = objSummarySheet.Columns("A:C").ColumnWidth + 6 ' Adds extra 2 units of width
 End Sub
 
 Sub CreatePieChart(objSummarySheet As Object)
@@ -172,9 +174,9 @@ Sub CreatePieChart(objSummarySheet As Object)
     objChart.Chart.HasLegend = False
 
     ' Set the pie chart colors to match the table (Green, Yellow, Pink)
-    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(0, 255, 0) ' Green
-    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(255, 255, 0) ' Yellow
-    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
+    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(102, 187, 106) ' Green
+    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(255, 193, 7) ' Yellow
+    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(244, 67, 54) ' Pink
 
     ' Remove data labels
     On Error Resume Next
