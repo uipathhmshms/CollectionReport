@@ -4,7 +4,6 @@ Sub ExportToHTML()
     Dim htmlFile As String
     Dim fileNameWithoutExt As String
     Dim objChart As Object
-	Dim lastRow as Long
 
     ' Set the active worksheet
     Set ws = ThisWorkbook.Sheets(1)
@@ -31,16 +30,6 @@ Sub ExportToHTML()
         objChart.Chart.ChartArea.Format.Fill.ForeColor.RGB = RGB(18, 18, 18) ' Black
     End If
     On Error GoTo 0
-
-	' ' Convert the table to a chart so it will export as image and not html
-	' ' Find the last row of the table (assuming table is in columns A and B)
-    ' lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-	' ' Create a chart from the table range (for example, data in columns A and B)
-    ' Set chartObj = ws.ChartObjects.Add(Left:=100, Top:=50, Width:=400, Height:=300)
-    ' ' Set the chart's data range (e.g., columns A and B)
-    ' chartObj.Chart.SetSourceData Source:=ws.Range("A1:B" & lastRow)
-    ' ' Set the chart type (for example, column chart)
-    ' chartObj.Chart.ChartType = xlColumnClustered
 
     ' Export the sheet to HTML
     ws.SaveAs Filename:=htmlFile, FileFormat:=xlHTML

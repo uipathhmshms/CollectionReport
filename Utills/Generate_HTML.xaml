@@ -179,8 +179,6 @@ str_styleSheetContent &amp; vbCrLf &amp; _
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
 "                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
-"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
-"                background: linear-gradient(135deg, #6a11cb, #2575fc);" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
 "                padding-bottom: 10px;"  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
@@ -203,12 +201,7 @@ str_styleSheetContent &amp; vbCrLf &amp; _
 "            table, th {" &amp; vbCrLf &amp; _ 
 "                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border: 2px solid #ffffff;" &amp; vbCrLf &amp; _ 
-"                border-radius: 10px;" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 8px !important;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            table, th, td {" &amp; vbCrLf &amp; _ 
-"                color: white !important;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            tr:nth-child(1) {" &amp; vbCrLf &amp; _ 
 "                background-color: #00C853 !important;" &amp; vbCrLf &amp; _ 

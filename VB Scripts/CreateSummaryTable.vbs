@@ -87,35 +87,52 @@ Sub ApplySummaryTableStyling(objSummarySheet As Object)
     Dim lastRow As Long
     lastRow = objSummarySheet.Cells(objSummarySheet.Rows.Count, 1).End(-4162).Row ' Get last row
 
+    ' Apply font and background color for the header (row 1)
+    objSummarySheet.Rows(1).Font.Name = "David"
+    objSummarySheet.Rows(1).Font.Color = RGB(255, 255, 255) ' Set font color to white for header
+    objSummarySheet.Rows(1).Interior.Color = RGB(18, 18, 18) ' Set background color to dark for header
+
     ' Apply font and background color for the first three cells based on the "Status" column
     Dim i As Long
     For i = 2 To lastRow
-        ' Set font for all cells in the row to "David"
+        ' Set font for all cells in the row to "David" and text color to black
         objSummarySheet.Rows(i).Font.Name = "David"
+        objSummarySheet.Rows(i).Font.Color = RGB(0, 0, 0) ' Set font color to black
 
         ' Apply background color based on the "Status" column (column 3) only for the first 3 columns
         If objSummarySheet.Cells(i, 3).Value <> "" Then ' Only if there is a value in the "Status" column
             Select Case objSummarySheet.Cells(i, 3).Value ' Column 3 is "Status"
                 Case "Delayed"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 193, 7) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 255, 153) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 255, 153) ' Yellow for Delayed
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 255, 153) ' Yellow for Delayed
+		' Inside the Case "Delayed" block:
+					With objSummarySheet.Range(Cells(i, 1), Cells(i, 3))
+						.Borders.LineStyle = xlContinuous
+						.Borders.Color = RGB(230, 200, 100)  ' Darker yellow
+						.Borders.Weight = xlThin
+					End With
                 Case "On time"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(102, 187, 106) ' Green for On time
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(102, 187, 106) ' Green for On time
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(102, 187, 106) ' Green for On time
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(144, 238, 144) ' Green for On time
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(144, 238, 144) ' Green for On time
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(144, 238, 144) ' Green for On time
                 Case "Debt at risk"
-                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
-                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
-                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(244, 67, 54) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 1).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 2).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
+                    objSummarySheet.Cells(i, 3).Interior.Color = RGB(255, 182, 193) ' Pink for Debt at risk
             End Select
         End If
     Next i
 
-    ' Apply background color to the Grand Total row (last row)
-    ' objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
-    ' objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
-    ' objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(192, 192, 192) ' Gray for Grand Total row
+    ' Apply font and background color to the Grand Total row (last row)
+    objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	objSummarySheet.Cells(lastRow, 1).Font.Color = RGB(255, 255, 255) ' Set font color to white 
+
+    objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	objSummarySheet.Cells(lastRow, 2).Font.Color = RGB(255, 255, 255) ' Set font color to white 
+
+    objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	objSummarySheet.Cells(lastRow, 3).Font.Color = RGB(255, 255, 255) ' Set font color to white 
 
     ' Apply borders to the summary table (first 3 columns)
     With objSummarySheet.Range("A1:C" & lastRow) ' Use only up to the last actual data row
@@ -174,9 +191,9 @@ Sub CreatePieChart(objSummarySheet As Object)
     objChart.Chart.HasLegend = False
 
     ' Set the pie chart colors to match the table (Green, Yellow, Pink)
-    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(102, 187, 106) ' Green
-    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(255, 193, 7) ' Yellow
-    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(244, 67, 54) ' Pink
+    objChart.Chart.SeriesCollection(1).Points(1).Format.Fill.ForeColor.RGB = RGB(144, 238, 144) ' Green
+    objChart.Chart.SeriesCollection(1).Points(2).Format.Fill.ForeColor.RGB = RGB(255, 255, 153) ' Yellow
+    objChart.Chart.SeriesCollection(1).Points(3).Format.Fill.ForeColor.RGB = RGB(255, 182, 193) ' Pink
 
     ' Remove data labels
     On Error Resume Next
