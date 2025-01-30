@@ -172,6 +172,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt_data" />
       <Variable x:TypeArguments="x:String" Name="str_excelFileName" />
       <Variable x:TypeArguments="x:String" Name="str_htmlContent" />
+      <Variable x:TypeArguments="x:String" Name="str_managerEmail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -225,6 +226,14 @@
         </Assign.Value>
       </Assign>
       <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned to str_excelFileName value:&quot; + str_excelFileName.ToString()]" />
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str_managerEmail]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[dt_data(0)("דוא""ל עבודה").tostring]</InArgument>
+        </Assign.Value>
+      </Assign>
       <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove columns that shouldnt be part of the report" DataTable="[dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_data]" SelectColumnsMode="Remove">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -234,6 +243,7 @@
         <ui:FilterDataTable.SelectColumns>
           <scg:List x:TypeArguments="InArgument" Capacity="4">
             <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["דוא""ל עבודה"]</InArgument>
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
         <sap:WorkflowViewStateService.ViewState>
@@ -276,9 +286,18 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_managerEmail" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -293,19 +312,13 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Add_Limited_Version_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utills\Add_Limited_Version_Report.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Delete_Temporary_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utills\Delete_Temporary_Sheets.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="sends mail to current manager with the pdf, excel and html attached " DisplayName="Utills\Send_Report_Via_Mail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Utills\Send_Report_Via_Mail.xaml">

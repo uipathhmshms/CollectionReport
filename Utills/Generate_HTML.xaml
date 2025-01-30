@@ -3,6 +3,7 @@
     <x:Property Name="out_str_htmlContent" Type="OutArgument(x:String)" />
     <x:Property Name="in_str_fileName" Type="InArgument(x:String)" />
     <x:Property Name="in_str_managerName" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_managerEmail" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -91,6 +92,7 @@
       <Variable x:TypeArguments="x:String" Name="str_sheet001" />
       <Variable x:TypeArguments="x:String" Name="str_sheet001BodyContent" />
       <Variable x:TypeArguments="x:String" Name="str_styleSheetContent" />
+      <Variable x:TypeArguments="x:String" Name="str_htmlStyle" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -126,7 +128,7 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,211.5</av:Point>
               <av:Size x:Key="ShapeSize">200,94</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,305.5 300,355.5</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">300,305.5 300,335.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads the style sheet that generated for current report" Content="[str_styleSheetContent]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;stylesheet.css&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_3">
@@ -140,11 +142,11 @@
             <FlowStep x:Name="__ReferenceID1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">83,355.5</av:Point>
+                  <av:Point x:Key="ShapeLocation">83,335.5</av:Point>
                   <av:Size x:Key="ShapeSize">434,52</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -155,24 +157,16 @@
                         <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[str_htmlStyle]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
-"&lt;html&gt;" &amp; vbCrLf &amp; _ 
-"    &lt;head&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;style&gt;" &amp; vbCrLf &amp; _ 
-str_styleSheetContent &amp; vbCrLf &amp; _ 
+                        <InArgument x:TypeArguments="x:String" xml:space="preserve">[str_styleSheetContent &amp; vbCrLf &amp; _ 
 "            html, body {" &amp; vbCrLf &amp; _ 
 "                padding: 20px;" &amp; vbCrLf &amp; _ 
-"                color: white;" &amp; vbCrLf &amp; _ 
 "                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
 "                direction: rtl;" &amp; vbCrLf &amp; _ 
-"                background-color: #121212;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .header {" &amp; vbCrLf &amp; _ 
 "                color: white;" &amp; vbCrLf &amp; _ 
@@ -181,6 +175,7 @@ str_styleSheetContent &amp; vbCrLf &amp; _
 "                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
 "                padding-bottom: 10px;"  &amp; vbCrLf &amp; _ 
+"                background-color: #4b0082; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .footer {" &amp; vbCrLf &amp; _ 
 "                color: white;" &amp; vbCrLf &amp; _ 
@@ -192,6 +187,7 @@ str_styleSheetContent &amp; vbCrLf &amp; _
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                display: block;" &amp; vbCrLf &amp; _ 
 "                clear: both;" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            td {" &amp; vbCrLf &amp; _ 
 "                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
@@ -217,7 +213,21 @@ str_styleSheetContent &amp; vbCrLf &amp; _
 "                    width: 100% !important;" &amp; vbCrLf &amp; _ 
 "                    max-width: 100%;" &amp; vbCrLf &amp; _ 
 "                }" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
+"            }"]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
+"&lt;html&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;head&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;title&gt;דוח גבייה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;style&gt;" &amp; vbCrLf &amp; _ 
+			str_htmlStyle &amp; vbCrLf &amp; _
 "        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;body&gt;" &amp; vbCrLf &amp; _ 
@@ -233,6 +243,7 @@ str_styleSheetContent &amp; vbCrLf &amp; _
                     str_sheet001BodyContent &amp; vbCrLf &amp; _ 
 "                 &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" &gt;" &amp; vbCrLf &amp; _ 
 "                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"            	   &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
 "            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 

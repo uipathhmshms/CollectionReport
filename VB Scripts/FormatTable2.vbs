@@ -82,6 +82,9 @@ Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     outputSheet.Rows(1).PasteSpecial xlPasteValues
     outputSheet.Rows(1).PasteSpecial xlPasteFormats
 
+	' Set the sheet direction
+    SetSheetDirectionRTL outputSheet
+
     ' Add the Status column header
     Dim lastColumn As Long
     lastColumn = outputSheet.Cells(1, outputSheet.Columns.Count).End(xlToLeft).Column
@@ -277,5 +280,13 @@ Sub FormatSheet(outputSheet As Worksheet)
     With outputSheet
         .UsedRange.Columns.AutoFit
         .UsedRange.Borders.LineStyle = xlContinuous
+    End With
+End Sub
+
+' Sub to set the sheet direction to Right-to-Left
+Sub SetSheetDirectionRTL(sheet As Worksheet)
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlRight ' Align text to the right
     End With
 End Sub

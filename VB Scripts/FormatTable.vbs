@@ -33,6 +33,9 @@ Sub FormatTable()
     ' Create output sheet
     Set outputSheet = CreateOutputSheet(inputSheet)
     
+	' Set the sheet direction
+    SetSheetDirectionRTL outputSheet
+	
     ' Get the last row in the input sheet
     inputLastRow = inputSheet.Cells(inputSheet.Rows.Count, 1).End(xlUp).Row
     If inputLastRow < 2 Then
@@ -277,5 +280,13 @@ Sub FormatSheet(outputSheet As Worksheet)
     With outputSheet
         .UsedRange.Columns.AutoFit
         .UsedRange.Borders.LineStyle = xlContinuous
+    End With
+End Sub
+
+' Sub to set the sheet direction to Right-to-Left
+Sub SetSheetDirectionRTL(sheet As Worksheet)
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlRight ' Align text to the right
     End With
 End Sub
