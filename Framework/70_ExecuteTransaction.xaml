@@ -179,36 +179,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_52">
+    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="496,1881" sap2010:WorkflowViewState.IdRef="Sequence_52">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,276" sap2010:WorkflowViewState.IdRef="Sequence_54">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xA;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xA;Dim dt As New DataTable()&#xA;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xA;If deserializedList.Count &gt; 0 Then&#xA;    ' Add columns from the first dictionary in the list&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xA;        dt.Columns.Add(column.Key)&#xA;    Next&#xA;End If&#xA;&#xA;' Step 4: Add rows to the DataTable&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xA;    Dim newRow As DataRow = dt.NewRow()&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xA;    Next&#xA;    dt.Rows.Add(newRow)&#xA;Next&#xA;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xA;out_dt = dt&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
-              <ui:InvokeCode.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt">[dt_data]</OutArgument>
-              </ui:InvokeCode.Arguments>
-            </ui:InvokeCode>
-          </Sequence>
-        </ui:CommentOut.Body>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:CommentOut>
       <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xA;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xA;Dim dt As New DataTable()&#xA;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xA;If deserializedList.Count &gt; 0 Then&#xA;    ' Add columns from the first dictionary in the list&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xA;        ' Add the column&#xA;        dt.Columns.Add(column.Key)&#xA;        &#xA;        ' Check if the column name contains &quot;תאריך&quot; and set its DataType as Date&#xA;        If column.Key.Contains(&quot;תאריך&quot;) Then&#xA;            dt.Columns(column.Key).DataType = GetType(Date)&#xA;        End If&#xA;    Next&#xA;End If&#xA;&#xA;' Step 4: Add rows to the DataTable&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xA;    Dim newRow As DataRow = dt.NewRow()&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xA;        ' Set the value in the row&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xA;    Next&#xA;    dt.Rows.Add(newRow)&#xA;Next&#xA;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xA;out_dt = dt&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
         <ui:InvokeCode.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
@@ -234,6 +211,7 @@
           <InArgument x:TypeArguments="x:String">[dt_data(0)("דוא""ל עבודה").tostring]</InArgument>
         </Assign.Value>
       </Assign>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Manager email is &quot;+str_managerEmail]" />
       <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove columns that shouldnt be part of the report" DataTable="[dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_data]" SelectColumnsMode="Remove">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -286,18 +264,10 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_managerEmail" />
-        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">[str_managerEmail]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
