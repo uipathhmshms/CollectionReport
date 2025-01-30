@@ -1,6 +1,6 @@
 Option Explicit
 
-Sub FormatTable2()
+Sub FormatCollectionReportSheet()
     On Error GoTo ErrorHandler
     
     Application.ScreenUpdating = False
@@ -22,7 +22,7 @@ Sub FormatTable2()
     End If
     
     ' Reference the active workbook and sheets
-    Set inputSheet = ThisWorkbook.Sheets("Limited") ' Input data is on the first sheet
+    Set inputSheet = ThisWorkbook.Sheets(1) ' Input data is on the first sheet
     
     ' Check if input sheet has data
     If Application.WorksheetFunction.CountA(inputSheet.Cells) = 0 Then
@@ -33,6 +33,9 @@ Sub FormatTable2()
     ' Create output sheet
     Set outputSheet = CreateOutputSheet(inputSheet)
     
+	' Set the sheet direction
+    SetSheetDirectionRTL outputSheet
+	
     ' Get the last row in the input sheet
     inputLastRow = inputSheet.Cells(inputSheet.Rows.Count, 1).End(xlUp).Row
     If inputLastRow < 2 Then
@@ -71,7 +74,7 @@ End Sub
 Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     Dim outputSheet As Worksheet
     Dim sheetName As String
-    sheetName = "Collection Report - Limited"
+    sheetName = "Collection Report"
     
     ' Create new sheet with unique name
     Set outputSheet = ThisWorkbook.Sheets.Add
@@ -81,9 +84,6 @@ Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     inputSheet.Rows(1).Copy
     outputSheet.Rows(1).PasteSpecial xlPasteValues
     outputSheet.Rows(1).PasteSpecial xlPasteFormats
-
-	' Set the sheet direction
-    SetSheetDirectionRTL outputSheet
 
     ' Add the Status column header
     Dim lastColumn As Long

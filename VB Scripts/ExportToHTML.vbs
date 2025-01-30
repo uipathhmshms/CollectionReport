@@ -15,32 +15,32 @@ Sub ExportToHTML()
     ' Define the output HTML file path using the workbook name
     htmlFile = ThisWorkbook.Path & "\" & fileNameWithoutExt & ".html"
 
-    ' Find and hide the chart (assuming the chart is the first chart object)
-	Set wsChart= ThisWorkbook.Sheets("Chart")
+    ' Find the chart sheet
     On Error Resume Next
-    Set objChart = wsChart.ChartObjects(1) ' Adjust the index if there are multiple charts
-    If Not objChart Is Nothing Then
-        ' Remove borders from the Chart Area
-        objChart.Chart.ChartArea.Format.Line.Visible = msoFalse
-
-        ' Remove borders from the Plot Area
-        objChart.Chart.PlotArea.Format.Line.Visible = msoFalse
-        
-        ' Set the PlotArea and ChartArea background color to black (RGB(0, 0, 0))
-        objChart.Chart.PlotArea.Format.Fill.ForeColor.RGB = RGB(18, 18, 18) ' Black  
-        objChart.Chart.ChartArea.Format.Fill.ForeColor.RGB = RGB(18, 18, 18) ' Black
+    Set wsChart = ThisWorkbook.Sheets("Chart")
+    If wsChart Is Nothing Then
+        MsgBox "Error: 'Chart' sheet not found.", vbCritical
+        Exit Sub
     End If
+    Set objChart = wsChart.ChartObjects(1) ' Adjust index if multiple charts exist
     On Error GoTo 0
 
-	' ' Convert the table to a chart so it will export as image and not html
-	' ' Find the last row of the table (assuming table is in columns A and B)
-    ' lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-	' ' Create a chart from the table range (for example, data in columns A and B)
-    ' Set chartObj = ws.ChartObjects.Add(Left:=100, Top:=50, Width:=400, Height:=300)
-    ' ' Set the chart's data range (e.g., columns A and B)
-    ' chartObj.Chart.SetSourceData Source:=ws.Range("A1:B" & lastRow)
-    ' ' Set the chart type (for example, column chart)
-    ' chartObj.Chart.ChartType = xlColumnClustered
+    ' Ensure chart exists
+    If objChart Is Nothing Then
+        MsgBox "Error: No chart found in 'Chart' sheet.", vbCritical
+        Exit Sub
+    End If
+
+    ' ✅ Remove background and make it transparent
+    With objChart.Chart
+        ' Remove ChartArea background (fully transparent)
+        .ChartArea.Format.Fill.Visible = msoFalse
+        .ChartArea.Format.Line.Visible = msoFalse
+
+        ' Remove PlotArea background (fully transparent)
+        .PlotArea.Format.Fill.Visible = msoFalse
+        .PlotArea.Format.Line.Visible = msoFalse
+    End With
 
     ' Export the sheet to HTML
     ws.SaveAs Filename:=htmlFile, FileFormat:=xlHTML

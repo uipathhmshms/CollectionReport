@@ -89,8 +89,8 @@ Sub ApplySummaryTableStyling(objSummarySheet As Object)
 
     ' Apply font and background color for the header (row 1)
     objSummarySheet.Rows(1).Font.Name = "David"
-    objSummarySheet.Rows(1).Font.Color = RGB(255, 255, 255) ' Set font color to white for header
-    objSummarySheet.Rows(1).Interior.Color = RGB(18, 18, 18) ' Set background color to dark for header
+    'objSummarySheet.Rows(1).Font.Color = RGB(255, 255, 255) ' Set font color to white for header
+    'objSummarySheet.Rows(1).Interior.Color = RGB(18, 18, 18) ' Set background color to dark for header
 
     ' Apply font and background color for the first three cells based on the "Status" column
     Dim i As Long
@@ -125,14 +125,14 @@ Sub ApplySummaryTableStyling(objSummarySheet As Object)
     Next i
 
     ' Apply font and background color to the Grand Total row (last row)
-    objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
-	objSummarySheet.Cells(lastRow, 1).Font.Color = RGB(255, 255, 255) ' Set font color to white 
+    'objSummarySheet.Cells(lastRow, 1).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	'objSummarySheet.Cells(lastRow, 1).Font.Color = RGB(255, 255, 255) ' Set font color to white 
 
-    objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
-	objSummarySheet.Cells(lastRow, 2).Font.Color = RGB(255, 255, 255) ' Set font color to white 
+    'objSummarySheet.Cells(lastRow, 2).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	'objSummarySheet.Cells(lastRow, 2).Font.Color = RGB(255, 255, 255) ' Set font color to white 
 
-    objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
-	objSummarySheet.Cells(lastRow, 3).Font.Color = RGB(255, 255, 255) ' Set font color to white 
+    'objSummarySheet.Cells(lastRow, 3).Interior.Color = RGB(18, 18, 18) ' Dark color for Grand Total row
+	'objSummarySheet.Cells(lastRow, 3).Font.Color = RGB(255, 255, 255) ' Set font color to white 
 
     ' Apply borders to the summary table (first 3 columns)
     With objSummarySheet.Range("A1:C" & lastRow) ' Use only up to the last actual data row

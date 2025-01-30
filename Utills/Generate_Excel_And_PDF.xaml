@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,4425</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1038,4425</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -132,7 +132,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="594,3893" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,3412" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="ue:IReadRangeRef" Name="readRange_range" />
                     <Variable x:TypeArguments="ue:IReadWriteRangeRef" Name="writeRange_range" />
@@ -142,9 +142,9 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="532,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[in_dt_data]" />
-                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Data table 'dt_data' was written to Excel file Sheet1 starting from cell A1&quot;]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Format the excel to the desired report format" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;FormatTable.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="FormatTable" sap:VirtualizedContainerService.HintSize="532,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_1" Workbook="[Excel]">
+                  <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[in_dt_data]" />
+                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Data table 'dt_data' was written to Excel file Sheet1 starting from cell A1&quot;]" />
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Format the excel to the desired report format" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;FormatCollectionReportSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="FormatCollectionReportSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_1" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -162,8 +162,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA invoked with code file path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;FormatTable.vbs&quot;)  + &quot; and with Workbook:&quot; + Excel.ToString()]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Deletes  &quot;Sheet1&quot; which is the default one(created on excel creation)  that contains the data before the formating" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;DeleteSheet1.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="DeleteSheet1" sap:VirtualizedContainerService.HintSize="532,342" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
+                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA invoked with code file path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;FormatTable.vbs&quot;)  + &quot; and with Workbook:&quot; + Excel.ToString()]" />
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Deletes  &quot;Sheet1&quot; which is the default one(created on excel creation)  that contains the data before the formating" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;DeleteSheet1.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="DeleteSheet1" sap:VirtualizedContainerService.HintSize="434,342" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -181,8 +181,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Script from path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;DeleteSheet1.vbs&quot;) + &quot; was executed on workbook&quot; + Excel.ToString()]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="532,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
+                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Script from path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;DeleteSheet1.vbs&quot;) + &quot; was executed on workbook&quot; + Excel.ToString()]" />
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_3" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -200,8 +200,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA Script 'AddStyleToSheet' was executed from the provided file path&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;AddStyleToSheet.vbs&quot;).ToString() + &quot; on the excel file &quot; + Excel.ToString()]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creating summary table" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;CreateSummaryTable.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="CreateSummaryTable" sap:VirtualizedContainerService.HintSize="532,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_4" Workbook="[Excel]">
+                  <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA Script 'AddStyleToSheet' was executed from the provided file path&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;AddStyleToSheet.vbs&quot;).ToString() + &quot; on the excel file &quot; + Excel.ToString()]" />
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creating summary table" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;CreateSummaryTable.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="CreateSummaryTable" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_4" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -219,7 +219,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creating html file" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;ExportToHTML.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="ExportToHTML" sap:VirtualizedContainerService.HintSize="532,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_5" Workbook="[Excel]">
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creating html file" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;ExportToHTML.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="ExportToHTML" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_5" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
@@ -237,42 +237,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,442" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creates IMG " CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;SaveRangeAsPNG.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="SaveRangeAsPNG" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_7" Workbook="[Excel]">
-                          <ueab:InvokeVBAX.Body>
-                            <ActivityAction>
-                              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Sequence>
-                            </ActivityAction>
-                          </ueab:InvokeVBAX.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ueab:InvokeVBAX>
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:CommentOut>
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creates PDF" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;ExportSheetToPDF.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="ExportSheetToPDF" sap:VirtualizedContainerService.HintSize="532,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_6" Workbook="[Excel]">
+                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Creates PDF" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;ExportSheetToPDF.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="ExportSheetToPDF" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_6" Workbook="[Excel]">
                     <ueab:InvokeVBAX.Body>
                       <ActivityAction>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -290,19 +255,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ueab:InvokeVBAX>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,349" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,270" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_excelFileName+&quot;.pdf&quot;)]" DisplayName="Save Excel File As PDF" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[Excel]" />
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                  </ui:CommentOut>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Excel file was saved as PDF at path &quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;, in_str_excelFileName + &quot;.pdf&quot;).ToString()]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Excel file was saved as PDF at path &quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;, in_str_excelFileName + &quot;.pdf&quot;).ToString()]" />
                 </Sequence>
               </ActivityAction>
             </ueab:ExcelApplicationCard.Body>
