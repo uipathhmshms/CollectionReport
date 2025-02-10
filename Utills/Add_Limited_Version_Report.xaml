@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,2466</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,2553</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_Limited_Version_Report_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -41,6 +41,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -106,110 +107,119 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Limited_Version_Report" sap:VirtualizedContainerService.HintSize="668,2401" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Limited_Version_Report" sap:VirtualizedContainerService.HintSize="702,2488" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="606,2290" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_excelFileName+&quot;.xlsx&quot;)]">
-      <ueab:ExcelApplicationCard.Body>
-        <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+    <ueab:ExcelProcessScopeX ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayAlerts="False" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="640,2377" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+      <ueab:ExcelProcessScopeX.Body>
+        <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <If sap2010:Annotation.AnnotationText="Is limited version needed? " Condition="[(From row In in_dt_data.AsEnumerable()&#xA;  Where&#xA;  &#x9;DateTime.TryParseExact(row(&quot;תאריך לתשלום&quot;).ToString(), &quot;MM/dd/yyyy hh:mm:ss&quot;, Nothing, Globalization.DateTimeStyles.None, Nothing) AndAlso&#xA;  &#x9; Not (DateDiff(DateInterval.Day, DateTime.Now.Date, DateTime.ParseExact(row(&quot;תאריך לתשלום&quot;).ToString(), &quot;MM/dd/yyyy hh:mm:ss&quot;, Nothing))&gt;=0)&#xA;  Select row).count&gt;0]" sap:VirtualizedContainerService.HintSize="572,2021" sap2010:WorkflowViewState.IdRef="If_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="538,1808" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap2010:Annotation.AnnotationText="Creates collection report limited version ( only the rows with the status &quot;delayed&quot; and &quot;debt at risk&quot; will be take in consideration" DisplayName="Create limited version" sap:VirtualizedContainerService.HintSize="496,1720" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="sd:DataTable" Name="dt_limitedData" />
-                  </Sequence.Variables>
+          <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="606,2290" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_excelFileName+&quot;.xlsx&quot;)]">
+            <ueab:ExcelApplicationCard.Body>
+              <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                </ActivityAction.Argument>
+                <If sap2010:Annotation.AnnotationText="Is limited version needed? " Condition="[(From row In in_dt_data.AsEnumerable()&#xA;  Where&#xA;  &#x9;DateTime.TryParseExact(row(&quot;תאריך לתשלום&quot;).ToString(), &quot;MM/dd/yyyy hh:mm:ss&quot;, Nothing, Globalization.DateTimeStyles.None, Nothing) AndAlso&#xA;  &#x9; Not (DateDiff(DateInterval.Day, DateTime.Now.Date, DateTime.ParseExact(row(&quot;תאריך לתשלום&quot;).ToString(), &quot;MM/dd/yyyy hh:mm:ss&quot;, Nothing))&gt;=0)&#xA;  Select row).count&gt;0]" sap:VirtualizedContainerService.HintSize="572,2021" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataTable">[dt_limitedData]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In in_dt_data.AsEnumerable()
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="538,1808" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence sap2010:Annotation.AnnotationText="Creates collection report limited version ( only the rows with the status &quot;delayed&quot; and &quot;debt at risk&quot; will be take in consideration" DisplayName="Create limited version" sap:VirtualizedContainerService.HintSize="496,1720" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataTable" Name="dt_limitedData" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[dt_limitedData]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In in_dt_data.AsEnumerable()
   Where
   	DateTime.TryParseExact(row("תאריך לתשלום").ToString(), "MM/dd/yyyy hh:mm:ss", Nothing, Globalization.DateTimeStyles.None, Nothing) AndAlso
   	 Not (DateDiff(DateInterval.Day, DateTime.Now.Date, DateTime.ParseExact(row("תאריך לתשלום").ToString(), "MM/dd/yyyy hh:mm:ss", Nothing))&gt;=0)
   Select row).CopyToDataTable()]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Limited&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[dt_limitedData]" />
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Data table 'dt_limitedData' was written to Excel file Limited Collection Report starting from cell A1&quot;]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Format the excel to the desired report format" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;FormatLimitedCollectionReportSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="FormatLimitedCollectionReportSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_1" Workbook="[Excel]">
-                    <ueab:InvokeVBAX.Body>
-                      <ActivityAction>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          </Assign.Value>
+                        </Assign>
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Limited&quot;).Range(&quot;A1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,159" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[dt_limitedData]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Data table 'dt_limitedData' was written to Excel file Limited Collection Report starting from cell A1&quot;]" />
+                        <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Format the excel to the desired report format" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;FormatLimitedCollectionReportSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="FormatLimitedCollectionReportSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_1" Workbook="[Excel]">
+                          <ueab:InvokeVBAX.Body>
+                            <ActivityAction>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </ActivityAction>
+                          </ueab:InvokeVBAX.Body>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </Sequence>
-                      </ActivityAction>
-                    </ueab:InvokeVBAX.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ueab:InvokeVBAX>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA invoked with code file path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;FormatTable.vbs&quot;)  + &quot; and with Workbook:&quot; + Excel.ToString()]" />
-                  <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
-                    <ueab:InvokeVBAX.Body>
-                      <ActivityAction>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        </ueab:InvokeVBAX>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA invoked with code file path:&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;FormatTable.vbs&quot;)  + &quot; and with Workbook:&quot; + Excel.ToString()]" />
+                        <ueab:InvokeVBAX Result="{x:Null}" sap2010:Annotation.AnnotationText="Styling the sheet" CodeFilePath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;,&quot;AddStyleToSheet.vbs&quot;)]" DisplayName="Invoke VBA" EntryMethodName="AddStyleToSheet" sap:VirtualizedContainerService.HintSize="434,331" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[Excel]">
+                          <ueab:InvokeVBAX.Body>
+                            <ActivityAction>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </ActivityAction>
+                          </ueab:InvokeVBAX.Body>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </Sequence>
-                      </ActivityAction>
-                    </ueab:InvokeVBAX.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ueab:InvokeVBAX>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA Script 'AddStyleToSheet' was executed from the provided file path&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;AddStyleToSheet.vbs&quot;).ToString() + &quot; on the excel file &quot; + Excel.ToString()]" />
-                </Sequence>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8" />
-            </If.Else>
-          </If>
+                        </ueab:InvokeVBAX>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;VBA Script 'AddStyleToSheet' was executed from the provided file path&quot; + Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;VB Scripts&quot;, &quot;AddStyleToSheet.vbs&quot;).ToString() + &quot; on the excel file &quot; + Excel.ToString()]" />
+                      </Sequence>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8" />
+                  </If.Else>
+                </If>
+              </ActivityAction>
+            </ueab:ExcelApplicationCard.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ueab:ExcelApplicationCard>
         </ActivityAction>
-      </ueab:ExcelApplicationCard.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ueab:ExcelApplicationCard>
+      </ueab:ExcelProcessScopeX.Body>
+    </ueab:ExcelProcessScopeX>
   </Sequence>
 </Activity>
