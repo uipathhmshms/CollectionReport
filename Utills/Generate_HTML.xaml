@@ -3,12 +3,11 @@
     <x:Property Name="out_str_htmlContent" Type="OutArgument(x:String)" />
     <x:Property Name="in_str_fileName" Type="InArgument(x:String)" />
     <x:Property Name="in_str_managerName" Type="InArgument(x:String)" />
-    <x:Property Name="in_str_managerEmail" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,738</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -167,7 +166,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">300,527.5 300,547.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
                         <ui:MultipleAssign.AssignOperations>
                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -259,7 +258,6 @@
                     str_sheet001BodyContent &amp; vbCrLf &amp; _ 
 "                 &lt;img src=""image001.png"" alt=""Pie Chart"" width=""400"" &gt;" &amp; vbCrLf &amp; _ 
 "                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
-"            	   &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
 "            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 

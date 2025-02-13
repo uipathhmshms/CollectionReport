@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1137,1301</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,1301</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -179,7 +179,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="496,1881" sap2010:WorkflowViewState.IdRef="Sequence_52">
+    <Sequence DisplayName="variable declarations and conversions " sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_52">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -264,10 +264,15 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[dt_data(0)("שם מנהל פרויקט").tostring]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">[str_managerEmail]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;שם מנהל פרויקט&quot;).tostring" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
