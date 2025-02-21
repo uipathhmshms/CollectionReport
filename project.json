@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "CollectionReport",
   "projectId": "4f99a10b-7d82-438e-a477-a2863d74395a",
   "description": "תהליך לייצור דוח גבייה עבור מנהל פרויקט.\r\nהתהליך משמש את מחלקת הכפסים ב\r\nhms",
@@ -12,7 +12,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.7.0",
-  "projectVersion": "7.0.1",
+  "projectVersion": "7.0.2-dev",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
