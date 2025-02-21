@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1439,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -174,7 +174,10 @@
                                 <OutArgument x:TypeArguments="x:String">[str_sheet001BodyContent]</OutArgument>
                               </ui:AssignOperation.To>
                               <ui:AssignOperation.Value>
-                                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value]</InArgument>
+                                <InArgument x:TypeArguments="x:String" xml:space="preserve">[System.Text.RegularExpressions.Regex.Match(str_sheet001, "&lt;body.*?&gt;(.*?)&lt;/body&gt;", System.Text.RegularExpressions.RegexOptions.Singleline).Groups(1).Value.Replace(
+	"Status","סטטוס").Replace(
+	"Sum","סכום").Replace(
+	"Percentage","אחוז")]</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
@@ -192,20 +195,20 @@
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
-"                background-color: #4b0082; "  &amp; vbCrLf &amp; _ 
+"                background-color: #1978EF; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .footer {" &amp; vbCrLf &amp; _ 
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                display: block;" &amp; vbCrLf &amp; _ 
 "                clear: both;" &amp; vbCrLf &amp; _ 
-"                background-color: #2c2c2c; "  &amp; vbCrLf &amp; _ 
+"                background-color: #96C8FB; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            td {" &amp; vbCrLf &amp; _ 
 "                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
@@ -251,7 +254,7 @@
 "            &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""content""&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"                &lt;h1&gt;שלום &lt;span style=""color: #68A6FD; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;h2&gt;מצורף 'מבט על' של מצב הגבייה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "                &lt;div style=""text-align:center;""&gt;" &amp; vbCrLf &amp; _ 
@@ -260,7 +263,7 @@
 "                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
-"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"            | Created by &lt;span style=""color: #68A6FD; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>
