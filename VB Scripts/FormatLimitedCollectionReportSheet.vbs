@@ -1,6 +1,6 @@
 Option Explicit
 
-Sub FormatTable()
+Sub FormatLimitedCollectionReportSheet()
     On Error GoTo ErrorHandler
     
     Application.ScreenUpdating = False
@@ -22,7 +22,7 @@ Sub FormatTable()
     End If
     
     ' Reference the active workbook and sheets
-    Set inputSheet = ThisWorkbook.Sheets(1) ' Input data is on the first sheet
+    Set inputSheet = ThisWorkbook.Sheets("Limited") ' Input data is on the first sheet
     
     ' Check if input sheet has data
     If Application.WorksheetFunction.CountA(inputSheet.Cells) = 0 Then
@@ -71,7 +71,7 @@ End Sub
 Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     Dim outputSheet As Worksheet
     Dim sheetName As String
-    sheetName = "Collection Report"
+    sheetName = "Collection Report - Limited"
     
     ' Create new sheet with unique name
     Set outputSheet = ThisWorkbook.Sheets.Add
@@ -81,6 +81,9 @@ Function CreateOutputSheet(inputSheet As Worksheet) As Worksheet
     inputSheet.Rows(1).Copy
     outputSheet.Rows(1).PasteSpecial xlPasteValues
     outputSheet.Rows(1).PasteSpecial xlPasteFormats
+
+	' Set the sheet direction
+    SetSheetDirectionRTL outputSheet
 
     ' Add the Status column header
     Dim lastColumn As Long
@@ -277,5 +280,13 @@ Sub FormatSheet(outputSheet As Worksheet)
     With outputSheet
         .UsedRange.Columns.AutoFit
         .UsedRange.Borders.LineStyle = xlContinuous
+    End With
+End Sub
+
+' Sub to set the sheet direction to Right-to-Left
+Sub SetSheetDirectionRTL(sheet As Worksheet)
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlRight ' Align text to the right
     End With
 End Sub

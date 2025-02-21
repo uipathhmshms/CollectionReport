@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>890,995</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,1301</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="112">
@@ -167,11 +167,12 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="512,930" sap2010:WorkflowViewState.IdRef="Sequence_49">
+  <Sequence DisplayName="&quot;Green Path&quot;" sap:VirtualizedContainerService.HintSize="512,1236" sap2010:WorkflowViewState.IdRef="Sequence_49">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_data" />
       <Variable x:TypeArguments="x:String" Name="str_excelFileName" />
       <Variable x:TypeArguments="x:String" Name="str_htmlContent" />
+      <Variable x:TypeArguments="x:String" Name="str_managerEmail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -185,29 +186,6 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-        <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,276" sap2010:WorkflowViewState.IdRef="Sequence_54">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xA;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xA;Dim dt As New DataTable()&#xA;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xA;If deserializedList.Count &gt; 0 Then&#xA;    ' Add columns from the first dictionary in the list&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xA;        dt.Columns.Add(column.Key)&#xA;    Next&#xA;End If&#xA;&#xA;' Step 4: Add rows to the DataTable&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xA;    Dim newRow As DataRow = dt.NewRow()&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xA;    Next&#xA;    dt.Rows.Add(newRow)&#xA;Next&#xA;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xA;out_dt = dt&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="388,165" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
-              <ui:InvokeCode.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt">[dt_data]</OutArgument>
-              </ui:InvokeCode.Arguments>
-            </ui:InvokeCode>
-          </Sequence>
-        </ui:CommentOut.Body>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:CommentOut>
       <ui:InvokeCode ContinueOnError="{x:Null}" Code="' Step 1: Deserialize the JSON string to a list of dictionaries&#xA;Dim deserializedList As List(Of Dictionary(Of String, Object)) = Newtonsoft.Json.JsonConvert.DeserializeObject(Of List(Of Dictionary(Of String, Object)))(in_jsonString)&#xA;&#xA;' Step 2: Initialize a DataTable with the appropriate columns&#xA;Dim dt As New DataTable()&#xA;&#xA;' Step 3: Add columns to the DataTable based on the keys in the first dictionary&#xA;If deserializedList.Count &gt; 0 Then&#xA;    ' Add columns from the first dictionary in the list&#xA;    For Each column As KeyValuePair(Of String, Object) In deserializedList(0)&#xA;        ' Add the column&#xA;        dt.Columns.Add(column.Key)&#xA;        &#xA;        ' Check if the column name contains &quot;תאריך&quot; and set its DataType as Date&#xA;        If column.Key.Contains(&quot;תאריך&quot;) Then&#xA;            dt.Columns(column.Key).DataType = GetType(Date)&#xA;        End If&#xA;    Next&#xA;End If&#xA;&#xA;' Step 4: Add rows to the DataTable&#xA;For Each row As Dictionary(Of String, Object) In deserializedList&#xA;    Dim newRow As DataRow = dt.NewRow()&#xA;    For Each column As KeyValuePair(Of String, Object) In row&#xA;        ' Set the value in the row&#xA;        newRow(column.Key) = If(column.Value IsNot Nothing, column.Value, DBNull.Value)&#xA;    Next&#xA;    dt.Rows.Add(newRow)&#xA;Next&#xA;&#xA;' Now `dt` contains the DataTable that represents your JSON data&#xA;out_dt = dt&#xA;" DisplayName="Convert specific content to datatable" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="InvokeCode_5">
         <ui:InvokeCode.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_jsonString">[QueueItem_CurrentTransaction.SpecificContent("ReportData").ToString]</InArgument>
@@ -225,6 +203,15 @@
         </Assign.Value>
       </Assign>
       <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned to str_excelFileName value:&quot; + str_excelFileName.ToString()]" />
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[str_managerEmail]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[dt_data(0)("דוא""ל עבודה").tostring]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Manager email is &quot;+str_managerEmail]" />
       <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove columns that shouldnt be part of the report" DataTable="[dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_data]" SelectColumnsMode="Remove">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -234,6 +221,7 @@
         <ui:FilterDataTable.SelectColumns>
           <scg:List x:TypeArguments="InArgument" Capacity="4">
             <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["דוא""ל עבודה"]</InArgument>
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
         <sap:WorkflowViewStateService.ViewState>
@@ -294,9 +282,18 @@ Select row).CopyToDataTable()]</InArgument>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Delete_Temporary_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Utills\Delete_Temporary_Sheets.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Add_Limited_Version_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utills\Add_Limited_Version_Report.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Delete_Temporary_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utills\Delete_Temporary_Sheets.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="sends mail to current manager with the pdf, excel and html attached " DisplayName="Utills\Send_Report_Via_Mail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Utills\Send_Report_Via_Mail.xaml">
