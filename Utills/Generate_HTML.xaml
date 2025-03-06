@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,825</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -195,20 +195,20 @@
 "                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 10px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
 "                background-color: #1978EF; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .footer {" &amp; vbCrLf &amp; _ 
-"                color: white;" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-top: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
+"                border-top: 10px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
-"                display: block;" &amp; vbCrLf &amp; _ 
-"                clear: both;" &amp; vbCrLf &amp; _ 
-"                background-color: #96C8FB; "  &amp; vbCrLf &amp; _ 
+"                position: fixed; " &amp; vbCrLf &amp; _ 
+"                bottom: 0;" &amp; vbCrLf &amp; _ 
+"                background-color: #1978EF; "  &amp; vbCrLf &amp; _ 
+"                color: white; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            td {" &amp; vbCrLf &amp; _ 
 "                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
