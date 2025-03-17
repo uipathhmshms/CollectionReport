@@ -22,7 +22,9 @@ Sub CreateSummaryTable()
     End If
 
     lastRow = objSheet.Cells(objSheet.Rows.Count, 1).End(xlUp).Row
-    grandTotal = objSheet.Cells(lastRow, 11).Value
+    
+    ' Fix for comma-formatted numbers: Ensure the value is numeric
+    grandTotal = CDbl(Replace(objSheet.Cells(lastRow, 11).Value, ",", ""))
 
     ' Initialize totals for different categories
     totalDelayed = 0
@@ -32,7 +34,8 @@ Sub CreateSummaryTable()
     ' Loop through the rows to calculate sums based on status
     For i = 2 To lastRow
         rowStatus = objSheet.Cells(i, 10).Value
-        rowSum = objSheet.Cells(i, 11).Value
+        ' Ensure rowSum is numeric by removing commas if present
+        rowSum = CDbl(Replace(objSheet.Cells(i, 11).Value, ",", ""))
         
         Select Case rowStatus
             Case "Delayed"

@@ -53,41 +53,49 @@ Sub AddStyleToSheet()
 	' Change the background color of the "Status" and "יתרה" columns
     ChangeStatusAndBalanceColors lastRow
 	
+	SetSheetDirectionRTL
+	
+	FormatTotalRows
+	
 	MergeFirstColumnRowsExceptFirstAndLast
 	
+	SetSheetDirectionRTL
+	
+	ColorGrandTotalRow lastRow, intTableWidth
+	
+	FormatBigNumbers lastRow, intTableWidth
 End Sub
 
-Sub MergeFirstColumnRowsExceptFirstAndLast()
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim firstRow As Long
-    Dim mergeRange As Range
-    
-    ' Set the worksheet to the active sheet (modify as needed)
-    Set ws = ActiveSheet
-    
-    ' Define the range of rows to merge
-    firstRow = 2 ' Skip the first row (header)
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row ' Get the last row with data in column A
-    
-    ' Ensure there are at least 3 rows to work with
-    If lastRow <= firstRow Then
-        MsgBox "Not enough rows to merge.", vbExclamation
-        Exit Sub
-    End If
-    
-    ' Define the range to merge
-    Set mergeRange = ws.Range(ws.Cells(firstRow, 1), ws.Cells(lastRow - 1, 1))
-    
-    ' Merge rows in the first column from the second row to the penultimate row
-    mergeRange.Merge
-    
-    ' Align the text in the merged cell
-    With mergeRange
-        .HorizontalAlignment = xlCenter ' Center horizontally
-        .VerticalAlignment = xlTop ' Align text to the top
-    End With
-End Sub
+sub mergefirstcolumnrowsexceptfirstandlast()
+	dim ws as worksheet
+	dim lastrow as long
+	dim firstrow as long
+	dim mergerange as range
+
+	' ' ' set the worksheet to the active sheet (modify as needed)
+	set ws = activesheet
+
+	' ' ' define the range of rows to merge
+	firstrow = 2 ' skip the first row (header)
+	lastrow = ws.cells(ws.rows.count, 1).end(xlup).row ' get the last row with data in column a
+
+	' ' ' ensure there are at least 3 rows to work with
+	if lastrow <= firstrow then
+		exit sub
+	end if
+
+	' define the range to merge
+	set mergerange = ws.range(ws.cells(firstrow, 1), ws.cells(lastrow - 1, 1))
+
+	' ' ' merge rows in the first column from the second row to the penultimate row
+	mergerange.merge
+
+	' ' ' align the text in the merged cell
+	with mergerange
+	.horizontalalignment = xlcenter ' center horizontally
+	.verticalalignment = xltop ' align text to the top
+	end with
+end sub
 
 Sub ChangeStatusAndBalanceColors(lastRow As Long)
     Dim statusCol As Integer
@@ -108,13 +116,13 @@ Sub ChangeStatusAndBalanceColors(lastRow As Long)
         
         ' Apply color logic based on the status value
         Select Case statusCell.Value
-            Case "On time"
+            Case "On Time"
                 statusCell.Interior.Color = RGB(146, 208, 80) ' Green
                 balanceCell.Interior.Color = RGB(146, 208, 80) ' Green
             Case "Delayed"
                 statusCell.Interior.Color = RGB(255, 255, 0) ' Yellow
 				balanceCell.Interior.Color = RGB(255, 255, 0) ' Yellow
-            Case "Debt at risk"
+            Case "Debt at Risk"
                 statusCell.Interior.Color = RGB(247, 199, 172) ' Pink
                 balanceCell.Interior.Color = RGB(247, 199, 172) ' Pink
         End Select
@@ -196,4 +204,87 @@ Sub CenterAlignAllText()
     
     ' Center align the text in the entire used range
     usedRange.HorizontalAlignment = xlCenter
+End Sub
+
+Sub FormatTotalRows()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+	Dim lastCol As Long
+
+    ' Set the active sheet
+    Set ws = ActiveSheet
+
+    ' Get the last used row in column K
+    lastRow = ws.Cells(ws.Rows.Count, 11).End(xlUp).Row
+	lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column ' Find last used column
+	
+    ' Loop through all rows in column G
+    For i = 2 To lastRow
+        ' Check if the month=0 - meaning thats a total row
+        If ws.Cells(i, 2).Value="Total" Then
+            ' Color the entire row blue
+			ws.Range(ws.Cells(i, 2), ws.Cells(i, lastCol)).Interior.Color = RGB(131, 204, 235)
+        End If
+    Next i
+End Sub
+
+' Sub to set the sheet direction to Right-to-Left
+Sub SetSheetDirectionRTL()
+    Dim sheet As Worksheet
+    
+    ' Check if there are sheets in the workbook
+    If ThisWorkbook.Sheets.Count = 0 Then
+        MsgBox "No sheets found in the workbook!", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Set the first sheet (or modify to target a specific sheet)
+    Set sheet = ThisWorkbook.Sheets(1) ' Use Set for object assignment
+    
+    ' Apply Right-to-Left settings
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlHAlignRight ' Align text to the right (use xlHAlignRight for clarity)
+    End With
+End Sub
+
+Sub ColorGrandTotalRow(lastRow As Long, intTableWidth As Integer)
+    Dim ws As Worksheet
+    Dim grandTotalRange As Range
+    
+    Set ws = ActiveSheet
+    Set grandTotalRange = ws.Range(ws.Cells(lastRow, 1), ws.Cells(lastRow, intTableWidth))
+    
+    With grandTotalRange
+        .Interior.Color = RGB(131, 204, 235) ' Dark blue color
+        .Font.Bold = True ' Make text bold
+    End With
+End Sub
+
+Sub FormatBigNumbers(lastRow As Long, intTableWidth As Integer)
+    Dim ws As Worksheet
+    Dim row As Long
+    Dim col As Integer
+    Dim cell As Range
+    
+    Set ws = ActiveSheet
+    
+    ' Loop through all cells in the used range (excluding header row)
+    For row = 2 To lastRow
+	col =11
+	Set cell = ws.Cells(row, col)
+	' Check if the cell contains a numeric value
+	If IsNumeric(cell.Value) And Not IsEmpty(cell.Value) Then
+		' Skip if cell contains "Total" or is in the Status column (column 10)
+		If cell.Value <> "Total" And col <> 10 Then
+			' Format numbers >= 1000 with thousand separators and 2 decimal places
+			If Abs(cell.Value) >= 1000 Then
+				cell.NumberFormat = "#,##0.00"
+			Else
+				cell.NumberFormat = "0.00"
+			End If
+		End If
+	End If
+    Next row
 End Sub
