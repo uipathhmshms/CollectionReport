@@ -40,9 +40,9 @@ Sub CreateSummaryTable()
         Select Case rowStatus
             Case "Delayed"
                 totalDelayed = totalDelayed + rowSum
-            Case "On time"
+            Case "On Time"
                 totalOnTime = totalOnTime + rowSum
-            Case "Debt at risk"
+            Case "Debt at Risk"
                 totalDebtAtRisk = totalDebtAtRisk + rowSum
         End Select
     Next i

@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>583,1215</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1109,1215</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Report_Via_Mail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -133,7 +133,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_mailCC]</OutArgument>
               </ui:GetRobotAsset.Value>
             </ui:GetRobotAsset>
-            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[if(str_mailCC.Equals(&quot;NONE&quot;),{},Split(str_mailCC,&quot;,&quot;))]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;  דוח גבייה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
+            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[if(str_mailCC.Equals(&quot;NONE&quot;),{},Split(str_mailCC,&quot;,&quot;))]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;  דוח גבייה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;דוא&quot;&quot;ל עבודה&quot;).ToString()}]">
               <umam:SendMail.Attachments>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                   <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+".xlsx"]</InArgument>
@@ -142,7 +142,7 @@
                 </scg:List>
               </umam:SendMail.Attachments>
             </umam:SendMail>
-            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+in_projectManagerName+&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()+&#xA;&quot;CC:&quot;+str_mailCC]" />
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xD;&#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+in_projectManagerName+&#xD;&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;דוא&quot;&quot;ל עבודה&quot;).ToString()+&#xD;&#xA;&quot;CC:&quot;+str_mailCC]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>
