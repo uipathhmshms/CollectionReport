@@ -1,40 +1,117 @@
-# Collection Report Executer
+# 📊 Collection Report Automation – UiPath Project
 
-## Project Overview
-This UiPath automation project processes data received from a queue, <br>
-generates an Excel and PDF report,  <br>
-applies custom formatting, <br>
-and sends the reports via email using Microsoft Office 365. 
+This project automates the generation and distribution of a **collection report** to managers, summarizing all outstanding invoices. The report is extracted from the financial system, formatted in Excel with visual cues, and sent via email with summary insights.
 
-### Quick Overview
-![Sample Data Structure](/Documentation/dataFlow1.png)
-![Sample Data Structure](/Documentation/dataFlow2.png)
-*Quick overview of the process steps*
+---
 
-## Features
-- Deserialize JSON Data: Converts specific content from the queue item into a DataTable format.
-- Dynamic File Naming: Generates a unique file name for the report using project manager ID and the current timestamp.
-- Data Filtering: Filters the DataTable to retain only relevant columns for the report.
-- Excel Report Creation: Saves the filtered data into an Excel file with custom formatting.
-- PDF Export: Converts the Excel file into a PDF document.
-- Email Integration: Sends the Excel and PDF reports via email to the recipient specified in the queue item.
+## 🚀 Purpose
 
-## Workflow Steps
-- Convert JSON to DataTable:
-- Deserializes JSON data from the queue item's SpecificContent("ReportData").
-- Outputs the data as a DataTable (dt_data).
-- Generate Report File Name:
-Constructs a dynamic file name using the project manager's ID, report type, and current timestamp.
-- Retains specific columns required for the report while removing unnecessary columns.
-- Create and Format Excel Report:
-- Writes the DataTable to an Excel file in the TempReport directory.
-- Invokes VBA scripts for:
-	1. Custom formatting (FormatTable).
-	2. Deleting the default sheet (DeleteSheet1).
-	3. Applying additional styles (AddStyleToSheet).
-- Save Report as PDF
-- Exports the formatted Excel file into a PDF document in the TempReport directory.
-- Send Email:
-	Attaches the Excel and PDF files to an email.
-	Sends the email using the Microsoft Office 365 activity, with the recipient retrieved from the queue item.
-	
+- Generate and send a **summary email** containing all unpaid tax invoices and a detailed Excel report.
+- Sent automatically to **all project managers** in the company.
+
+---
+
+## 🎯 Business Value
+
+- ⏱️ **Time-saving**: Automates a process that previously took significant manual effort.
+- ❌ **Error reduction**: Minimizes human errors in data collection and reporting.
+- ⚡ **Improved efficiency**: Speeds up the financial reporting process, enhancing decision-making for finance and project management teams.
+
+---
+
+## ⏲️ Runtime Comparison
+
+| Process Type          | Duration         |
+|-----------------------|------------------|
+| Manual                | ???              |
+| Automated (UiPath)    | ~20 seconds      |
+
+---
+
+## 🛠️ Automation Workflow Overview
+
+1. **Data Extraction**  
+   - From salary accounting database using stored procedures.
+2. **Excel Report Generation**  
+   - Includes detailed data with traffic light color coding by status.
+3. **Statistics Visualization**  
+   - Pie chart and summary table derived from Excel data.
+4. **Email Dispatch**  
+   - Email includes the summary visuals and Excel file as an attachment.
+
+---
+
+## 📁 Output Files
+
+- **Excel Report**  
+  - `Collection Report`: Includes all statuses (on time, delayed, debt at risk).  
+  - `Collection Report - Limited`: Includes only `delayed` and `debt at risk`.
+- **Email Formats**  
+  - Desktop, mobile, dark mode views supported.
+- **PDF + HTML**  
+  - Summary visuals also attached as PDF and embedded as HTML.
+
+---
+
+## ⏰ Trigger
+
+- Weekly – Every **Thursday at 13:00** via Orchestrator trigger.
+
+---
+
+## 🧩 Technical Overview
+
+### Dispatcher Process
+
+- Dispatcher name: `Finance_Report_Dispatch`
+- Creates queue items per manager for 3 finance reports.
+- Business process name for this report: `collectionReport`
+
+### Performer Process
+
+- Retrieves queue item and generates manager-specific report.
+
+---
+
+## 📦 Key Components
+
+| Component                                 | Description                                  |
+|------------------------------------------|----------------------------------------------|
+| `Extract_Report_Data_From_DB.xaml`       | Full report data via `sp_GetCollectionReportDataByManager_RPA` |
+| `Extract_Limited_Report_Data_From_DB.xaml` | Limited report data via `sp_GetLimitedCollectionReportDataByManager_RPA` |
+| `Generate_Excel_And_PDF.xaml`            | Excel formatting and visualizations         |
+| VBScript Files (`VB Scripts/`)           | Styling, summary table, pie chart, export   |
+| `Send_Report_Via_Mail.xaml`              | Email sending with dynamic CC via asset     |
+
+---
+
+## 📊 Visualizations
+
+- Pie Chart (`CreatePieChart.vbs`)
+- Summary Table (`CreateSummaryTable.vbs`)
+- PDF Export (`ExportSheetToPDF.vbs`)
+- HTML Export (`ExportToHTML.vbs`)
+
+---
+
+## ☁️ Deployment & Cloud Info
+
+- Location: Orchestrator folder `finance/CollectionReport`
+- Queues:
+  - `TEST` – For development/testing
+  - `PROD` – For live runs
+- Source Control: [GitHub Repo](https://github.com/uipathhmshms/CollectionReport)
+
+---
+
+## 🔮 Future Enhancements
+
+- Reports filtered by specific companies (e.g., TCS, H.B. Eisenberger)
+- Restricted reports for approved managers only
+- Automated status update email to management post-execution
+
+---
+
+## 📞 Contact
+
+For support or enhancements, contact: **LidorM**
