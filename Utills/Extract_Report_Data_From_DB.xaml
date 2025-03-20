@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1179,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1411,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extract_Report_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -122,16 +122,28 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID3</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,409.5</av:Point>
           <av:Size x:Key="ShapeSize">200,25</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,434.5 300,464.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,464.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,52</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Report data for current manager was extracted. Procedure command-&quot;+&#xD;&#xA;$&quot;&#x9;&#xD;&#xA;&#x9;EXEC  [dbo].[sp_GetCollectionReportDataByManager_RPA]&#xD;&#xA;&#x9;    @ManagerCode = N'{QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring}'&#xD;&#xA;&quot;]" />
+        </FlowStep>
+      </FlowStep.Next>
     </FlowStep>
     <FlowStep x:Name="__ReferenceID1">
       <sap:WorkflowViewStateService.ViewState>
@@ -141,7 +153,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,389.5 300,409.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract all manager's employees data from sql procedure" DataTable="[out_reportData]" DisplayName="Extract All Employee IDs" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[$&quot;&#xD;&#xA;&#x9;USE [Halperin]&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;DECLARE @return_value int&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;EXEC @return_value = [dbo].[sp_GetCollectionReportDataByManager_RPA]&#xD;&#xA;&#x9;    @ManagerCode = N'{QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring}'&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;SELECT 'Return Value' = @return_value&#xD;&#xA;&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract all manager's employees data from sql procedure" DataTable="[out_reportData]" DisplayName="Extract All Employee IDs" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[$&quot;&#x9;&#xD;&#xA;&#x9;EXEC [dbo].[sp_GetCollectionReportDataByManager_RPA]&#xD;&#xA;&#x9;    @ManagerCode = N'{QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring}'&#xD;&#xA;&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
@@ -168,7 +180,7 @@
         <x:Reference>__ReferenceID1</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID3">
+    <FlowStep x:Name="__ReferenceID4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,107.5</av:Point>
@@ -234,5 +246,6 @@
         <x:Reference>__ReferenceID2</x:Reference>
       </FlowStep.Next>
     </FlowStep>
+    <x:Reference>__ReferenceID3</x:Reference>
   </Flowchart>
 </Activity>

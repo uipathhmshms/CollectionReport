@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1109,1215</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1411,1215</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Report_Via_Mail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -142,7 +142,7 @@
                 </scg:List>
               </umam:SendMail.Attachments>
             </umam:SendMail>
-            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xD;&#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+in_projectManagerName+&#xD;&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;דוא&quot;&quot;ל עבודה&quot;).ToString()+&#xD;&#xA;&quot;CC:&quot;+str_mailCC]" />
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail with the subject title &quot; + &#xA;&quot;בדיקה דוח גבייה&quot;+&quot; &quot;+in_projectManagerName+&#xA;&quot; Sent to &quot;+QueueItem_CurrentTransaction.SpecificContent(&quot;דוא&quot;&quot;ל עבודה&quot;).ToString()+&#xA;&quot;CC:&quot;+str_mailCC]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>
